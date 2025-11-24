@@ -5,13 +5,97 @@ from pathlib import Path
 import getpass
 import time
 import sys
+import shlex
+import difflib
+from typing import Dict, List
+from datetime import datetime
+import requests
+from bs4 import BeautifulSoup
 
-# Fixed data directory for all credentials
-DATA_DIR = Path(r"C:\Users\MenaceXnadin\Documents\merosharedata")
+from colorama import init as colorama_init, Fore, Style
+
+from prompt_toolkit import PromptSession
+from prompt_toolkit.auto_suggest import AutoSuggestFromHistory
+from prompt_toolkit.completion import Completer, Completion
+from prompt_toolkit.history import FileHistory
+from prompt_toolkit.shortcuts import CompleteStyle
+from prompt_toolkit.patch_stdout import patch_stdout
+from prompt_toolkit.styles import Style as PTStyle
+from prompt_toolkit.formatted_text import FormattedText
+from prompt_toolkit.application import Application
+from prompt_toolkit.key_binding import KeyBindings
+from prompt_toolkit.layout.containers import Window
+from prompt_toolkit.layout.controls import FormattedTextControl
+from prompt_toolkit.layout.layout import Layout
+
+from rich.console import Console, Group
+from rich.panel import Panel
+from rich.table import Table
+from rich.text import Text
+from rich import box
+from rich.align import Align
+from rich.columns import Columns
+from rich.rule import Rule
+
+def ensure_playwright_browsers():
+    """Ensure Playwright browsers are installed, install if missing."""
+    try:
+        from playwright.sync_api import sync_playwright
+        with sync_playwright() as p:
+            # Try to launch chromium briefly to check if installed
+            browser = p.chromium.launch(headless=True, timeout=5000)
+            browser.close()
+    except Exception:
+        console.print("[yellow]⚠️  Playwright browsers not found. Installing chromium...[/yellow]")
+        try:
+            import subprocess
+            result = subprocess.run(
+                [sys.executable, "-m", "playwright", "install", "chromium"],
+                capture_output=True,
+                text=True,
+                timeout=300  # 5 minutes timeout
+            )
+            if result.returncode == 0:
+                console.print("[green]✓ Browsers installed successfully![/green]")
+            else:
+                console.print(f"[red]✗ Failed to install browsers: {result.stderr}[/red]")
+                console.print("[yellow]You can install manually with: playwright install chromium[/yellow]")
+        except subprocess.TimeoutExpired:
+            console.print("[red]✗ Browser installation timed out. Please install manually.[/red]")
+        except Exception as e:
+            console.print(f"[red]✗ Error installing browsers: {e}[/red]")
+
+# Dynamic data directory for all credentials
+# Uses user's Documents folder if available, otherwise home directory
+DATA_DIR = Path.home() / "Documents" / "merosharedata"
+if not DATA_DIR.parent.exists():
+    DATA_DIR = Path.home() / "merosharedata"
+
 DATA_DIR.mkdir(parents=True, exist_ok=True)
 
 CONFIG_FILE = DATA_DIR / "family_members.json"
 IPO_CONFIG_FILE = DATA_DIR / "ipo_config.json"
+CLI_HISTORY_FILE = DATA_DIR / "nepse_cli_history.txt"
+
+console = Console(force_terminal=True, legacy_windows=False)
+CLI_PROMPT_STYLE = PTStyle.from_dict({
+    # Gemini-inspired colors
+    "prompt": "bold #4da6ff",           # Bright Blue prompt
+    "input": "#ffffff",                 # White input text
+    
+    # Completion Menu Styles
+    "completion-menu": "bg:#111111 noinherit",    # Very dark background
+    "completion-menu.completion": "bg:#111111 #bbbbbb", # Default text grey
+    "completion-menu.completion.current": "bg:#2d2d2d #ffffff bold", # Highlighted row
+    
+    # Custom classes for formatted completions
+    "completion-command": "bold #ffffff",       # Command name white/bold
+    "completion-description": "italic #ff55ff", # Description pink/magenta
+    "completion-builtin": "italic #888888",     # Built-in tag grey
+    
+    "scrollbar.background": "bg:#111111",
+    "scrollbar.button": "bg:#555555",
+})
 
 def print_progress(step, total, message, sub_message=""):
     """
@@ -112,45 +196,120 @@ def list_family_members():
     members = config.get('members', [])
     
     if not members:
-        print("\n⚠ No family members found. Add members first!\n")
+        console.print(Panel("⚠ No family members found. Add members first!", style="bold red", box=box.ROUNDED))
         return None
     
-    print("\n" + "="*60)
-    print("FAMILY MEMBERS")
-    print("="*60)
+    table = Table(title="Family Members", box=box.ROUNDED, header_style="bold cyan", expand=True)
+    table.add_column("#", style="dim", width=4, justify="center")
+    table.add_column("Name", style="bold white")
+    table.add_column("Username", style="cyan")
+    table.add_column("DP", style="magenta")
+    table.add_column("Kitta", justify="right")
+    table.add_column("CRN", style="yellow")
+
     for idx, member in enumerate(members, 1):
-        print(f"{idx}. {member['name']}")
-        print(f"   Username: {member['username']}")
-        print(f"   DP: {member['dp_value']}")
-        print(f"   Kitta: {member['applied_kitta']} | CRN: {member['crn_number']}")
-        print()
-    print("="*60)
+        table.add_row(
+            str(idx),
+            member['name'],
+            member['username'],
+            member['dp_value'],
+            str(member['applied_kitta']),
+            member['crn_number']
+        )
     
+    console.print(table)
     return members
 
 def select_family_member():
-    """Select a family member for IPO application"""
-    members = list_family_members()
+    """Select a family member for IPO application using an inline interactive menu"""
+    config = load_family_members()
+    members = config.get('members', [])
     
     if not members:
+        console.print(Panel("⚠ No family members found. Add members first!", style="bold red", box=box.ROUNDED))
         return None
     
-    while True:
-        try:
-            choice = input(f"\nSelect member (1-{len(members)}): ").strip()
-            idx = int(choice) - 1
-            
-            if 0 <= idx < len(members):
-                selected = members[idx]
-                print(f"\n✓ Selected: {selected['name']}")
-                return selected
+    # Inline interactive selection
+    selected_index = 0
+    
+    bindings = KeyBindings()
+
+    @bindings.add('up')
+    def _(event):
+        nonlocal selected_index
+        selected_index = (selected_index - 1) % len(members)
+
+    @bindings.add('down')
+    def _(event):
+        nonlocal selected_index
+        selected_index = (selected_index + 1) % len(members)
+
+    @bindings.add('enter')
+    def _(event):
+        event.app.exit(result=members[selected_index])
+
+    @bindings.add('c-c')
+    def _(event):
+        event.app.exit(result=None)
+
+    def get_formatted_text():
+        result = []
+        result.append(('class:title', 'Select Family Member (Use ↑/↓ and Enter):\n'))
+        for i, member in enumerate(members):
+            if i == selected_index:
+                # Highlight selected item
+                result.append(('class:selected', f' > {member["name"]} (DP: {member["dp_value"]})\n'))
             else:
-                print(f"❌ Enter number between 1 and {len(members)}")
-        except ValueError:
-            print("❌ Invalid input")
-        except KeyboardInterrupt:
-            print("\n\n✗ Cancelled")
+                result.append(('class:unselected', f'   {member["name"]} (DP: {member["dp_value"]})\n'))
+        return FormattedText(result)
+
+    # Define style for the menu
+    style = PTStyle.from_dict({
+        'selected': 'fg:ansigreen bold',
+        'unselected': '',
+        'title': 'bold underline'
+    })
+
+    # Create a small application that runs inline
+    app = Application(
+        layout=Layout(
+            Window(content=FormattedTextControl(get_formatted_text), height=len(members) + 2)
+        ),
+        key_bindings=bindings,
+        style=style,
+        full_screen=False,  # Inline mode
+        mouse_support=False
+    )
+
+    try:
+        selected = app.run()
+        
+        if selected:
+            console.print(f"[bold green]✓ Selected:[/bold green] {selected['name']} (Kitta: {selected['applied_kitta']} | CRN: {selected['crn_number']})")
+            return selected
+        else:
+            console.print("\n[yellow]✗ Selection cancelled[/yellow]")
             return None
+            
+    except Exception as e:
+        # Fallback to simple input if something goes wrong
+        console.print(f"[yellow]Interactive menu failed ({str(e)}). Using standard input.[/yellow]")
+        list_family_members()
+        while True:
+            try:
+                choice = input(f"\n👉 Enter member number (1-{len(members)}): ").strip()
+                idx = int(choice) - 1
+                if 0 <= idx < len(members):
+                    selected = members[idx]
+                    print(f"\n✓ Selected: {selected['name']}")
+                    return selected
+                else:
+                    print(f"❌ Invalid choice. Enter a number between 1 and {len(members)}")
+            except ValueError:
+                print("❌ Invalid input. Please enter a number.")
+            except KeyboardInterrupt:
+                print("\n\n✗ Cancelled")
+                return None
 
 def save_credentials():
     """Legacy function - redirects to add_family_member"""
@@ -567,11 +726,14 @@ def get_portfolio(auto_load=True, headless=False):
                 rows = page.query_selector_all("table.table tbody:first-of-type tr")
                 
                 if rows and len(rows) > 0:
-                    print("\n" + "="*120)
-                    print("YOUR PORTFOLIO HOLDINGS")
-                    print("="*120)
-                    print(f"{'#':<5} {'Scrip':<12} {'Balance':<12} {'Last Price':<12} {'Value(Last)':<15} {'LTP':<12} {'Value(LTP)':<15}")
-                    print("-"*120)
+                    table = Table(title="YOUR PORTFOLIO HOLDINGS", box=box.ROUNDED, header_style="bold cyan", expand=True)
+                    table.add_column("#", style="dim", width=4)
+                    table.add_column("Scrip", style="bold white")
+                    table.add_column("Balance", justify="right")
+                    table.add_column("Last Price", justify="right")
+                    table.add_column("Value (Last)", justify="right")
+                    table.add_column("LTP", justify="right")
+                    table.add_column("Value (LTP)", justify="right", style="green")
                     
                     portfolio_data = []
                     total_value_last = 0
@@ -601,8 +763,7 @@ def get_portfolio(auto_load=True, headless=False):
                             }
                             portfolio_data.append(holding)
                             
-                            # Print formatted row
-                            print(f"{num:<5} {scrip:<12} {balance:<12} {last_price:<12} {value_last:<15} {ltp:<12} {value_ltp:<15}")
+                            table.add_row(num, scrip, balance, last_price, value_last, ltp, value_ltp)
                     
                     # Get total row (from second tbody)
                     total_rows = page.query_selector_all("table.table tbody:last-of-type tr")
@@ -612,11 +773,11 @@ def get_portfolio(auto_load=True, headless=False):
                             total_last = total_cells[4].inner_text().strip()
                             total_ltp = total_cells[6].inner_text().strip() if len(total_cells) > 6 else ""
                             
-                            print("-"*120)
-                            print(f"{'TOTAL':<42} {total_last:<15} {'':<12} {total_ltp:<15}")
+                            table.add_section()
+                            table.add_row("TOTAL", "", "", "", total_last, "", total_ltp, style="bold")
                     
-                    print("="*120)
-                    print(f"\n✓ Total holdings: {len(portfolio_data)} scrips")
+                    console.print(table)
+                    console.print(f"✓ Total holdings: {len(portfolio_data)} scrips\n")
                     
                     # Save to JSON with metadata
                     output_file = "portfolio_data.json"
@@ -630,11 +791,7 @@ def get_portfolio(auto_load=True, headless=False):
                     print(f"✓ Portfolio data saved to {output_file}")
                     
                 else:
-                    print("⚠ No portfolio data found.")
-                    screenshot_path = "portfolio_page.png"
-                    page.screenshot(path=screenshot_path, full_page=True)
-                    print(f"📸 Screenshot saved to {screenshot_path}")
-                
+                    console.print(Panel("⚠ No portfolio data found.", style="bold yellow", box=box.ROUNDED))
             except Exception as e:
                 print(f"⚠ Error extracting portfolio: {e}")
                 screenshot_path = "portfolio_error.png"
@@ -732,13 +889,27 @@ def apply_ipo(auto_load=True, headless=False):
             
             search_box = page.query_selector("input.select2-search__field")
             if search_box:
+                print(f"    → Searching for DP value {dp_value}...")
                 search_box.type(dp_value)
                 time.sleep(0.5)
+                
+                # Click the first result or press Enter
                 first_result = page.query_selector("li.select2-results__option--highlighted, li.select2-results__option[aria-selected='true']")
                 if first_result:
                     first_result.click()
                 else:
                     page.keyboard.press("Enter")
+            else:
+                # Fallback: click by text
+                try:
+                    results = page.query_selector_all("li.select2-results__option")
+                    for result in results:
+                        if dp_value in result.inner_text():
+                            result.click()
+                            break
+                except:
+                    print("    ⚠ Using fallback selection method...")
+                    page.select_option("select.select2-hidden-accessible", dp_value)
             
             time.sleep(1)
             
@@ -790,9 +961,257 @@ def apply_ipo(auto_load=True, headless=False):
             if "#/login" not in page.url.lower():
                 print("✓ Login successful!")
             else:
-                print("⚠ Login may have failed")
-                page.screenshot(path="login_failed.png")
-                return
+                print("⚠ Login may have failed, but continuing to portfolio...")
+            
+            # Navigate to Portfolio
+            print("\n📊 Navigating to Portfolio page...")
+            page.goto("https://meroshare.cdsc.com.np/#/portfolio", wait_until="networkidle")
+            time.sleep(3)
+            
+            print("Fetching holdings...\n")
+            
+            # Extract portfolio data with correct selectors
+            try:
+                # Wait for the table to load (Angular app with _ngcontent attributes)
+                print("Waiting for portfolio table to load...")
+                page.wait_for_selector("table.table tbody tr", timeout=10000)
+                time.sleep(2)
+                
+                # Get all data rows (excluding the total row)
+                rows = page.query_selector_all("table.table tbody:first-of-type tr")
+                
+                if rows and len(rows) > 0:
+                    table = Table(title="YOUR PORTFOLIO HOLDINGS", box=box.ROUNDED, header_style="bold cyan", expand=True)
+                    table.add_column("#", style="dim", width=4)
+                    table.add_column("Scrip", style="bold white")
+                    table.add_column("Balance", justify="right")
+                    table.add_column("Last Price", justify="right")
+                    table.add_column("Value (Last)", justify="right")
+                    table.add_column("LTP", justify="right")
+                    table.add_column("Value (LTP)", justify="right", style="green")
+                    
+                    portfolio_data = []
+                    total_value_last = 0
+                    total_value_ltp = 0
+                    
+                    for row in rows:
+                        cells = row.query_selector_all("td")
+                        if cells and len(cells) >= 7:
+                            # Extract each column
+                            num = cells[0].inner_text().strip()
+                            scrip = cells[1].inner_text().strip()
+                            balance = cells[2].inner_text().strip()
+                            last_price = cells[3].inner_text().strip()
+                            value_last = cells[4].inner_text().strip()
+                            ltp = cells[5].inner_text().strip()
+                            value_ltp = cells[6].inner_text().strip()
+                            
+                            # Store as structured data
+                            holding = {
+                                "number": num,
+                                "scrip": scrip,
+                                "current_balance": balance,
+                                "last_closing_price": last_price,
+                                "value_as_of_last_price": value_last,
+                                "last_transaction_price": ltp,
+                                "value_as_of_ltp": value_ltp
+                            }
+                            portfolio_data.append(holding)
+                            
+                            table.add_row(num, scrip, balance, last_price, value_last, ltp, value_ltp)
+                    
+                    # Get total row (from second tbody)
+                    total_rows = page.query_selector_all("table.table tbody:last-of-type tr")
+                    if total_rows and len(total_rows) > 0:
+                        total_cells = total_rows[0].query_selector_all("td")
+                        if total_cells and len(total_cells) >= 5:
+                            total_last = total_cells[4].inner_text().strip()
+                            total_ltp = total_cells[6].inner_text().strip() if len(total_cells) > 6 else ""
+                            
+                            table.add_section()
+                            table.add_row("TOTAL", "", "", "", total_last, "", total_ltp, style="bold")
+                    
+                    console.print(table)
+                    console.print(f"✓ Total holdings: {len(portfolio_data)} scrips\n")
+                    
+                    # Save to JSON with metadata
+                    output_file = "portfolio_data.json"
+                    output = {
+                        "fetched_at": time.strftime("%Y-%m-%d %H:%M:%S"),
+                        "total_scrips": len(portfolio_data),
+                        "holdings": portfolio_data
+                    }
+                    with open(output_file, 'w') as f:
+                        json.dump(output, f, indent=2)
+                    print(f"✓ Portfolio data saved to {output_file}")
+                    
+                else:
+                    console.print(Panel("⚠ No portfolio data found.", style="bold yellow", box=box.ROUNDED))
+            except Exception as e:
+                print(f"⚠ Error extracting portfolio: {e}")
+                screenshot_path = "portfolio_error.png"
+                page.screenshot(path=screenshot_path, full_page=True)
+                print(f"📸 Screenshot saved to {screenshot_path}")
+            
+            # Keep browser open in non-headless mode
+            if not headless:
+                print("\nBrowser will stay open for 30 seconds...")
+                time.sleep(30)
+            
+        except Exception as e:
+            print(f"\n✗ Error: {e}")
+            if not headless:
+                time.sleep(5)
+        finally:
+            browser.close()
+
+def load_ipo_config():
+    """Load IPO application configuration"""
+    if not IPO_CONFIG_FILE.exists():
+        print(f"\n⚠ IPO config file not found. Creating template...")
+        default_config = {
+            "applied_kitta": 10,
+            "crn_number": "YOUR_CRN_NUMBER_HERE"
+        }
+        with open(IPO_CONFIG_FILE, 'w') as f:
+            json.dump(default_config, f, indent=2)
+        print(f"✓ Created {IPO_CONFIG_FILE}")
+        print(f"⚠ Please edit {IPO_CONFIG_FILE} with your actual CRN number before applying!\n")
+        return default_config
+    
+    with open(IPO_CONFIG_FILE, 'r') as f:
+        return json.load(f)
+
+def apply_ipo(auto_load=True, headless=False):
+    """
+    Complete IPO application automation with family member selection
+    
+    Args:
+        auto_load: Load credentials from config file
+        headless: Run browser in headless mode (no GUI)
+    """
+    if auto_load:
+        # Select family member
+        member = select_family_member()
+        if not member:
+            print("\n✗ No member selected. Exiting...")
+            return
+        
+        dp_value = member['dp_value']
+        username = member['username']
+        password = member['password']
+        transaction_pin = member['transaction_pin']
+        applied_kitta = member['applied_kitta']
+        crn_number = member['crn_number']
+        member_name = member['name']
+    else:
+        member_name = "Manual Entry"
+        dp_value = input("Enter DP value: ")
+        username = input("Enter username: ")
+        password = getpass.getpass("Enter password: ")
+        transaction_pin = getpass.getpass("Enter 4-digit transaction PIN: ")
+        applied_kitta = int(input("Applied Kitta: ").strip() or "10")
+        crn_number = input("CRN Number: ").strip()
+    
+    if not crn_number:
+        print(f"\n✗ CRN number is required!")
+        return
+    
+    print(f"\n✓ Applying IPO for: {member_name}")
+    print(f"✓ Kitta: {applied_kitta} | CRN: {crn_number}")
+    
+    with sync_playwright() as p:
+        browser = p.chromium.launch(headless=headless, slow_mo=100 if not headless else 0)
+        context = browser.new_context()
+        page = context.new_page()
+        
+        try:
+            # ========== PHASE 1: LOGIN ==========
+            print("\n" + "="*60)
+            print("PHASE 1: LOGIN")
+            print("="*60)
+            
+            print(); print_progress(1, 6, "Navigating to Meroshare...")
+            page.goto("https://meroshare.cdsc.com.np/#/login", wait_until="networkidle")
+            time.sleep(2)
+            
+            print_progress(2, 6, "Opening DP dropdown...")
+            page.click("span.select2-selection")
+            time.sleep(1)
+            
+            print_progress(3, 6, f"Selecting DP (value: {dp_value})...")
+            page.wait_for_selector(".select2-results", timeout=5000)
+            
+            search_box = page.query_selector("input.select2-search__field")
+            if search_box:
+                print(f"    → Searching for DP value {dp_value}...")
+                search_box.type(dp_value)
+                time.sleep(0.5)
+                
+                # Click the first result or press Enter
+                first_result = page.query_selector("li.select2-results__option--highlighted, li.select2-results__option[aria-selected='true']")
+                if first_result:
+                    first_result.click()
+                else:
+                    page.keyboard.press("Enter")
+            else:
+                # Fallback: click by text
+                try:
+                    results = page.query_selector_all("li.select2-results__option")
+                    for result in results:
+                        if dp_value in result.inner_text():
+                            result.click()
+                            break
+                except:
+                    print("    ⚠ Using fallback selection method...")
+                    page.select_option("select.select2-hidden-accessible", dp_value)
+            
+            time.sleep(1)
+            
+            print_progress(4, 6, "Filling username...")
+            username_selectors = [
+                "input[formcontrolname='username']",
+                "input#username",
+                "input[placeholder*='User']"
+            ]
+            for selector in username_selectors:
+                try:
+                    page.fill(selector, username, timeout=2000)
+                    break
+                except:
+                    continue
+            
+            print_progress(5, 6, "Filling password...")
+            password_selectors = [
+                "input[formcontrolname='password']",
+                "input[type='password']"
+            ]
+            for selector in password_selectors:
+                try:
+                    page.fill(selector, password, timeout=2000)
+                    break
+                except:
+                    continue
+            
+            print_progress(6, 6, "Clicking login button...")
+            login_button_selectors = [
+                "button.btn.sign-in",
+                "button[type='submit']",
+                "button:has-text('Login')"
+            ]
+            for selector in login_button_selectors:
+                try:
+                    page.click(selector, timeout=2000)
+                    break
+                except:
+                    continue
+            
+            print("\nWaiting for login...")
+            try:
+                page.wait_for_function("window.location.hash !== '#/login'", timeout=8000)
+                time.sleep(2)
+            except:
+                print("    (timeout, but may still be logged in)")
             
             # ========== PHASE 2: FETCH AVAILABLE IPOs ==========
             print("\n" + "="*60)
@@ -1221,11 +1640,14 @@ def get_portfolio_for_member(member, headless=False):
             rows = page.query_selector_all("table.table tbody:first-of-type tr")
             
             if rows and len(rows) > 0:
-                print("\n" + "="*120)
-                print(f"PORTFOLIO: {member['name'].upper()}")
-                print("="*120)
-                print(f"{'#':<5} {'Scrip':<12} {'Balance':<12} {'Last Price':<12} {'Value(Last)':<15} {'LTP':<12} {'Value(LTP)':<15}")
-                print("-"*120)
+                table = Table(title=f"PORTFOLIO: {member['name'].upper()}", box=box.ROUNDED, header_style="bold cyan", expand=True)
+                table.add_column("#", style="dim", width=4)
+                table.add_column("Scrip", style="bold white")
+                table.add_column("Balance", justify="right")
+                table.add_column("Last Price", justify="right")
+                table.add_column("Value (Last)", justify="right")
+                table.add_column("LTP", justify="right")
+                table.add_column("Value (LTP)", justify="right", style="green")
                 
                 total_value_ltp = 0.0
                 
@@ -1247,11 +1669,12 @@ def get_portfolio_for_member(member, headless=False):
                         except:
                             pass
                         
-                        print(f"{num:<5} {scrip:<12} {balance:<12} {last_price:<12} {value_last:<15} {ltp:<12} {value_ltp:<15}")
+                        table.add_row(num, scrip, balance, last_price, value_last, ltp, value_ltp)
                 
-                print("-"*120)
-                print(f"{'TOTAL':<71} Rs. {total_value_ltp:,.2f}")
-                print("="*120)
+                table.add_section()
+                table.add_row("TOTAL", "", "", "", "", "", f"Rs. {total_value_ltp:,.2f}", style="bold")
+                
+                console.print(table)
             
             if not headless:
                 print("\nBrowser will stay open for 20 seconds...")
@@ -1299,6 +1722,7 @@ def test_login_for_member(member, headless=True):
                 else:
                     page.keyboard.press("Enter")
             else:
+                # Fallback: click by text
                 try:
                     results = page.query_selector_all("li.select2-results__option")
                     for result in results:
@@ -1391,21 +1815,25 @@ def apply_ipo_for_all_members(headless=True):
     members = config.get('members', [])
     
     if not members:
-        print("\n⚠ No family members found. Add members first!\n")
+        console.print(Panel("[bold red]⚠ No family members found. Add members first![/bold red]", box=box.ROUNDED, border_style="red"))
         return
     
-    # Display members
-    print("\n" + "="*60)
-    print("FAMILY MEMBERS TO APPLY IPO")
-    print("="*60)
-    for idx, member in enumerate(members, 1):
-        print(f"{idx}. {member['name']} - Kitta: {member['applied_kitta']} | CRN: {member['crn_number']}")
-    print("="*60)
+    # Display members FIRST
+    table = Table(title="Family Members to Apply IPO", box=box.ROUNDED, header_style="bold cyan")
+    table.add_column("No.", justify="right", style="cyan")
+    table.add_column("Name", style="bold white")
+    table.add_column("Kitta", justify="right", style="yellow")
+    table.add_column("CRN", style="dim")
     
-    # Confirmation
-    confirm = input(f"\n⚠ Apply IPO for ALL {len(members)} members? (yes/no): ").strip().lower()
+    for idx, member in enumerate(members, 1):
+        table.add_row(str(idx), member['name'], str(member['applied_kitta']), member['crn_number'])
+    
+    console.print(table)
+    
+    # Confirmation AFTER showing the list
+    confirm = input(f"\n⚠️  Apply IPO for ALL {len(members)} members shown above? (yes/no): ").strip().lower()
     if confirm != 'yes':
-        print("✗ Operation cancelled")
+        console.print("[bold red]✗ Operation cancelled[/bold red]\n")
         return
     
     with sync_playwright() as p:
@@ -1414,21 +1842,21 @@ def apply_ipo_for_all_members(headless=True):
         
         try:
             # ========== PHASE 1: CREATE TABS & LOGIN ALL MEMBERS ==========
-            print("\n" + "="*60)
-            print("PHASE 1: MULTI-TAB LOGIN (ALL MEMBERS)")
-            print("="*60)
+            console.print()
+            console.print(Rule("[bold cyan]PHASE 1: MULTI-TAB LOGIN (ALL MEMBERS)[/bold cyan]"))
+            console.print()
             
             pages_data = []
             
             # Create tabs and login sequentially (but keep all tabs open)
-            print(f"\n🚀 Opening {len(members)} tabs and logging in...\n")
+            console.print(f"[bold]🚀 Opening {len(members)} tabs and logging in...[/bold]\n")
             
             for idx, member in enumerate(members, 1):
                 member_name = member['name']
                 page = context.new_page()
                 
                 try:
-                    print(f"[Tab {idx}] Starting login for: {member_name}")
+                    console.print(f"[cyan][Tab {idx}][/cyan] Starting login for: [bold]{member_name}[/bold]")
                     
                     # Navigate
                     page.goto("https://meroshare.cdsc.com.np/#/login", wait_until="networkidle")
@@ -1497,76 +1925,79 @@ def apply_ipo_for_all_members(headless=True):
                     
                     # Check if logged in
                     if "#/login" not in page.url.lower():
-                        print(f"✓ [Tab {idx}] Login successful: {member_name}")
+                        console.print(f"[green]✓ [Tab {idx}] Login successful: {member_name}[/green]")
                         pages_data.append({"success": True, "member": member, "page": page, "tab_index": idx})
                     else:
-                        print(f"✗ [Tab {idx}] Login failed: {member_name}")
+                        console.print(f"[red]✗ [Tab {idx}] Login failed: {member_name}[/red]")
                         pages_data.append({"success": False, "member": member, "page": page, "tab_index": idx, "error": "Login failed"})
                         
                 except Exception as e:
-                    print(f"✗ [Tab {idx}] Error logging in {member_name}: {e}")
+                    console.print(f"[red]✗ [Tab {idx}] Error logging in {member_name}: {e}[/red]")
                     pages_data.append({"success": False, "member": member, "page": page, "tab_index": idx, "error": str(e)})
             
             # Summary of login phase
             successful_logins = [p for p in pages_data if p['success']]
             failed_logins = [p for p in pages_data if not p['success']]
             
-            print("\n" + "="*60)
-            print(f"LOGIN SUMMARY: {len(successful_logins)}/{len(members)} successful")
-            print("="*60)
+            console.print()
+            summary_table = Table(title=f"Login Summary ({len(successful_logins)}/{len(members)} successful)", box=box.ROUNDED)
+            summary_table.add_column("Member", style="white")
+            summary_table.add_column("Status", style="bold")
+            summary_table.add_column("Message", style="dim")
+            
             for p in successful_logins:
-                print(f"✓ {p['member']['name']}")
-            if failed_logins:
-                for p in failed_logins:
-                    print(f"✗ {p['member']['name']} - {p.get('error', 'Unknown error')}")
-            print("="*60)
+                summary_table.add_row(p['member']['name'], "[green]Success[/green]", "-")
+            for p in failed_logins:
+                summary_table.add_row(p['member']['name'], "[red]Failed[/red]", p.get('error', 'Unknown error'))
+            
+            console.print(summary_table)
             
             if not successful_logins:
-                print("\n✗ No successful logins. Exiting...")
+                console.print("[bold red]\n✗ No successful logins. Exiting...[/bold red]")
                 return
             
             # Continue with successful logins only
             if failed_logins:
                 proceed = input(f"\n⚠ {len(failed_logins)} login(s) failed. Continue with {len(successful_logins)} member(s)? (yes/no): ").strip().lower()
                 if proceed != 'yes':
-                    print("✗ Operation cancelled")
+                    console.print("[red]✗ Operation cancelled[/red]")
                     return
             
             # ========== PHASE 2: SEQUENTIAL IPO APPLICATION ==========
-            print("\n" + "="*60)
-            print("PHASE 2: IPO APPLICATION (SEQUENTIAL)")
-            print("="*60)
+            console.print()
+            console.print(Rule("[bold cyan]PHASE 2: IPO APPLICATION (SEQUENTIAL)[/bold cyan]"))
+            console.print()
             
             # Use first successful login to select IPO
             first_page = successful_logins[0]['page']
             
-            print("\nNavigating to IPO page to select IPO...")
+            console.print("Navigating to IPO page to select IPO...")
             first_page.goto("https://meroshare.cdsc.com.np/#/asba", wait_until="networkidle")
             time.sleep(3)
             
-            print("Fetching available IPOs...\n")
+            console.print("Fetching available IPOs...\n")
             
             # Check if there are any IPOs available
             try:
                 first_page.wait_for_selector(".company-list", timeout=10000)
                 time.sleep(2)
             except Exception as e:
-                print("⚠ No IPOs currently available on Meroshare")
-                print("✗ Cannot proceed with IPO application\n")
+                console.print("[bold yellow]⚠ No IPOs currently available on Meroshare[/bold yellow]")
+                console.print("[red]✗ Cannot proceed with IPO application[/red]\n")
                 
                 # Check if there's a "no data" message
                 try:
                     no_data = first_page.query_selector("text=No Data Available")
                     if no_data:
-                        print("→ Meroshare shows: 'No Data Available'")
+                        console.print("→ Meroshare shows: 'No Data Available'")
                 except:
                     pass
                 
                 first_page.screenshot(path="no_ipos_available.png")
-                print("📸 Screenshot saved: no_ipos_available.png\n")
+                console.print("[dim]📸 Screenshot saved: no_ipos_available.png[/dim]\n")
                 
                 if not headless:
-                    print("Browser will stay open for 20 seconds...")
+                    console.print("Browser will stay open for 20 seconds...")
                     time.sleep(20)
                 
                 return
@@ -1596,34 +2027,35 @@ def apply_ipo_for_all_members(headless=True):
                     pass
             
             if not available_ipos:
-                print("✗ No IPOs available to apply!")
+                console.print("[bold red]✗ No IPOs available to apply![/bold red]")
                 return
             
-            print("="*60)
-            print("AVAILABLE IPOs (Ordinary Shares)")
-            print("="*60)
+            ipo_table = Table(title="Available IPOs (Ordinary Shares)", box=box.ROUNDED)
+            ipo_table.add_column("No.", justify="right", style="cyan")
+            ipo_table.add_column("Company", style="bold white")
+            ipo_table.add_column("Type", style="yellow")
+            ipo_table.add_column("Group", style="dim")
+            
             for ipo in available_ipos:
-                print(f"{ipo['index']}. {ipo['company_name']}")
-                print(f"   Type: {ipo['share_type']} | Group: {ipo['share_group']}")
-                print()
-            print("="*60)
+                ipo_table.add_row(str(ipo['index']), ipo['company_name'], ipo['share_type'], ipo['share_group'])
+            
+            console.print(ipo_table)
             
             if not headless:
                 selection = input(f"\nSelect IPO to apply for all members (1-{len(available_ipos)}): ").strip()
                 try:
                     selected_idx = int(selection) - 1
                     if selected_idx < 0 or selected_idx >= len(available_ipos):
-                        print("✗ Invalid selection!")
+                        console.print("[red]✗ Invalid selection![/red]")
                         return
                 except ValueError:
-                    print("✗ Invalid input!")
+                    console.print("[red]✗ Invalid input![/red]")
                     return
             else:
                 selected_idx = 0
             
             selected_ipo = available_ipos[selected_idx]
-            print(f"\n✓ Selected IPO: {selected_ipo['company_name']}")
-            print(f"\n⚠ Will apply this IPO for {len(successful_logins)} member(s)\n")
+            console.print(Panel(f"[bold green]✓ Selected IPO: {selected_ipo['company_name']}[/bold green]\n[yellow]⚠ Will apply this IPO for {len(successful_logins)} member(s)[/yellow]", box=box.ROUNDED))
             
             # Apply IPO for each member sequentially
             application_results = []
@@ -1634,13 +2066,12 @@ def apply_ipo_for_all_members(headless=True):
                 tab_index = page_data['tab_index']
                 member_name = member['name']
                 
-                print("\n" + "="*60)
-                print(f"[Tab {tab_index}] APPLYING FOR: {member_name}")
-                print("="*60)
+                console.print()
+                console.print(Rule(f"[Tab {tab_index}] APPLYING FOR: {member_name}"))
                 
                 try:
                     # Navigate to ASBA
-                    print(f"[Tab {tab_index}] Navigating to IPO page...")
+                    console.print(f"[cyan][Tab {tab_index}][/cyan] Navigating to IPO page...")
                     page.goto("https://meroshare.cdsc.com.np/#/asba", wait_until="networkidle")
                     time.sleep(3)
                     
@@ -1662,12 +2093,12 @@ def apply_ipo_for_all_members(headless=True):
                                     button_text = apply_button.inner_text().strip().lower()
                                     
                                     if "edit" in button_text or "view" in button_text:
-                                        print(f"[Tab {tab_index}] ⚠ IPO already applied (button shows: '{button_text.title()}')")
+                                        console.print(f"[yellow][Tab {tab_index}] ⚠ IPO already applied (button shows: '{button_text.title()}')[/yellow]")
                                         already_applied = True
                                         ipo_found = True
                                         break
                                     else:
-                                        print(f"[Tab {tab_index}] Clicking Apply button (button shows: '{button_text.title()}')...")
+                                        console.print(f"[cyan][Tab {tab_index}][/cyan] Clicking Apply button (button shows: '{button_text.title()}')...")
                                         apply_button.click()
                                         ipo_found = True
                                         break
@@ -1678,14 +2109,14 @@ def apply_ipo_for_all_members(headless=True):
                         raise Exception("IPO not found in the list")
                     
                     if already_applied:
-                        print(f"[Tab {tab_index}] ✓ Skipping - IPO already applied for {member_name}")
+                        console.print(f"[green]✓ [Tab {tab_index}] Skipping - IPO already applied for {member_name}[/green]")
                         application_results.append({"member": member_name, "success": True, "status": "already_applied"})
                         continue
                     
                     time.sleep(3)
                     
                     # Fill form
-                    print(f"[Tab {tab_index}] Filling application form...")
+                    console.print(f"[cyan][Tab {tab_index}][/cyan] Filling application form...")
                     page.wait_for_selector("select#selectBank", timeout=10000)
                     time.sleep(2)
                     
@@ -1705,12 +2136,12 @@ def apply_ipo_for_all_members(headless=True):
                     time.sleep(2)
                     
                     # Fill kitta
-                    print(f"[Tab {tab_index}] Kitta: {member['applied_kitta']}")
+                    console.print(f"[cyan][Tab {tab_index}][/cyan] Kitta: [bold]{member['applied_kitta']}[/bold]")
                     page.fill("input#appliedKitta", str(member['applied_kitta']))
                     time.sleep(1)
                     
                     # Fill CRN
-                    print(f"[Tab {tab_index}] CRN: {member['crn_number']}")
+                    console.print(f"[cyan][Tab {tab_index}][/cyan] CRN: [dim]{member['crn_number']}[/dim]")
                     page.fill("input#crnNumber", member['crn_number'])
                     time.sleep(1)
                     
@@ -1721,21 +2152,21 @@ def apply_ipo_for_all_members(headless=True):
                     time.sleep(1)
                     
                     # Click proceed
-                    print(f"[Tab {tab_index}] Clicking Proceed...")
+                    console.print(f"[cyan][Tab {tab_index}][/cyan] Clicking Proceed...")
                     proceed_button = page.query_selector("button.btn-primary[type='submit']")
                     if proceed_button:
                         proceed_button.click()
                     time.sleep(3)
                     
                     # Enter PIN
-                    print(f"[Tab {tab_index}] Entering transaction PIN...")
+                    console.print(f"[cyan][Tab {tab_index}][/cyan] Entering transaction PIN...")
                     page.wait_for_selector("input#transactionPIN", timeout=10000)
                     time.sleep(2)
                     page.fill("input#transactionPIN", member['transaction_pin'])
                     time.sleep(2)
                     
                     # Submit
-                    print(f"[Tab {tab_index}] Submitting application...")
+                    console.print(f"[cyan][Tab {tab_index}][/cyan] Submitting application...")
                     clicked = False
                     
                     # Try multiple methods to click Apply button
@@ -1778,50 +2209,41 @@ def apply_ipo_for_all_members(headless=True):
                     
                     time.sleep(5)
                     
-                    print(f"✓ [Tab {tab_index}] Application submitted for {member_name}!")
+                    console.print(f"[bold green]✓ [Tab {tab_index}] Application submitted for {member_name}![/bold green]")
                     application_results.append({"member": member_name, "success": True})
                     
                 except Exception as e:
-                    print(f"✗ [Tab {tab_index}] Failed for {member_name}: {e}")
+                    console.print(f"[bold red]✗ [Tab {tab_index}] Failed for {member_name}: {e}[/bold red]")
                     application_results.append({"member": member_name, "success": False, "error": str(e)})
                     page.screenshot(path=f"error_{member_name}.png")
             
             # ========== FINAL SUMMARY ==========
-            print("\n" + "="*60)
-            print("FINAL SUMMARY")
-            print("="*60)
-            print(f"IPO: {selected_ipo['company_name']}")
-            print()
+            console.print()
             
             successful_apps = [r for r in application_results if r['success']]
             failed_apps = [r for r in application_results if not r['success']]
-            already_applied_apps = [r for r in successful_apps if r.get('status') == 'already_applied']
-            newly_applied_apps = [r for r in successful_apps if r.get('status') != 'already_applied']
             
-            print(f"✓ SUCCESSFUL: {len(successful_apps)}/{len(application_results)}")
-            if newly_applied_apps:
-                print(f"\n  Newly Applied ({len(newly_applied_apps)}):")
-                for r in newly_applied_apps:
-                    print(f"  ✓ {r['member']}")
+            final_table = Table(title=f"Final Application Summary: {selected_ipo['company_name']}", box=box.ROUNDED)
+            final_table.add_column("Member", style="white")
+            final_table.add_column("Status", style="bold")
+            final_table.add_column("Details", style="dim")
             
-            if already_applied_apps:
-                print(f"\n  Already Applied ({len(already_applied_apps)}):")
-                for r in already_applied_apps:
-                    print(f"  ⚠ {r['member']} (skipped)")
-            
-            if failed_apps:
-                print(f"\n✗ FAILED: {len(failed_apps)}")
-                for r in failed_apps:
-                    print(f"  ✗ {r['member']} - {r.get('error', 'Unknown error')}")
-            
-            print("="*60)
+            for r in successful_apps:
+                status = "[yellow]Already Applied[/yellow]" if r.get('status') == 'already_applied' else "[green]Success[/green]"
+                details = "Skipped" if r.get('status') == 'already_applied' else "Applied Successfully"
+                final_table.add_row(r['member'], status, details)
+                
+            for r in failed_apps:
+                final_table.add_row(r['member'], "[red]Failed[/red]", r.get('error', 'Unknown error'))
+                
+            console.print(final_table)
             
             if not headless:
-                print("\nBrowser will stay open for 60 seconds for verification...")
+                console.print("\n[dim]Browser will stay open for 60 seconds for verification...[/dim]")
                 time.sleep(60)
             
         except Exception as e:
-            print(f"\n✗ Critical error: {e}")
+            console.print(f"\n[bold red]✗ Critical error: {e}[/bold red]")
             import traceback
             traceback.print_exc()
         finally:
@@ -1832,115 +2254,1165 @@ def get_dp_list():
     import requests
     
     try:
-        print("\nFetching DP list from Meroshare API...")
+        with console.status("[bold green]Fetching DP list from Meroshare API...", spinner="dots"):
+            # Fetch data from API
+            response = requests.get("https://webbackend.cdsc.com.np/api/meroShare/capital/")
+            response.raise_for_status()
+            
+            dp_data = response.json()
+            
+            # Sort by name for better readability
+            dp_data.sort(key=lambda x: x['name'])
         
-        # Fetch data from API
-        response = requests.get("https://webbackend.cdsc.com.np/api/meroShare/capital/")
-        response.raise_for_status()
-        
-        dp_data = response.json()
-        
-        # Sort by name for better readability
-        dp_data.sort(key=lambda x: x['name'])
-        
-        print("\n" + "="*80)
-        print("AVAILABLE DEPOSITORY PARTICIPANTS (DPs)")
-        print("="*80)
-        print(f"{'ID':<6} {'Code':<8} {'Name'}")
-        print("-"*80)
+        table = Table(title=f"Available Depository Participants (Total: {len(dp_data)})", box=box.ROUNDED, header_style="bold cyan")
+        table.add_column("ID", style="bold yellow", justify="right")
+        table.add_column("Code", style="dim")
+        table.add_column("Name", style="white")
         
         for dp in dp_data:
-            dp_id = dp['id']
-            code = dp['code']
-            name = dp['name']
-            print(f"{dp_id:<6} {code:<8} {name}")
-        
-        print("="*80)
-        print(f"Total DPs: {len(dp_data)}")
-        print("\nNote: Use the ID (first column) when setting up credentials")
-        print("      (e.g., 139 for CREATIVE SECURITIES, 146 for GLOBAL IME CAPITAL)\n")
+            table.add_row(str(dp['id']), str(dp['code']), dp['name'])
+            
+        console.print(table)
+        console.print(Panel("Note: Use the [bold yellow]ID[/] (first column) when setting up credentials\n(e.g., 139 for CREATIVE SECURITIES)", box=box.ROUNDED, style="dim"))
         
     except requests.RequestException as e:
-        print(f"✗ Error fetching DP list from API: {e}")
-        print("  Please check your internet connection.\n")
+        console.print(f"[bold red]✗ Error fetching DP list from API:[/bold red] {e}")
+        console.print("  Please check your internet connection.\n")
     except Exception as e:
-        print(f"✗ Unexpected error: {e}\n")
+        console.print(f"[bold red]✗ Unexpected error:[/bold red] {e}\n")
+
+# ============================================
+# Market Data Command Functions  
+# ============================================
+
+def format_number(num):
+    """Format large numbers with K, M, B suffixes"""
+    try:
+        num = float(str(num).replace(',', ''))
+        if num >= 1_000_000_000:
+            return f"{num / 1_000_000_000:.2f}B"
+        elif num >= 1_000_000:
+            return f"{num / 1_000_000:.2f}M"
+        elif num >= 1_000:
+            return f"{num / 1_000:.2f}K"
+        else:
+            return f"{num:.2f}"
+    except (ValueError, AttributeError):
+        return str(num)
+
+def format_rupees(amount):
+    """Format amount as rupees with proper comma placement"""
+    try:
+        amount = float(str(amount).replace(',', ''))
+        return f"Rs. {amount:,.2f}"
+    except (ValueError, AttributeError):
+        return f"Rs. {amount}"
+
+def get_ss_time():
+    """Get timestamp from ShareSansar market summary"""
+    try:
+        response = requests.get("https://www.sharesansar.com/market-summary", timeout=10)
+        soup = BeautifulSoup(response.text, "lxml")
+        summary_cont = soup.find("div", id="market_symmary_data")
+        if summary_cont is not None:
+            msdate = summary_cont.find("h5").find("span")
+            if msdate is not None:
+                return msdate.text
+    except:
+        pass
+    return "N/A"
+
+def cmd_ipo():
+    """Display all open IPOs/public offerings"""
+    try:
+        with console.status("[bold green]Fetching open IPOs...", spinner="dots"):
+            response = requests.get(
+                "https://sharehubnepal.com/data/api/v1/public-offering",
+                timeout=10
+            )
+            response.raise_for_status()
+            data = response.json()
+        
+        if not data.get('success'):
+            console.print(Panel("⚠️  Unable to fetch IPO data. API request failed.", style="bold red", box=box.ROUNDED))
+            return
+        
+        all_ipos = data.get('data', {}).get('content', [])
+
+        def _is_general_public(ipo_item):
+            """Return True if the IPO is for the general public."""
+            try:
+                f = str(ipo_item.get('for', '')).lower()
+            except Exception:
+                return False
+            return 'general' in f and 'public' in f
+
+        # Filter to only open IPOs that are for the general public
+        open_ipos = [ipo for ipo in all_ipos if ipo.get('status') == 'Open' and _is_general_public(ipo)]
+        
+        if not open_ipos:
+            console.print(Panel("💤 No IPOs are currently open for subscription.", style="bold yellow", box=box.ROUNDED))
+            return
+        
+        table = Table(title=f"📈 Open IPOs ({len(open_ipos)})", box=box.ROUNDED, header_style="bold cyan", expand=True)
+        table.add_column("#", style="dim", width=4)
+        table.add_column("Company", style="bold white")
+        table.add_column("Type", style="cyan")
+        table.add_column("Units", justify="right")
+        table.add_column("Price", justify="right")
+        table.add_column("Closing", style="yellow")
+        table.add_column("Status", justify="center")
+        
+        for index, ipo in enumerate(open_ipos, 1):
+            symbol = ipo.get('symbol', 'N/A')
+            name = ipo.get('name', 'N/A')
+            units = ipo.get('units', 0)
+            price = ipo.get('price', 0)
+            closing_date = ipo.get('closingDate', 'N/A')
+            extended_closing = ipo.get('extendedClosingDate', None)
+            ipo_type = ipo.get('type', 'N/A')
+            
+            try:
+                closing_date_obj = datetime.fromisoformat(closing_date.replace('T', ' '))
+                closing_date_str = closing_date_obj.strftime('%d %b')
+            except:
+                closing_date_str = closing_date
+            
+            days_left = None
+            urgency_text = ""
+            urgency_style = "white"
+            
+            try:
+                target_date = extended_closing if extended_closing else closing_date
+                target_date_obj = datetime.fromisoformat(target_date.replace('T', ' '))
+                days_left = (target_date_obj - datetime.now()).days
+                
+                if days_left >= 0:
+                    if days_left <= 2:
+                        urgency_text = f"⚠️ {days_left}d left"
+                        urgency_style = "bold red"
+                    elif days_left <= 5:
+                        urgency_text = f"⏰ {days_left}d left"
+                        urgency_style = "yellow"
+                    else:
+                        urgency_text = f"📅 {days_left}d"
+                        urgency_style = "green"
+            except:
+                urgency_text = "Check dates"
+            
+            type_emojis = {
+                'Ipo': '🆕 IPO',
+                'Right': '🔄 Right',
+                'MutualFund': '💼 MF',
+                'BondOrDebenture': '💰 Bond'
+            }
+            type_display = type_emojis.get(ipo_type, ipo_type)
+            
+            table.add_row(
+                str(index),
+                f"{symbol}\n[dim]{name}[/dim]",
+                type_display,
+                f"{units:,}",
+                format_rupees(price),
+                closing_date_str,
+                f"[{urgency_style}]{urgency_text}[/{urgency_style}]"
+            )
+        
+        console.print(table)
+        console.print(Panel("💡 Tip: Use [bold cyan]nepse apply[/] to apply for IPO via Meroshare", box=box.ROUNDED, style="dim"))
+        
+    except requests.exceptions.RequestException as e:
+        console.print(f"[bold red]🔌 Connection Error:[/bold red] Unable to connect to API.\n{str(e)[:100]}\n")
+    except Exception as e:
+        console.print(f"[bold red]⚠️  Error:[/bold red] {str(e)[:200]}\n")
+
+def cmd_nepse():
+    """Display NEPSE indices data"""
+    try:
+        with console.status("[bold green]Fetching NEPSE indices...", spinner="dots"):
+            import cloudscraper
+            scraper = cloudscraper.create_scraper()
+            url = "https://nepsealpha.com/live/stocks"
+            response = scraper.get(url, timeout=10)
+            response.raise_for_status()
+            data = response.json()
+        
+        # Get all indices from stock_live.prices where type is 'index'
+        prices = data.get('stock_live', {}).get('prices', [])
+        indices = [item for item in prices if item.get('stockinfo', {}).get('type') == 'index']
+        
+        if not indices:
+            console.print(Panel("⚠️  No index data available.", style="bold yellow", box=box.ROUNDED))
+            return
+        
+        # Get timestamp
+        timestamp = data.get('stock_live', {}).get('asOf', 'N/A')
+        
+        table = Table(title=f"NEPSE Index Data (Live) - {timestamp}", box=box.ROUNDED, header_style="bold cyan")
+        table.add_column("Index", style="bold white")
+        table.add_column("Close", justify="right")
+        table.add_column("Change", justify="right")
+        table.add_column("% Change", justify="right")
+        table.add_column("Trend", justify="center")
+        table.add_column("Range", justify="center", style="dim")
+        table.add_column("Turnover", justify="right")
+        
+        for item in indices:
+            index_name = item.get('symbol', 'N/A')
+            close_val = item.get('close', 0)
+            pct_change = item.get('percent_change', 0)
+            low_val = item.get('low', 0)
+            high_val = item.get('high', 0)
+            turnover = item.get('volume', 0)  # Using volume as turnover
+            
+            # Calculate point change
+            try:
+                if pct_change != 0 and close_val != 0:
+                    prev_close = close_val / (1 + pct_change / 100)
+                    point_change = close_val - prev_close
+                else:
+                    point_change = 0
+            except:
+                point_change = 0
+            
+            color = "green" if pct_change > 0 else "red" if pct_change < 0 else "yellow"
+            trend_icon = "▲" if pct_change > 0 else "▼" if pct_change < 0 else "•"
+            
+            range_str = f"{low_val:,.2f} - {high_val:,.2f}"
+            
+            table.add_row(
+                index_name,
+                f"{close_val:,.2f}",
+                f"[{color}]{point_change:+,.2f}[/{color}]",
+                f"[{color}]{pct_change:+.2f}%[/{color}]",
+                f"[{color}]{trend_icon}[/{color}]",
+                range_str,
+                format_number(turnover)
+            )
+        
+        console.print(table)
+        
+    except Exception as e:
+        console.print(f"[bold red]⚠️  Error fetching NEPSE data:[/bold red] {str(e)}\n")
+
+def cmd_subidx(subindex_name):
+    """Display sub-index details"""
+    try:
+        subindex_name = subindex_name.upper()
+        
+        # Mapping user-friendly names to API symbols
+        sub_index_mapping = {
+            "BANKING": "BANKING",
+            "DEVBANK": "DEVBANK",
+            "FINANCE": "FINANCE",
+            "HOTELS AND TOURISM": "HOTELS",
+            "HOTELS": "HOTELS",
+            "HYDROPOWER": "HYDROPOWER",
+            "INVESTMENT": "INVESTMENT",
+            "LIFE INSURANCE": "LIFEINSU",
+            "LIFEINSU": "LIFEINSU",
+            "MANUFACTURING AND PROCESSING": "MANUFACTURE",
+            "MANUFACTURE": "MANUFACTURE",
+            "MICROFINANCE": "MICROFINANCE",
+            "MUTUAL FUND": "MUTUAL",
+            "MUTUAL": "MUTUAL",
+            "NONLIFE INSURANCE": "NONLIFEINSU",
+            "NONLIFEINSU": "NONLIFEINSU",
+            "OTHERS": "OTHERS",
+            "TRADING": "TRADING",
+        }
+        
+        with console.status(f"[bold green]Fetching {subindex_name} sub-index data...", spinner="dots"):
+            import cloudscraper
+            scraper = cloudscraper.create_scraper()
+            response = scraper.get("https://nepsealpha.com/live/stocks", timeout=10)
+            response.raise_for_status()
+            data = response.json()
+        
+        # Get the mapped symbol
+        search_symbol = sub_index_mapping.get(subindex_name, subindex_name)
+        
+        # Get all indices from stock_live.prices
+        prices = data.get('stock_live', {}).get('prices', [])
+        indices = [item for item in prices if item.get('stockinfo', {}).get('type') == 'index']
+        
+        # Find the specific sub-index
+        sub_index_data = None
+        for item in indices:
+            if item.get('symbol', '').upper() == search_symbol.upper():
+                sub_index_data = item
+                break
+        
+        if not sub_index_data:
+            console.print(Panel(f"⚠️  Sub-index '{subindex_name}' not found.", style="bold red", box=box.ROUNDED))
+            
+            available = set()
+            for item in indices:
+                symbol = item.get('symbol', '')
+                if symbol not in ['NEPSE', 'SENSITIVE', 'FLOAT']:
+                    available.add(symbol)
+            
+            table = Table(title="Available Sub-Indices", box=box.ROUNDED)
+            table.add_column("Symbol", style="cyan")
+            for sym in sorted(available):
+                table.add_row(sym)
+            console.print(table)
+            return
+        
+        # Get sector full name from sectors mapping
+        sectors = data.get('sectors', {})
+        sector_full_name = sectors.get(search_symbol, search_symbol)
+        
+        close_val = sub_index_data.get('close', 0)
+        pct_change = sub_index_data.get('percent_change', 0)
+        low_val = sub_index_data.get('low', 0)
+        high_val = sub_index_data.get('high', 0)
+        open_val = sub_index_data.get('open', 0)
+        turnover = sub_index_data.get('volume', 0)
+        
+        # Calculate point change
+        try:
+            if pct_change != 0 and close_val != 0:
+                prev_close = close_val / (1 + pct_change / 100)
+                point_change = close_val - prev_close
+            else:
+                point_change = 0
+        except:
+            point_change = 0
+        
+        color = "green" if pct_change > 0 else "red" if pct_change < 0 else "yellow"
+        trend_icon = "▲" if pct_change > 0 else "▼" if pct_change < 0 else "•"
+        
+        timestamp = data.get('stock_live', {}).get('asOf', 'N/A')
+        
+        # Create a grid layout for the details
+        grid = Table.grid(expand=True, padding=(0, 2))
+        grid.add_column(style="bold white")
+        grid.add_column(justify="right")
+        
+        grid.add_row("Close Price", f"{close_val:,.2f}")
+        grid.add_row("Change", f"[{color}]{point_change:+,.2f} ({pct_change:+.2f}%)[/{color}]")
+        grid.add_row("Trend", f"[{color}]{trend_icon} {color.upper()}[/{color}]")
+        grid.add_row("Range (Low-High)", f"{low_val:,.2f} - {high_val:,.2f}")
+        grid.add_row("Open Price", f"{open_val:,.2f}")
+        grid.add_row("Turnover", format_number(turnover))
+        
+        panel = Panel(
+            grid,
+            title=f"[bold {color}]{sector_full_name} ({search_symbol})[/]",
+            subtitle=f"As of: {timestamp}",
+            box=box.ROUNDED,
+            border_style=color
+        )
+        console.print(panel)
+        
+    except Exception as e:
+        console.print(f"[bold red]⚠️  Error fetching sub-index data:[/bold red] {str(e)}\n")
+
+def cmd_mktsum():
+    """Display market summary"""
+    try:
+        with console.status("[bold green]Fetching market summary...", spinner="dots"):
+            # Get current date for API call
+            current_date = datetime.now().strftime("%d")
+            
+            import cloudscraper
+            scraper = cloudscraper.create_scraper()
+            url = f"https://nepsealpha.com/daily-market-summary?type=ajax&date={current_date}&fs=&fsk=zxYtAGo9T6BxxJMI"
+            response = scraper.get(url, timeout=10)
+            response.raise_for_status()
+            data = response.json()
+        
+        all_records = data.get('allRecords', [])
+        
+        if not all_records:
+            console.print(Panel("⚠️  No market summary data available.", style="bold yellow", box=box.ROUNDED))
+            return
+        
+        # Find the "Top Sectors" section for NEPSE overall data
+        top_sectors = None
+        for record in all_records:
+            if record.get('type') == 'top-sector':
+                top_sectors = record
+                break
+        
+        if not top_sectors or not top_sectors.get('data'):
+            console.print(Panel("⚠️  No sector data available.", style="bold yellow", box=box.ROUNDED))
+            return
+        
+        # Get NEPSE main data (first item is always NEPSE index)
+        nepse_data = None
+        for item in top_sectors['data']:
+            if item.get('sector') == 'NEPSE':
+                nepse_data = item
+                break
+        
+        if not nepse_data:
+            console.print(Panel("⚠️  NEPSE data not found.", style="bold red", box=box.ROUNDED))
+            return
+        
+        timestamp = top_sectors.get('as_of', 'N/A')
+        
+        # Display NEPSE Index Info
+        current_price = float(nepse_data.get('current', 0))
+        daily_gain = float(nepse_data.get('daily_gain', 0))
+        turnover = float(nepse_data.get('turn_over', 0))
+        weeks_52_change = float(nepse_data.get('_52_weeks_change', 0))
+        positive_stocks = nepse_data.get('positive_stocks', 0)
+        negative_stocks = nepse_data.get('negative_stocks', 0)
+        
+        color = "green" if daily_gain > 0 else "red" if daily_gain < 0 else "yellow"
+        trend_icon = "▲" if daily_gain > 0 else "▼" if daily_gain < 0 else "•"
+        
+        # Main NEPSE Panel
+        nepse_grid = Table.grid(expand=True, padding=(0, 2))
+        nepse_grid.add_column(style="bold white")
+        nepse_grid.add_column(justify="right")
+        
+        nepse_grid.add_row("Current Index", f"{current_price:,.2f}")
+        nepse_grid.add_row("Daily Gain", f"[{color}]{daily_gain:+.2f}% {trend_icon}[/{color}]")
+        nepse_grid.add_row("52 Week Change", f"{weeks_52_change:+.2f}%")
+        nepse_grid.add_row("Turnover", format_number(turnover))
+        
+        nepse_panel = Panel(
+            nepse_grid,
+            title=f"[bold {color}]NEPSE INDEX[/]",
+            box=box.ROUNDED,
+            border_style=color
+        )
+        
+        # Trading Activity Panel
+        activity_grid = Table.grid(expand=True, padding=(0, 2))
+        activity_grid.add_column(style="bold white")
+        activity_grid.add_column(justify="right")
+        
+        activity_grid.add_row("Positive Stocks", f"[green]{positive_stocks}[/green]")
+        activity_grid.add_row("Negative Stocks", f"[red]{negative_stocks}[/red]")
+        activity_grid.add_row("Total Traded", f"{positive_stocks + negative_stocks}")
+        
+        activity_panel = Panel(
+            activity_grid,
+            title="[bold cyan]TRADING ACTIVITY[/]",
+            box=box.ROUNDED,
+            border_style="cyan"
+        )
+        
+        console.print(Columns([nepse_panel, activity_panel]))
+        
+        # Sector Performance Table
+        table = Table(title="Sector Performance", box=box.ROUNDED, header_style="bold cyan", expand=True)
+        table.add_column("Sector", style="white")
+        table.add_column("Current", justify="right")
+        table.add_column("Daily Gain", justify="right")
+        table.add_column("Turnover", justify="right")
+        table.add_column("52w Change", justify="right")
+        
+        for item in top_sectors['data'][1:]:  # Skip NEPSE (first item)
+            sector = item.get('sector', 'N/A')
+            current = float(item.get('current', 0))
+            daily = float(item.get('daily_gain', 0))
+            turn = float(item.get('turn_over', 0))
+            weeks_52 = float(item.get('_52_weeks_change', 0))
+            
+            s_color = "green" if daily > 0 else "red" if daily < 0 else "yellow"
+            
+            table.add_row(
+                sector,
+                f"{current:,.2f}",
+                f"[{s_color}]{daily:+.2f}%[/{s_color}]",
+                format_number(turn),
+                f"{weeks_52:+.2f}%"
+            )
+            
+        console.print(table)
+        console.print(f"[dim]As of: {timestamp} | Note: Updates after 3:00 PM[/dim]\n", justify="center")
+        
+    except Exception as e:
+        console.print(f"[bold red]⚠️  Error fetching market summary:[/bold red] {str(e)}\n")
+
+def cmd_topgl():
+    """Display top 10 gainers and losers"""
+    try:
+        with console.status("[bold green]Fetching top gainers and losers...", spinner="dots"):
+            response = requests.get("https://merolagani.com/LatestMarket.aspx", timeout=10)
+            soup = BeautifulSoup(response.text, 'html.parser')
+            
+            tgtl_col = soup.find('div', class_="col-md-4 hidden-xs hidden-sm")
+            tgtl_tables = tgtl_col.find_all('table')
+            
+            gainers = tgtl_tables[0]
+            gainers_row = gainers.find_all('tr')
+            
+            losers = tgtl_tables[1]
+            losers_row = losers.find_all('tr')
+        
+        # Gainers Table
+        g_table = Table(title="📈 TOP 10 GAINERS", box=box.ROUNDED, header_style="bold green", expand=True)
+        g_table.add_column("#", style="dim", width=4)
+        g_table.add_column("Symbol", style="bold white")
+        g_table.add_column("LTP", justify="right")
+        g_table.add_column("%Chg", justify="right", style="green")
+        g_table.add_column("High", justify="right", style="dim")
+        g_table.add_column("Low", justify="right", style="dim")
+        g_table.add_column("Volume", justify="right")
+        
+        for idx, tr in enumerate(gainers_row[1:], 1):
+            tds = tr.find_all('td')
+            if tds and len(tds) >= 8:
+                medal = ["🥇", "🥈", "🥉"] + [""] * 7
+                g_table.add_row(
+                    f"{idx} {medal[idx-1]}",
+                    tds[0].text,
+                    tds[1].text,
+                    f"+{tds[2].text}%",
+                    tds[3].text,
+                    tds[4].text,
+                    format_number(tds[6].text)
+                )
+        
+        # Losers Table
+        l_table = Table(title="📉 TOP 10 LOSERS", box=box.ROUNDED, header_style="bold red", expand=True)
+        l_table.add_column("#", style="dim", width=4)
+        l_table.add_column("Symbol", style="bold white")
+        l_table.add_column("LTP", justify="right")
+        l_table.add_column("%Chg", justify="right", style="red")
+        l_table.add_column("High", justify="right", style="dim")
+        l_table.add_column("Low", justify="right", style="dim")
+        l_table.add_column("Volume", justify="right")
+        
+        for idx, tr in enumerate(losers_row[1:], 1):
+            tds = tr.find_all('td')
+            if tds and len(tds) >= 8:
+                l_table.add_row(
+                    str(idx),
+                    tds[0].text,
+                    tds[1].text,
+                    f"-{tds[2].text}%",
+                    tds[3].text,
+                    tds[4].text,
+                    format_number(tds[6].text)
+                )
+        
+        console.print(g_table)
+        console.print(l_table)
+        
+        timestamp = get_ss_time()
+        console.print(f"[dim]As of: {timestamp}[/dim]\n", justify="center")
+        
+    except Exception as e:
+        console.print(f"[bold red]⚠️  Error fetching top gainers/losers:[/bold red] {str(e)}\n")
+
+def cmd_stonk(stock_name):
+    """Display stock details (information only - no charts/alerts)"""
+    try:
+        stock_name = stock_name.upper()
+        with console.status(f"[bold green]Fetching details for {stock_name}...", spinner="dots"):
+            import cloudscraper
+            scraper = cloudscraper.create_scraper()
+            
+            # Try NepseAlpha API first
+            stock_price_data = None
+            try:
+                response = scraper.get('https://nepsealpha.com/live/stocks', timeout=10)
+                if response.status_code == 200:
+                    data = response.json()
+                    prices = data.get('stock_live', {}).get('prices', [])
+                    
+                    for item in prices:
+                        if item.get('symbol', '').upper() == stock_name:
+                            stock_price_data = item
+                            break
+            except:
+                pass
+            
+            # Fetch company details from ShareSansar
+            company_details = {
+                "sector": "N/A",
+                "share_registrar": "N/A",
+                "company_fullform": stock_name,
+            }
+            
+            try:
+                response2 = requests.get(
+                    f"https://www.sharesansar.com/company/{stock_name}", timeout=10)
+                
+                if response2.status_code == 200:
+                    soup2 = BeautifulSoup(response2.text, "lxml")
+                    all_rows = soup2.find_all("div", class_="row")
+                    
+                    if len(all_rows) >= 6:
+                        info_row = all_rows[5]
+                        second_row = info_row.find_all("div", class_="col-md-12")
+                        if len(second_row) > 1:
+                            shareinfo = second_row[1]
+                            heading_list = shareinfo.find_all("h4")
+                            
+                            if len(heading_list) > 2:
+                                company_details["sector"] = heading_list[1].find("span", class_="text-org").text
+                                company_details["share_registrar"] = heading_list[2].find("span", class_="text-org").text
+                    
+                    company_full_form_tag = soup2.find(
+                        "h1", style="color: #333;font-size: 20px;font-weight: 600;"
+                    )
+                    if company_full_form_tag is not None:
+                        company_details["company_fullform"] = company_full_form_tag.text
+            except:
+                pass
+            
+            # Fallback to ShareSansar if NepseAlpha failed
+            if not stock_price_data:
+                try:
+                    response_live = requests.get(
+                        "https://www.sharesansar.com/live-trading", timeout=10)
+                    
+                    if response_live.status_code == 200:
+                        soup = BeautifulSoup(response_live.text, "lxml")
+                        stock_rows = soup.find_all("tr")
+                        
+                        for row in stock_rows[1:]:
+                            row_data = row.find_all("td")
+                            
+                            if len(row_data) > 9 and row_data[1].text.strip() == stock_name:
+                                close_price = float(row_data[2].text.strip().replace(',', ''))
+                                pt_change = float(row_data[3].text.strip().replace(',', ''))
+                                pct_change = row_data[4].text.strip()
+                                
+                                color = "green" if pt_change > 0 else "red" if pt_change < 0 else "yellow"
+                                trend_icon = "▲" if pt_change > 0 else "▼" if pt_change < 0 else "•"
+                                
+                                grid = Table.grid(expand=True, padding=(0, 2))
+                                grid.add_column(style="bold white")
+                                grid.add_column(justify="right")
+                                
+                                grid.add_row("Last Traded Price", f"Rs. {row_data[2].text.strip()}")
+                                grid.add_row("Change", f"[{color}]{row_data[3].text.strip()} ({pct_change}) {trend_icon}[/{color}]")
+                                grid.add_row("Open", row_data[5].text.strip())
+                                grid.add_row("High", row_data[6].text.strip())
+                                grid.add_row("Low", row_data[7].text.strip())
+                                grid.add_row("Volume", row_data[8].text.strip())
+                                grid.add_row("Prev. Closing", row_data[9].text.strip())
+                                grid.add_row("Sector", company_details['sector'])
+                                grid.add_row("Share Registrar", company_details['share_registrar'])
+                                
+                                panel = Panel(
+                                    grid,
+                                    title=f"[bold {color}]{stock_name} — {company_details['company_fullform']}[/]",
+                                    subtitle="Source: ShareSansar",
+                                    box=box.ROUNDED,
+                                    border_style=color
+                                )
+                                console.print(panel)
+                                return
+                except:
+                    pass
+                
+                console.print(Panel(f"⚠️  Stock '{stock_name}' not found.", style="bold red", box=box.ROUNDED))
+                return
+            
+            # Use NepseAlpha data
+            close_price = stock_price_data.get("close", 0)
+            percent_change = stock_price_data.get("percent_change", 0)
+            
+            try:
+                if percent_change != 0 and close_price != 0:
+                    prev_close = close_price / (1 + percent_change / 100)
+                    pt_change = close_price - prev_close
+                else:
+                    prev_close = close_price
+                    pt_change = 0
+            except:
+                prev_close = close_price
+                pt_change = 0
+            
+            color = "green" if pt_change > 0 else "red" if pt_change < 0 else "yellow"
+            trend_icon = "▲" if pt_change > 0 else "▼" if pt_change < 0 else "•"
+            
+            grid = Table.grid(expand=True, padding=(0, 2))
+            grid.add_column(style="bold white")
+            grid.add_column(justify="right")
+            
+            grid.add_row("Last Traded Price", f"Rs. {close_price:,.2f}")
+            grid.add_row("Change", f"[{color}]{pt_change:+,.2f} ({percent_change:+.2f}%) {trend_icon}[/{color}]")
+            grid.add_row("Open", f"Rs. {stock_price_data.get('open', 0):,.2f}")
+            grid.add_row("High", f"Rs. {stock_price_data.get('high', 0):,.2f}")
+            grid.add_row("Low", f"Rs. {stock_price_data.get('low', 0):,.2f}")
+            grid.add_row("Volume", f"{int(stock_price_data.get('volume', 0)):,}")
+            grid.add_row("Prev. Closing", f"Rs. {prev_close:,.2f}")
+            grid.add_row("Sector", company_details['sector'])
+            grid.add_row("Share Registrar", company_details['share_registrar'])
+            
+            panel = Panel(
+                grid,
+                title=f"[bold {color}]{stock_name} — {company_details['company_fullform']}[/]",
+                subtitle=f"As of: {data.get('stock_live', {}).get('asOf', 'N/A')}",
+                box=box.ROUNDED,
+                border_style=color
+            )
+            console.print(panel)
+        
+    except Exception as e:
+        console.print(f"[bold red]⚠️  Error fetching stock data:[/bold red] {str(e)}\n")
+
+# ============================================
+# Argument Parser and Command Metadata
+# ============================================
+
+# Category ordering for command palette
+COMMAND_CATEGORY_ORDER = [
+    "Market Data",
+    "IPO Management",
+    "Interactive Tools",
+    "Configuration"
+]
+
+# Map commands to their categories
+COMMAND_CATEGORY_MAP = {
+    # Market Data
+    "nepse": "Market Data",
+    "subidx": "Market Data",
+    "mktsum": "Market Data",
+    "topgl": "Market Data",
+    "stonk": "Market Data",
+    
+    # IPO Management
+    "ipo": "IPO Management",
+    "apply": "IPO Management",
+    "status": "IPO Management",
+    
+    # Configuration
+    "add-member": "Configuration",
+    "list-members": "Configuration",
+    "test-login": "Configuration",
+    "get-portfolio": "Configuration",
+    "dplist": "Configuration"
+}
+
+def build_parser():
+    """Build the argument parser for the CLI"""
+    import argparse
+    
+    parser = argparse.ArgumentParser(
+        prog="nepse",
+        description="NEPSE CLI - Stock Market & IPO Automation Tool",
+        epilog="Use 'nepse interactive' for an interactive command palette."
+    )
+    
+    subparsers = parser.add_subparsers(dest="command", help="Available commands")
+    
+    # Market Data Commands
+    subparsers.add_parser("nepse", help="Display NEPSE indices")
+    subparsers.add_parser("ipo", help="Show open IPOs")
+    subparsers.add_parser("mktsum", help="Market summary")
+    subparsers.add_parser("topgl", help="Top gainers and losers")
+    
+    subidx_parser = subparsers.add_parser("subidx", help="Sub-index details")
+    subidx_parser.add_argument("name", help="Sub-index name (e.g., BANKING, HOTELS)")
+    
+    stonk_parser = subparsers.add_parser("stonk", help="Stock details")
+    stonk_parser.add_argument("symbol", help="Stock symbol (e.g., NABIL)")
+    
+    # IPO Commands
+    subparsers.add_parser("apply", help="Apply for IPO interactively")
+    subparsers.add_parser("status", help="Check IPO application status")
+    
+    # Configuration Commands
+    subparsers.add_parser("add-member", help="Add family member for IPO applications")
+    subparsers.add_parser("list-members", help="List all family members")
+    
+    test_login_parser = subparsers.add_parser("test-login", help="Test login credentials")
+    test_login_parser.add_argument("member_id", nargs="?", help="Member ID to test (optional)")
+    
+    portfolio_parser = subparsers.add_parser("get-portfolio", help="Get portfolio details")
+    portfolio_parser.add_argument("member_id", nargs="?", help="Member ID (optional)")
+    
+    subparsers.add_parser("dplist", help="List available DPs")
+    
+    # Interactive Mode
+    subparsers.add_parser("interactive", help="Launch interactive command palette")
+    
+    return parser
+
+def get_command_metadata():
+    """Return metadata for all commands (for interactive mode)"""
+    return [
+        # Market Data
+        {"name": "nepse", "description": "Display NEPSE indices", "category": "Market Data"},
+        {"name": "subidx <name>", "description": "Show sub-index details", "category": "Market Data"},
+        {"name": "mktsum", "description": "Display market summary", "category": "Market Data"},
+        {"name": "topgl", "description": "Show top gainers and losers", "category": "Market Data"},
+        {"name": "stonk <symbol>", "description": "Show stock details", "category": "Market Data"},
+        {"name": "ipo", "description": "List open IPOs", "category": "IPO Management"},
+        
+        # IPO Management
+        {"name": "apply", "description": "Apply for IPO (use --gui for browser window)", "category": "IPO Management"},
+        {"name": "apply-all", "description": "Apply IPO for all family members", "category": "IPO Management"},
+        
+        # Configuration
+        {"name": "add", "description": "Add/update family member", "category": "Configuration"},
+        {"name": "list", "description": "List all family members", "category": "Configuration"},
+        {"name": "login [name]", "description": "Test login for member", "category": "Configuration"},
+        {"name": "portfolio [name]", "description": "Get portfolio for member", "category": "Configuration"},
+        {"name": "dp-list", "description": "List available DPs", "category": "Configuration"},
+        
+        # Interactive
+        {"name": "help", "description": "Show help information", "category": "Interactive Tools"},
+        {"name": "exit", "description": "Exit the CLI", "category": "Interactive Tools"},
+    ]
+
+def print_logo():
+    """Render the gradient welcome logo when interactive mode launches."""
+    # Initialize colorama for Windows ANSI support
+    colorama_init(autoreset=True)
+    
+    # Add some top margin/gap before the logo
+    print("\n")
+    
+    logo_lines = [
+        " ███╗   ██╗███████╗██████╗ ███████╗███████╗      ██████╗██╗     ██╗",
+        " ████╗  ██║██╔════╝██╔══██╗██╔════╝██╔════╝     ██╔════╝██║     ██║",
+        " ██╔██╗ ██║█████╗  ██████╔╝███████╗█████╗ █████╗██║     ██║     ██║",
+        " ██║╚██╗██║██╔══╝  ██╔═══╝ ╚════██║██╔══╝ ╚════╝██║     ██║     ██║",
+        " ██║ ╚████║███████╗██║     ███████║███████╗     ╚██████╗███████╗██║",
+        " ╚═╝  ╚═══╝╚══════╝╚═╝     ╚══════╝╚══════╝      ╚═════╝╚══════╝╚═╝",
+    ]
+    
+    # Gradient colors from bright green to dark green (RGB values)
+    colors = [
+        (0, 255, 0),    # Bright green
+        (0, 230, 0),
+        (0, 204, 0),
+        (0, 179, 0),
+        (0, 153, 0),
+        (0, 128, 0),    # Dark green
+    ]
+    
+    for idx, line in enumerate(logo_lines):
+        r, g, b = colors[idx]
+        # Use ANSI 24-bit true color escape codes
+        print(f"\033[38;2;{r};{g};{b}m{line}\033[0m")
+
+
+def fuzzy_filter_commands(commands: List[Dict[str, str]], query: str) -> List[Dict[str, str]]:
+    if not query:
+        return commands
+    query_lower = query.lower()
+    filtered: List[Dict[str, str]] = []
+    for command in commands:
+        haystack = f"{command['name']} {command['description']}".lower()
+        if query_lower in haystack:
+            filtered.append(command)
+            continue
+        ratio = difflib.SequenceMatcher(None, query_lower, command['name'].lower()).ratio()
+        if ratio >= 0.6:
+            filtered.append(command)
+    return filtered
+
+
+def display_command_palette(commands: List[Dict[str, str]], category_order: List[str], query: str = "") -> None:
+    # Hack to fix Rich output when running inside prompt_toolkit's patch_stdout
+    # We must temporarily restore the original stdout so Rich can detect the terminal properly
+    from prompt_toolkit.patch_stdout import StdoutProxy
+    original_stdout = sys.stdout
+    if isinstance(sys.stdout, StdoutProxy):
+        sys.stdout = sys.stdout.original_stdout
+
+    try:
+        filtered_commands = fuzzy_filter_commands(commands, query)
+        if not filtered_commands:
+            message = f"No commands match '{query}'" if query else "No commands available"
+            console.print(Panel(Text(message, justify="center"), title="Available Commands", border_style="red"))
+            return
+
+        grouped: Dict[str, List[Dict[str, str]]] = {category: [] for category in category_order}
+        for command in filtered_commands:
+            grouped.setdefault(command['category'], []).append(command)
+
+        sections = []
+        for category in category_order:
+            items = grouped.get(category) or []
+            if not items:
+                continue
+            header = Text(category, style="bold green")
+            table = Table.grid(expand=True)
+            table.add_column(style="bold cyan", width=20)
+            table.add_column()
+            for item in items:
+                table.add_row(item['name'], item['description'])
+            sections.extend([header, table, Text("")])
+
+        sections.append(Text("Type to search commands...", style="dim"))
+        console.print(Panel(Group(*sections), title="Available Commands", border_style="green"))
+    finally:
+        # Restore the proxy
+        sys.stdout = original_stdout
+
+
+class NepseCommandCompleter(Completer):
+    """
+    Completer that supports:
+    1. Normal command completion
+    2. 'Gemini-style' search when starting with '/'
+       - Shows command + description
+       - Filters by both name and description
+    """
+
+    def __init__(self, metadata: List[Dict[str, str]]):
+        self.metadata = metadata
+        # Quick lookup for normal completion
+        self.names = [m['name'] for m in metadata] + ["exit", "quit", "help", "?"]
+
+    def get_completions(self, document, complete_event):  # type: ignore[override]
+        text = document.text_before_cursor
+        
+        # Check if we are in "Search Mode" (starts with /)
+        if text.startswith('/'):
+            query = text[1:].lower() # Strip the leading /
+            
+            # Filter commands
+            for cmd in self.metadata:
+                name = cmd['name']
+                desc = cmd.get('description', '')
+                
+                # Fuzzy-ish match: query in name OR query in description
+                if query in name.lower() or query in desc.lower():
+                    yield Completion(
+                        name,
+                        start_position=-len(query),
+                        display=FormattedText([
+                            ("class:completion-command", f"{name:<15}"),
+                            ("class:completion-description", f"  {desc}")
+                        ]),
+                    )
+            
+            # Filter built-ins
+            for builtin in ["exit", "quit", "help", "?"]:
+                if query in builtin:
+                     yield Completion(
+                        builtin,
+                        start_position=-len(query),
+                        display=FormattedText([
+                            ("class:completion-command", f"{builtin:<15}"),
+                            ("class:completion-builtin", "  Built-in command")
+                        ]),
+                    )
+        else:
+            # Normal completion (first word)
+            word = text.split(' ')[-1]
+            for name in self.names:
+                if name.startswith(word):
+                    yield Completion(name, start_position=-len(word))
+
+
+LEGACY_SHORTCUTS = {
+    "1": "apply",
+    "2": "add",
+    "3": "list",
+    "4": "portfolio",
+    "5": "login",
+    "6": "dp-list",
+    "7": "apply-all",
+    "8": "ipo",
+    "9": "nepse",
+    "10": "subidx",
+    "11": "mktsum",
+    "12": "topgl",
+    "13": "stonk",
+    "0": "exit",
+}
+
+
+def ensure_history_file() -> None:
+    if not CLI_HISTORY_FILE.exists():
+        CLI_HISTORY_FILE.touch()
+
+
+def create_prompt_session(command_metadata: List[Dict[str, str]]) -> PromptSession:
+    ensure_history_file()
+    completer = NepseCommandCompleter(command_metadata)
+    return PromptSession(
+        history=FileHistory(str(CLI_HISTORY_FILE)),
+        auto_suggest=AutoSuggestFromHistory(),
+        completer=completer,
+        complete_style=CompleteStyle.COLUMN,
+        style=CLI_PROMPT_STYLE,
+    )
+
+
+def _resolve_member_by_name(member_name: str):
+    config = load_family_members()
+    for member in config.get('members', []):
+        if member['name'].lower() == member_name.lower():
+            return member
+    return None
+
+
+def execute_interactive_command(command: str, args: List[str], context: Dict[str, object]) -> bool:
+    command = command.lower()
+    if command in {"help", "?"}:
+        display_command_palette(context['metadata'], context['category_order'])
+        return True
+
+    flag_args = [arg for arg in args if arg.startswith("--")]
+    positional_args = [arg for arg in args if not arg.startswith("--")]
+    gui_requested = "--gui" in flag_args
+    headless = not gui_requested
+
+    if command == "apply":
+        context['apply_ipo'](auto_load=True, headless=headless)
+        return True
+    if command == "apply-all":
+        context['apply_all'](headless=headless)
+        return True
+    if command == "add":
+        context['add_member']()
+        return True
+    if command == "list":
+        context['list_members']()
+        return True
+    if command == "portfolio":
+        member = None
+        if positional_args:
+            member = _resolve_member_by_name(positional_args[0])
+            if not member:
+                print(f"\n✗ Member '{positional_args[0]}' not found.")
+        if not member:
+            member = context['select_member']()
+        if member:
+            context['portfolio'](member, headless=headless)
+        return True
+    if command == "login":
+        member = context['select_member']()
+        if member:
+            context['login'](member, headless=headless)
+        return True
+    if command == "dp-list":
+        context['dp_list']()
+        return True
+    if command == "ipo":
+        context['cmd_ipo']()
+        return True
+    if command == "nepse":
+        context['cmd_nepse']()
+        return True
+    if command == "subidx":
+        if positional_args:
+            subindex_name = " ".join(positional_args)
+        else:
+            print("\nAvailable sub-indices: banking, development-bank, finance, hotels-and-tourism,")
+            print("hydropower, investment, life-insurance, manufacturing-and-processing,")
+            print("microfinance, non-life-insurance, others, trading")
+            subindex_name = input("\nEnter sub-index name: ").strip()
+        if subindex_name:
+            context['cmd_subidx'](subindex_name)
+        else:
+            print("✗ Sub-index name is required.")
+        return True
+    if command == "mktsum":
+        context['cmd_mktsum']()
+        return True
+    if command == "topgl":
+        context['cmd_topgl']()
+        return True
+    if command == "stonk":
+        symbol = positional_args[0] if positional_args else input("\nEnter stock symbol (e.g., NABIL): ").strip()
+        if symbol:
+            context['cmd_stonk'](symbol.upper())
+        else:
+            print("✗ Stock symbol is required.")
+        return True
+    if command == "dplist":
+        context['dp_list']()
+        return True
+    if command in {"exit", "quit"}:
+        return False
+    return False
+
 
 def main():
-    """Main menu"""
-    from nepse_cli import cmd_ipo, cmd_nepse, cmd_subidx, cmd_mktsum, cmd_topgl, cmd_stonk
+    """Modern interactive CLI entry point."""
+    # Ensure Playwright browsers are available
+    ensure_playwright_browsers()
     
-    print("\n" + "="*50)
-    print("    MEROSHARE FAMILY IPO AUTOMATION")
-    print("="*50)
-    print("\n📋 Portfolio & IPO Management:")
-    print("1. Apply for IPO - Select family member")
-    print("2. Add/Update family member")
-    print("3. List all family members")
-    print("4. Get Portfolio - Select member")
-    print("5. Login (test) - Select member")
-    print("6. View DP list")
-    print("7. 🚀 Apply IPO for ALL family members (Multi-tab)")
-    print("\n📊 Market Data:")
-    print("8. View Open IPOs")
-    print("9. View NEPSE Indices")
-    print("10. View Sub-Indices")
-    print("11. Market Summary")
-    print("12. Top Gainers & Losers")
-    print("13. Stock Details")
-    print("\n0. Exit")
+    # All functions are now in this file - no imports needed from nepse_cli
     
-    choice = input("\nEnter your choice (0-13): ").strip()
-    
-    if choice == "1":
-        apply_ipo(auto_load=True, headless=True)
-    elif choice == "2":
-        add_family_member()
-    elif choice == "3":
-        list_family_members()
-        input("\nPress Enter to continue...")
-    elif choice == "4":
-        member = select_family_member()
-        if member:
-            get_portfolio_for_member(member, headless=True)
-    elif choice == "5":
-        member = select_family_member()
-        if member:
-            test_login_for_member(member, headless=True)
-    elif choice == "6":
-        get_dp_list()
-    elif choice == "7":
-        apply_ipo_for_all_members(headless=True)
-    elif choice == "8":
-        cmd_ipo()
-        input("\nPress Enter to continue...")
-    elif choice == "9":
-        cmd_nepse()
-        input("\nPress Enter to continue...")
-    elif choice == "10":
-        print("\nAvailable sub-indices: banking, development-bank, finance, hotels-and-tourism,")
-        print("hydropower, investment, life-insurance, manufacturing-and-processing,")
-        print("microfinance, non-life-insurance, others, trading")
-        subidx_name = input("\nEnter sub-index name: ").strip()
-        if subidx_name:
-            cmd_subidx(subidx_name)
-            input("\nPress Enter to continue...")
-    elif choice == "11":
-        cmd_mktsum()
-        input("\nPress Enter to continue...")
-    elif choice == "12":
-        cmd_topgl()
-        input("\nPress Enter to continue...")
-    elif choice == "13":
-        symbol = input("\nEnter stock symbol (e.g., NABIL): ").strip().upper()
-        if symbol:
-            cmd_stonk(symbol)
-            input("\nPress Enter to continue...")
-    elif choice == "0":
-        print("Goodbye!")
-        return
-    else:
-        print("Invalid choice!")
+    command_metadata = get_command_metadata()
+    session = create_prompt_session(command_metadata)
+
+    # Print logo BEFORE entering patch_stdout context so Rich colors work
+    print_logo()
+    print("\nType '/' to search commands, 'help' for hints, and 'exit' to quit.\n")
+
+    context = {
+        'apply_ipo': apply_ipo,
+        'apply_all': apply_ipo_for_all_members,
+        'add_member': add_family_member,
+        'list_members': list_family_members,
+        'portfolio': get_portfolio_for_member,
+        'login': test_login_for_member,
+        'dp_list': get_dp_list,
+        'cmd_ipo': cmd_ipo,
+        'cmd_nepse': cmd_nepse,
+        'cmd_subidx': cmd_subidx,
+        'cmd_mktsum': cmd_mktsum,
+        'cmd_topgl': cmd_topgl,
+        'cmd_stonk': cmd_stonk,
+        'select_member': select_family_member,
+        'metadata': command_metadata,
+        'category_order': COMMAND_CATEGORY_ORDER,
+    }
+
+    prompt_tokens = FormattedText([("class:prompt", "> ")])
+
+    while True:
+        try:
+            with patch_stdout():
+                user_input = session.prompt(prompt_tokens)
+        except KeyboardInterrupt:
+            print("\n(Press Ctrl+D or type 'exit' to quit, Enter to continue)")
+            continue
+        except EOFError:
+            print("\nGoodbye!")
+            break
+
+        user_input = user_input.strip()
+        if not user_input:
+            continue
+
+        # Handle "/command" syntax
+        if user_input.startswith('/'):
+            # Strip the slash
+            user_input = user_input[1:].strip()
+            
+            # If user just typed '/' and hit enter, show palette (legacy behavior fallback)
+            if not user_input:
+                display_command_palette(command_metadata, COMMAND_CATEGORY_ORDER, "")
+                continue
+
+        try:
+            tokens = shlex.split(user_input)
+        except ValueError as exc:
+            print(f"✗ Unable to parse input: {exc}")
+            continue
+        if not tokens:
+            continue
+
+        command = LEGACY_SHORTCUTS.get(tokens[0], tokens[0])
+        args = tokens[1:]
+
+        if command in {"exit", "quit"}:
+            print("Goodbye!")
+            break
+
+        try:
+            handled = execute_interactive_command(command, args, context)
+            if not handled:
+                print(f"Unknown command: '{user_input}'. Type '/' to explore commands.")
+        except KeyboardInterrupt:
+            print("\n\n✗ Command cancelled")
+            continue
+        except Exception as e:
+            print(f"\n✗ Error executing command: {e}")
+            continue
 
 if __name__ == "__main__":
     main()
