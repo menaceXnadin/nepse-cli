@@ -245,8 +245,16 @@ Copy the output path.
 3. Under `User variables`, select `Path` → Click `Edit`
 4. Click `New` → Paste the Scripts path from Step 1
 5. Click `OK` on all dialogs
-6. **Restart your terminal** (important!)
-7. Now `nepse` command will work everywhere
+6. **Close ALL terminal windows completely** (including VS Code terminal)
+7. Open a NEW terminal window
+8. Now `nepse` command should work
+
+**Still not working after adding to PATH?**
+- Verify the path was added correctly: Run `echo %PATH%` in cmd and check if your Scripts path is there
+- Try logging out and back into Windows (or restart your computer)
+- Check if nepse.exe exists: Run the command from Step 1 above and verify the file exists at that location
+- If file doesn't exist, reinstall: `pip uninstall nepse-cli` then `pip install nepse-cli`
+- As a last resort, use `python -m nepse_cli` instead of `nepse`
 
 **Option 4: Reinstall with --user flag**
 ```bash
