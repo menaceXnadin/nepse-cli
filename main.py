@@ -36,6 +36,7 @@ from rich import box
 from rich.align import Align
 from rich.columns import Columns
 from rich.rule import Rule
+from rich.prompt import Prompt, IntPrompt
 
 def ensure_playwright_browsers():
     """Ensure Playwright browsers are installed, install if missing."""
@@ -138,38 +139,58 @@ def save_family_members(config):
         os.chmod(CONFIG_FILE, 0o600)
 
 def add_family_member():
-    """Add a new family member"""
-    print("\n=== Add Family Member ===")
+    """Add a new family member with enhanced UI"""
+    console.print("\n")
+    console.print(Panel.fit(
+        "[bold cyan]➕ Add New Family Member[/bold cyan]",
+        border_style="cyan",
+        box=box.DOUBLE
+    ))
     
     config = load_family_members()
     
-    member_name = input("\nEnter member name (e.g., Dad, Mom, Me, Brother): ").strip()
+    # Member Name
+    console.print("\n[bold yellow]📝 Member Information[/bold yellow]")
+    member_name = Prompt.ask("[cyan]Member name[/cyan] (e.g., Dad, Mom, Me, Brother)").strip()
+    
+    if not member_name:
+        console.print("[red]✗ Member name cannot be empty![/red]")
+        return
     
     # Check if member already exists
     for member in config.get('members', []):
         if member['name'].lower() == member_name.lower():
-            print(f"\n⚠ Member '{member_name}' already exists!")
-            update = input("Update this member? (yes/no): ").strip().lower()
+            console.print(f"\n[yellow]⚠ Member '{member_name}' already exists![/yellow]")
+            update = Prompt.ask("[cyan]Update this member?[/cyan]", choices=["yes", "no"], default="no")
             if update != 'yes':
+                console.print("[yellow]✗ Cancelled[/yellow]")
                 return
             config['members'].remove(member)
             break
     
-    print("\n--- Meroshare Credentials ---")
-    print("Common DPs (or use option 6 to see all):")
-    print("  139  - CREATIVE SECURITIES PRIVATE LIMITED (13300)")
-    print("  146  - GLOBAL IME CAPITAL LIMITED (11200)")
-    print("  175  - NMB CAPITAL LIMITED (11000)")
-    print("  190  - SIDDHARTHA CAPITAL LIMITED (10900)\n")
+    # Meroshare Credentials
+    console.print("\n[bold yellow]🔐 Meroshare Credentials[/bold yellow]")
     
-    dp_value = input("Enter DP value (e.g., 139): ").strip()
-    username = input("Enter username: ").strip()
-    password = getpass.getpass("Enter password: ")
-    pin = getpass.getpass("Enter 4-digit transaction PIN: ")
+    # Display common DPs in a nice table
+    dp_table = Table(title="Common DPs", box=box.SIMPLE, show_header=True, header_style="bold magenta")
+    dp_table.add_column("DP Code", style="cyan", justify="center")
+    dp_table.add_column("Name", style="white")
+    dp_table.add_row("139", "CREATIVE SECURITIES PRIVATE LIMITED")
+    dp_table.add_row("146", "GLOBAL IME CAPITAL LIMITED")
+    dp_table.add_row("175", "NMB CAPITAL LIMITED")
+    dp_table.add_row("190", "SIDDHARTHA CAPITAL LIMITED")
+    console.print(dp_table)
+    console.print("[dim]Type 'dplist' command to see all DPs[/dim]\n")
     
-    print("\n--- IPO Application Settings ---")
-    applied_kitta = input("Applied Kitta (default 10): ").strip() or "10"
-    crn_number = input("CRN Number: ").strip()
+    dp_value = Prompt.ask("[cyan]DP value[/cyan] (e.g., 139)").strip()
+    username = Prompt.ask("[cyan]Username[/cyan]").strip()
+    password = Prompt.ask("[cyan]Password[/cyan]", password=True)
+    pin = Prompt.ask("[cyan]Transaction PIN[/cyan] (4 digits)", password=True)
+    
+    # IPO Settings
+    console.print("\n[bold yellow]📊 IPO Application Settings[/bold yellow]")
+    applied_kitta = Prompt.ask("[cyan]Applied Kitta[/cyan]", default="10").strip()
+    crn_number = Prompt.ask("[cyan]CRN Number[/cyan]").strip()
     
     member = {
         "name": member_name,
@@ -187,47 +208,62 @@ def add_family_member():
     config['members'].append(member)
     save_family_members(config)
     
-    print(f"\n✓ Member '{member_name}' added successfully!")
-    print(f"✓ Total members: {len(config['members'])}\n")
+    # Success message
+    console.print("\n")
+    console.print(Panel.fit(
+        f"[bold green]✓ Member '{member_name}' added successfully![/bold green]\n"
+        f"[white]Total members: {len(config['members'])}[/white]",
+        border_style="green",
+        box=box.DOUBLE
+    ))
+    console.print("")
 
 def list_family_members():
-    """List all family members"""
+    """List all family members with enhanced UI"""
     config = load_family_members()
     members = config.get('members', [])
     
     if not members:
-        console.print(Panel("⚠ No family members found. Add members first!", style="bold red", box=box.ROUNDED))
+        console.print(Panel("[bold red]⚠ No family members found.[/bold red]\n[yellow]Use 'add' command to add members first![/yellow]", box=box.ROUNDED, border_style="red"))
         return None
     
-    table = Table(title="Family Members", box=box.ROUNDED, header_style="bold cyan", expand=True)
+    table = Table(
+        title="[bold cyan]👥 Family Members[/bold cyan]",
+        box=box.ROUNDED,
+        header_style="bold magenta",
+        expand=True,
+        border_style="cyan"
+    )
     table.add_column("#", style="dim", width=4, justify="center")
     table.add_column("Name", style="bold white")
     table.add_column("Username", style="cyan")
-    table.add_column("DP", style="magenta")
-    table.add_column("Kitta", justify="right")
+    table.add_column("DP", style="magenta", justify="center")
+    table.add_column("Kitta", justify="right", style="green")
     table.add_column("CRN", style="yellow")
 
     for idx, member in enumerate(members, 1):
         table.add_row(
             str(idx),
-            member['name'],
+            f"[bold]{member['name']}[/bold]",
             member['username'],
             member['dp_value'],
             str(member['applied_kitta']),
             member['crn_number']
         )
     
+    console.print("\n")
     console.print(table)
+    console.print(f"\n[dim]Total: {len(members)} member(s)[/dim]")
     return members
 
-def select_family_member():
-    """Select a family member for IPO application using an inline interactive menu"""
+def select_member_interactive(title="Select Family Member", show_details=True):
+    """Generic interactive member selector with arrow keys"""
     config = load_family_members()
     members = config.get('members', [])
     
     if not members:
         console.print(Panel("⚠ No family members found. Add members first!", style="bold red", box=box.ROUNDED))
-        return None
+        return None, None
     
     # Inline interactive selection
     selected_index = 0
@@ -246,15 +282,15 @@ def select_family_member():
 
     @bindings.add('enter')
     def _(event):
-        event.app.exit(result=members[selected_index])
+        event.app.exit(result=(members[selected_index], selected_index))
 
     @bindings.add('c-c')
     def _(event):
-        event.app.exit(result=None)
+        event.app.exit(result=(None, None))
 
     def get_formatted_text():
         result = []
-        result.append(('class:title', 'Select Family Member (Use ↑/↓ and Enter):\n'))
+        result.append(('class:title', f'{title} (Use ↑/↓ and Enter):\n'))
         for i, member in enumerate(members):
             if i == selected_index:
                 # Highlight selected item
@@ -282,34 +318,239 @@ def select_family_member():
     )
 
     try:
-        selected = app.run()
+        selected, index = app.run()
         
-        if selected:
+        if selected and show_details:
             console.print(f"[bold green]✓ Selected:[/bold green] {selected['name']} (Kitta: {selected['applied_kitta']} | CRN: {selected['crn_number']})")
-            return selected
-        else:
+        elif not selected:
             console.print("\n[yellow]✗ Selection cancelled[/yellow]")
-            return None
             
+        return selected, index
     except Exception as e:
-        # Fallback to simple input if something goes wrong
-        console.print(f"[yellow]Interactive menu failed ({str(e)}). Using standard input.[/yellow]")
-        list_family_members()
-        while True:
-            try:
-                choice = input(f"\n👉 Enter member number (1-{len(members)}): ").strip()
-                idx = int(choice) - 1
-                if 0 <= idx < len(members):
-                    selected = members[idx]
-                    print(f"\n✓ Selected: {selected['name']}")
-                    return selected
+        console.print(f"[yellow]Interactive menu failed ({str(e)}). Please try again.[/yellow]")
+        return None, None
+
+def select_family_member():
+    """Select a family member for IPO application using an inline interactive menu"""
+    selected, _ = select_member_interactive("Select Family Member", show_details=True)
+    return selected
+
+def edit_family_member():
+    """Edit an existing family member"""
+    config = load_family_members()
+    members = config.get('members', [])
+    
+    if not members:
+        console.print(Panel("[bold red]⚠ No family members found.[/bold red]\n[yellow]Use 'add' command to add members first![/yellow]", box=box.ROUNDED, border_style="red"))
+        return
+    
+    console.print("\n")
+    console.print(Panel.fit(
+        "[bold cyan]✏️  Edit Family Member[/bold cyan]",
+        border_style="cyan",
+        box=box.DOUBLE
+    ))
+    console.print("\n")
+    
+    # Use interactive selection
+    member, index = select_member_interactive("Select member to edit", show_details=False)
+    
+    if not member:
+        return
+    
+    try:
+        
+        console.print("\n")
+        console.print(Panel.fit(
+            f"[bold cyan]✏️  Edit Member: {member['name']}[/bold cyan]",
+            border_style="cyan",
+            box=box.DOUBLE
+        ))
+        
+        console.print("\n[dim]Press Enter to keep current value[/dim]\n")
+        
+        # Edit fields
+        console.print("[bold yellow]📝 Member Information[/bold yellow]")
+        new_name = Prompt.ask("[cyan]Member name[/cyan]", default=member['name']).strip()
+        
+        console.print("\n[bold yellow]🔐 Meroshare Credentials[/bold yellow]")
+        new_dp = Prompt.ask("[cyan]DP value[/cyan]", default=member['dp_value']).strip()
+        new_username = Prompt.ask("[cyan]Username[/cyan]", default=member['username']).strip()
+        
+        update_pwd = Prompt.ask("[cyan]Update password?[/cyan]", choices=["yes", "no"], default="no")
+        if update_pwd == "yes":
+            new_password = Prompt.ask("[cyan]New password[/cyan]", password=True)
+        else:
+            new_password = member['password']
+        
+        update_pin = Prompt.ask("[cyan]Update PIN?[/cyan]", choices=["yes", "no"], default="no")
+        if update_pin == "yes":
+            new_pin = Prompt.ask("[cyan]New PIN[/cyan] (4 digits)", password=True)
+        else:
+            new_pin = member['transaction_pin']
+        
+        console.print("\n[bold yellow]📊 IPO Application Settings[/bold yellow]")
+        new_kitta = Prompt.ask("[cyan]Applied Kitta[/cyan]", default=str(member['applied_kitta'])).strip()
+        new_crn = Prompt.ask("[cyan]CRN Number[/cyan]", default=member['crn_number']).strip()
+        
+        # Update member
+        member['name'] = new_name
+        member['dp_value'] = new_dp
+        member['username'] = new_username
+        member['password'] = new_password
+        member['transaction_pin'] = new_pin
+        member['applied_kitta'] = int(new_kitta)
+        member['crn_number'] = new_crn
+        
+        save_family_members(config)
+        
+        console.print("\n")
+        console.print(Panel.fit(
+            f"[bold green]✓ Member '{new_name}' updated successfully![/bold green]",
+            border_style="green",
+            box=box.DOUBLE
+        ))
+        
+    except KeyboardInterrupt:
+        console.print("\n[yellow]✗ Edit cancelled[/yellow]")
+        return
+
+def delete_family_member():
+    """Delete a family member"""
+    config = load_family_members()
+    members = config.get('members', [])
+    
+    if not members:
+        console.print(Panel("[bold red]⚠ No family members found.[/bold red]\n[yellow]Use 'add' command to add members first![/yellow]", box=box.ROUNDED, border_style="red"))
+        return
+    
+    console.print("\n")
+    console.print(Panel.fit(
+        "[bold red]🗑️  Delete Family Member[/bold red]",
+        border_style="red",
+        box=box.DOUBLE
+    ))
+    console.print("\n")
+    
+    # Use interactive selection
+    member, index = select_member_interactive("Select member to delete", show_details=False)
+    
+    if not member:
+        return
+    
+    try:
+        
+        console.print("\n")
+        console.print(Panel.fit(
+            f"[bold red]🗑️  Delete Member: {member['name']}[/bold red]\n\n"
+            f"[yellow]⚠ This action cannot be undone![/yellow]",
+            border_style="red",
+            box=box.DOUBLE
+        ))
+        
+        confirm = Prompt.ask("\n[red]Type the member name to confirm deletion[/red]").strip()
+        
+        if confirm.lower() != member['name'].lower():
+            console.print("[yellow]✗ Deletion cancelled - name didn't match[/yellow]")
+            return
+        
+        members.pop(index)
+        config['members'] = members
+        save_family_members(config)
+        
+        console.print("\n")
+        console.print(Panel.fit(
+            f"[bold green]✓ Member '{member['name']}' deleted successfully![/bold green]\n"
+            f"[white]Remaining members: {len(members)}[/white]",
+            border_style="green",
+            box=box.DOUBLE
+        ))
+        
+    except KeyboardInterrupt:
+        console.print("\n[yellow]✗ Deletion cancelled[/yellow]")
+        return
+
+def manage_family_members():
+    """Interactive family member management menu with arrow key navigation"""
+    menu_options = [
+        ("1", "➕ Add new member", add_family_member),
+        ("2", "📋 List all members", lambda: (list_family_members(), input("\nPress Enter to continue..."))),
+        ("3", "✏️  Edit member", edit_family_member),
+        ("4", "🗑️  Delete member", delete_family_member),
+        ("5", "🔙 Back to main menu", None)
+    ]
+    
+    while True:
+        console.print("\n")
+        console.print(Panel.fit(
+            "[bold cyan]👥 Family Member Management[/bold cyan]",
+            border_style="cyan",
+            box=box.DOUBLE
+        ))
+        console.print("\n")
+        
+        # Interactive menu selection
+        selected_index = 0
+        bindings = KeyBindings()
+
+        @bindings.add('up')
+        def _(event):
+            nonlocal selected_index
+            selected_index = (selected_index - 1) % len(menu_options)
+
+        @bindings.add('down')
+        def _(event):
+            nonlocal selected_index
+            selected_index = (selected_index + 1) % len(menu_options)
+
+        @bindings.add('enter')
+        def _(event):
+            event.app.exit(result=selected_index)
+
+        @bindings.add('c-c')
+        def _(event):
+            event.app.exit(result=None)
+
+        def get_formatted_text():
+            result = []
+            result.append(('class:title', 'Select an option (Use ↑/↓ and Enter):\n\n'))
+            for i, (num, desc, _) in enumerate(menu_options):
+                if i == selected_index:
+                    result.append(('class:selected', f' > {desc}\n'))
                 else:
-                    print(f"❌ Invalid choice. Enter a number between 1 and {len(members)}")
-            except ValueError:
-                print("❌ Invalid input. Please enter a number.")
-            except KeyboardInterrupt:
-                print("\n\n✗ Cancelled")
-                return None
+                    result.append(('class:unselected', f'   {desc}\n'))
+            return FormattedText(result)
+
+        style = PTStyle.from_dict({
+            'selected': 'fg:ansigreen bold',
+            'unselected': '',
+            'title': 'bold underline'
+        })
+
+        app = Application(
+            layout=Layout(
+                Window(content=FormattedTextControl(get_formatted_text), height=len(menu_options) + 3)
+            ),
+            key_bindings=bindings,
+            style=style,
+            full_screen=False,
+            mouse_support=False
+        )
+
+        try:
+            choice_index = app.run()
+            
+            if choice_index is None or choice_index == 4:  # Cancelled or Back
+                break
+            
+            # Execute the selected function
+            func = menu_options[choice_index][2]
+            if func:
+                func()
+                
+        except KeyboardInterrupt:
+            console.print("\n[yellow]✗ Cancelled[/yellow]")
+            break
 
 def save_credentials():
     """Legacy function - redirects to add_family_member"""
@@ -2609,58 +2850,230 @@ def cmd_subidx(subindex_name):
     except Exception as e:
         console.print(f"[bold red]⚠️  Error fetching sub-index data:[/bold red] {str(e)}\n")
 
-def cmd_mktsum():
-    """Display market summary"""
+def scrape_sharesansar_market_summary(headless: bool = True) -> dict:
+    """
+    Scrape comprehensive market summary from ShareSansar.
+    Returns a dict with:
+    - sector_turnover: dict[sector_name, turnover]
+    - top_turnovers: list[dict]
+    - top_traded: list[dict]
+    - top_transactions: list[dict]
+    - top_brokers: list[dict]
+    - as_of: str
+    """
+    result = {
+        "sector_turnover": {},
+        "top_turnovers": [],
+        "top_traded": [],
+        "top_transactions": [],
+        "top_brokers": [],
+        "as_of": "N/A"
+    }
+    
     try:
-        with console.status("[bold green]Fetching market summary...", spinner="dots"):
-            # Get current date for API call
-            current_date = datetime.now().strftime("%d")
+        with sync_playwright() as p:
+            browser = p.chromium.launch(headless=headless)
+            page = browser.new_page()
+            page.on("console", lambda msg: None)
             
-            import cloudscraper
-            scraper = cloudscraper.create_scraper()
-            url = f"https://nepsealpha.com/daily-market-summary?type=ajax&date={current_date}&fs=&fsk=zxYtAGo9T6BxxJMI"
-            response = scraper.get(url, timeout=10)
-            response.raise_for_status()
-            data = response.json()
+            try:
+                page.goto("https://www.sharesansar.com/market", wait_until="domcontentloaded", timeout=60000)
+                page.wait_for_selector("table", timeout=20000)
+            except:
+                browser.close()
+                return result
+            
+            # Extract all data in one go
+            data = page.evaluate("""
+                () => {
+                    const result = {
+                        sector_turnover: [],
+                        top_turnovers: [],
+                        top_traded: [],
+                        top_transactions: [],
+                        top_brokers: [],
+                        as_of: ""
+                    };
+                    
+                    const findTableByHeading = (searchText) => {
+                        const headings = document.querySelectorAll('h3, h4');
+                        for (const h of headings) {
+                            if (h.innerText.includes(searchText)) {
+                                let next = h.nextElementSibling;
+                                while (next) {
+                                    if (next.tagName === 'TABLE') return next;
+                                    if (next.querySelector('table')) return next.querySelector('table');
+                                    next = next.nextElementSibling;
+                                }
+                            }
+                        }
+                        return null;
+                    };
+                    
+                    // 1. Sector Turnover
+                    const subIndicesTable = findTableByHeading('Sub Indices');
+                    if (subIndicesTable) {
+                        const rows = subIndicesTable.querySelectorAll('tbody tr');
+                        rows.forEach(row => {
+                            const cells = row.querySelectorAll('td');
+                            if (cells.length >= 8) {
+                                result.sector_turnover.push({
+                                    name: cells[0].innerText.trim(),
+                                    turnover: cells[cells.length - 1].innerText.trim()
+                                });
+                            }
+                        });
+                    }
+                    
+                    // 2. Top Turnovers
+                    const topTurnoverTable = findTableByHeading('Top TurnOvers');
+                    if (topTurnoverTable) {
+                        const rows = topTurnoverTable.querySelectorAll('tbody tr');
+                        rows.forEach(row => {
+                            const cells = row.querySelectorAll('td');
+                            if (cells.length >= 3) {
+                                result.top_turnovers.push({
+                                    symbol: cells[0].innerText.trim(),
+                                    turnover: cells[1].innerText.trim(),
+                                    ltp: cells[2].innerText.trim()
+                                });
+                            }
+                        });
+                    }
+                    
+                    // 3. Top Traded Shares
+                    const topTradedTable = findTableByHeading('Top Traded Shares');
+                    if (topTradedTable) {
+                        const rows = topTradedTable.querySelectorAll('tbody tr');
+                        rows.forEach(row => {
+                            const cells = row.querySelectorAll('td');
+                            if (cells.length >= 3) {
+                                result.top_traded.push({
+                                    symbol: cells[0].innerText.trim(),
+                                    volume: cells[1].innerText.trim(),
+                                    ltp: cells[2].innerText.trim()
+                                });
+                            }
+                        });
+                    }
+                    
+                    // 4. Top Transactions
+                    const topTransTable = findTableByHeading('Top Traded Transactions');
+                    if (topTransTable) {
+                        const rows = topTransTable.querySelectorAll('tbody tr');
+                        rows.forEach(row => {
+                            const cells = row.querySelectorAll('td');
+                            if (cells.length >= 3) {
+                                result.top_transactions.push({
+                                    symbol: cells[0].innerText.trim(),
+                                    transactions: cells[1].innerText.trim(),
+                                    ltp: cells[2].innerText.trim()
+                                });
+                            }
+                        });
+                    }
+                    
+                    // 5. Top Brokers
+                    const topBrokersTable = findTableByHeading('Top Brokers');
+                    if (topBrokersTable) {
+                        const rows = topBrokersTable.querySelectorAll('tbody tr');
+                        rows.forEach(row => {
+                            const cells = row.querySelectorAll('td');
+                            if (cells.length >= 4) {
+                                result.top_brokers.push({
+                                    broker: cells[0].innerText.trim(),
+                                    purchase: cells[1].innerText.trim(),
+                                    sales: cells[2].innerText.trim(),
+                                    total: cells[3].innerText.trim()
+                                });
+                            }
+                        });
+                    }
+                    
+                    // 6. Date
+                    const paragraphs = document.querySelectorAll('p');
+                    for (const p of paragraphs) {
+                        if (p.innerText.includes('As of')) {
+                            result.as_of = p.innerText.trim().replace('As of', '').trim();
+                            break;
+                        }
+                    }
+                    
+                    return result;
+                }
+            """)
+            
+            # Process Sector Turnover into dict
+            for item in data['sector_turnover']:
+                name = item['name']
+                turnover_str = item['turnover'].replace(',', '')
+                try:
+                    result['sector_turnover'][name] = float(turnover_str)
+                except ValueError:
+                    pass
+                    
+            result['top_turnovers'] = data['top_turnovers']
+            result['top_traded'] = data['top_traded']
+            result['top_transactions'] = data['top_transactions']
+            result['top_brokers'] = data['top_brokers']
+            result['as_of'] = data['as_of']
+            
+            browser.close()
+            
+    except Exception:
+        pass
+            
+    return result
+
+def cmd_mktsum():
+    """Display comprehensive market summary using hybrid data (ShareHub + ShareSansar)"""
+    try:
+        sharehub_data = None
+        sharesansar_data = {}
         
-        all_records = data.get('allRecords', [])
+        with console.status("[bold green]Fetching market data...", spinner="dots"):
+            # 1. Fetch ShareHub Data
+            try:
+                url = "https://sharehubnepal.com/live/api/v2/nepselive/home-page-data"
+                response = requests.get(url, timeout=10)
+                if response.status_code == 200:
+                    sharehub_data = response.json()
+            except Exception as e:
+                console.print(f"[red]⚠️  API request failed: {e}[/red]")
+            
+            if not sharehub_data:
+                return
+
+            # 2. Scrape ShareSansar Market Summary
+            sharesansar_data = scrape_sharesansar_market_summary(headless=True)
+            
+        # Process Data
+        indices = sharehub_data.get("indices", [])
+        nepse_index = next((i for i in indices if i.get("symbol") == "NEPSE"), {})
         
-        if not all_records:
-            console.print(Panel("⚠️  No market summary data available.", style="bold yellow", box=box.ROUNDED))
+        if not nepse_index:
+            console.print("[red]⚠️  NEPSE index data not found.[/red]")
             return
+            
+        # Extract NEPSE Info
+        current_price = float(nepse_index.get('currentValue', 0))
+        daily_gain = float(nepse_index.get('changePercent', 0))
         
-        # Find the "Top Sectors" section for NEPSE overall data
-        top_sectors = None
-        for record in all_records:
-            if record.get('type') == 'top-sector':
-                top_sectors = record
-                break
+        # Get Total Turnover
+        market_summary = sharehub_data.get("marketSummary", [])
+        turnover_item = next((i for i in market_summary if "Turnover" in i.get("name", "")), {})
+        turnover = float(turnover_item.get('value', 0))
         
-        if not top_sectors or not top_sectors.get('data'):
-            console.print(Panel("⚠️  No sector data available.", style="bold yellow", box=box.ROUNDED))
-            return
+        # Get Trading Activity
+        stock_summary = sharehub_data.get("stockSummary", {})
+        positive_stocks = stock_summary.get("advanced", 0)
+        negative_stocks = stock_summary.get("declined", 0)
+        unchanged_stocks = stock_summary.get("unchanged", 0)
+        positive_circuit = stock_summary.get("positiveCircuit", 0)
+        negative_circuit = stock_summary.get("negativeCircuit", 0)
+        total_traded = positive_stocks + negative_stocks + unchanged_stocks
         
-        # Get NEPSE main data (first item is always NEPSE index)
-        nepse_data = None
-        for item in top_sectors['data']:
-            if item.get('sector') == 'NEPSE':
-                nepse_data = item
-                break
-        
-        if not nepse_data:
-            console.print(Panel("⚠️  NEPSE data not found.", style="bold red", box=box.ROUNDED))
-            return
-        
-        timestamp = top_sectors.get('as_of', 'N/A')
-        
-        # Display NEPSE Index Info
-        current_price = float(nepse_data.get('current', 0))
-        daily_gain = float(nepse_data.get('daily_gain', 0))
-        turnover = float(nepse_data.get('turn_over', 0))
-        weeks_52_change = float(nepse_data.get('_52_weeks_change', 0))
-        positive_stocks = nepse_data.get('positive_stocks', 0)
-        negative_stocks = nepse_data.get('negative_stocks', 0)
-        
+        # Display Logic
         color = "green" if daily_gain > 0 else "red" if daily_gain < 0 else "yellow"
         trend_icon = "▲" if daily_gain > 0 else "▼" if daily_gain < 0 else "•"
         
@@ -2671,7 +3084,6 @@ def cmd_mktsum():
         
         nepse_grid.add_row("Current Index", f"{current_price:,.2f}")
         nepse_grid.add_row("Daily Gain", f"[{color}]{daily_gain:+.2f}% {trend_icon}[/{color}]")
-        nepse_grid.add_row("52 Week Change", f"{weeks_52_change:+.2f}%")
         nepse_grid.add_row("Turnover", format_number(turnover))
         
         nepse_panel = Panel(
@@ -2688,7 +3100,10 @@ def cmd_mktsum():
         
         activity_grid.add_row("Positive Stocks", f"[green]{positive_stocks}[/green]")
         activity_grid.add_row("Negative Stocks", f"[red]{negative_stocks}[/red]")
-        activity_grid.add_row("Total Traded", f"{positive_stocks + negative_stocks}")
+        activity_grid.add_row("Unchanged", f"[yellow]{unchanged_stocks}[/yellow]")
+        activity_grid.add_row("Positive Circuit", f"[bright_green]{positive_circuit}[/bright_green]")
+        activity_grid.add_row("Negative Circuit", f"[bright_red]{negative_circuit}[/bright_red]")
+        activity_grid.add_row("Total Traded", f"[bold]{total_traded}[/bold]")
         
         activity_panel = Panel(
             activity_grid,
@@ -2699,36 +3114,145 @@ def cmd_mktsum():
         
         console.print(Columns([nepse_panel, activity_panel]))
         
-        # Sector Performance Table
-        table = Table(title="Sector Performance", box=box.ROUNDED, header_style="bold cyan", expand=True)
-        table.add_column("Sector", style="white")
-        table.add_column("Current", justify="right")
-        table.add_column("Daily Gain", justify="right")
-        table.add_column("Turnover", justify="right")
-        table.add_column("52w Change", justify="right")
+        # Display Date and Notice
+        date_str = sharesansar_data.get('as_of', 'N/A')
+        console.print(f"\n[bold cyan]📅 Market Data as of:[/] [yellow]{date_str}[/yellow]")
+        console.print("[dim italic]ℹ️  Note: Market summary data will be updated after market closes[/dim italic]\n")
         
-        for item in top_sectors['data'][1:]:  # Skip NEPSE (first item)
-            sector = item.get('sector', 'N/A')
-            current = float(item.get('current', 0))
-            daily = float(item.get('daily_gain', 0))
-            turn = float(item.get('turn_over', 0))
-            weeks_52 = float(item.get('_52_weeks_change', 0))
+        # Sector Table
+        table = Table(title="Sector Performance", box=box.ROUNDED, expand=True)
+        table.add_column("Sector", style="cyan")
+        table.add_column("Current", justify="right")
+        table.add_column("Change %", justify="right")
+        table.add_column("Turnover", justify="right")
+        
+        # Normalize ShareSansar keys
+        normalized_turnover = {}
+        sector_turnover_data = sharesansar_data.get('sector_turnover', {})
+        for k, v in sector_turnover_data.items():
+            clean_k = k.replace("SubIndex", "").replace("Index", "").replace("And", "&").strip().lower()
+            normalized_turnover[clean_k] = v
             
-            s_color = "green" if daily > 0 else "red" if daily < 0 else "yellow"
+        sub_indices = sharehub_data.get("subIndices", [])
+        for sector in sub_indices:
+            name = sector.get("name", "Unknown")
+            price = sector.get("currentValue", 0)
+            change = sector.get("changePercent", 0)
+            
+            # Match turnover
+            clean_name = name.replace("And", "&").strip().lower()
+            sector_turnover = 0
+            
+            if clean_name in normalized_turnover:
+                sector_turnover = normalized_turnover[clean_name]
+            elif clean_name == "banking" and "banking" in normalized_turnover:
+                sector_turnover = normalized_turnover["banking"]
+            elif clean_name == "development bank" and "development bank" in normalized_turnover:
+                sector_turnover = normalized_turnover["development bank"]
+            elif clean_name == "finance" and "finance" in normalized_turnover:
+                sector_turnover = normalized_turnover["finance"]
+            elif clean_name == "hydropower" and "hydropower" in normalized_turnover:
+                sector_turnover = normalized_turnover["hydropower"]
+            elif clean_name == "life insurance" and "life insurance" in normalized_turnover:
+                sector_turnover = normalized_turnover["life insurance"]
+            elif clean_name == "microfinance" and "microfinance" in normalized_turnover:
+                sector_turnover = normalized_turnover["microfinance"]
+            elif clean_name == "mutual fund" and "mutual fund" in normalized_turnover:
+                sector_turnover = normalized_turnover["mutual fund"]
+            elif clean_name == "non life insurance" and "non life insurance" in normalized_turnover:
+                sector_turnover = normalized_turnover["non life insurance"]
+            elif clean_name == "others" and "others" in normalized_turnover:
+                sector_turnover = normalized_turnover["others"]
+            elif clean_name == "trading" and "trading" in normalized_turnover:
+                sector_turnover = normalized_turnover["trading"]
+            
+            sec_color = "green" if change > 0 else "red" if change < 0 else "white"
             
             table.add_row(
-                sector,
-                f"{current:,.2f}",
-                f"[{s_color}]{daily:+.2f}%[/{s_color}]",
-                format_number(turn),
-                f"{weeks_52:+.2f}%"
+                name,
+                f"{price:,.2f}",
+                f"[{sec_color}]{change:+.2f}%[/{sec_color}]",
+                format_number(sector_turnover) if sector_turnover > 0 else "N/A"
             )
             
         console.print(table)
-        console.print(f"[dim]As of: {timestamp} | Note: Updates after 3:00 PM[/dim]\n", justify="center")
+        
+        # Display Top Lists
+        top_turnovers = sharesansar_data.get('top_turnovers', [])
+        top_traded = sharesansar_data.get('top_traded', [])
+        top_transactions = sharesansar_data.get('top_transactions', [])
+        top_brokers = sharesansar_data.get('top_brokers', [])
+        
+        if top_turnovers or top_traded or top_transactions:
+            console.print("\n")
+            
+            # Top Turnovers Table
+            if top_turnovers:
+                turnover_table = Table(title="📊 Top Turnovers", box=box.ROUNDED, show_header=True)
+                turnover_table.add_column("Symbol", style="bold cyan")
+                turnover_table.add_column("Turnover (Rs)", justify="right")
+                turnover_table.add_column("LTP (Rs)", justify="right", style="dim")
+                
+                for item in top_turnovers:
+                    turnover_table.add_row(
+                        item.get('symbol', 'N/A'),
+                        item.get('turnover', 'N/A'),
+                        item.get('ltp', 'N/A')
+                    )
+            
+            # Top Traded Table
+            if top_traded:
+                traded_table = Table(title="📈 Top Traded Shares", box=box.ROUNDED, show_header=True)
+                traded_table.add_column("Symbol", style="bold cyan")
+                traded_table.add_column("Volume", justify="right")
+                traded_table.add_column("LTP (Rs)", justify="right", style="dim")
+                
+                for item in top_traded:
+                    traded_table.add_row(
+                        item.get('symbol', 'N/A'),
+                        item.get('volume', 'N/A'),
+                        item.get('ltp', 'N/A')
+                    )
+            
+            # Top Transactions Table
+            if top_transactions:
+                trans_table = Table(title="🔁 Top Transactions", box=box.ROUNDED, show_header=True)
+                trans_table.add_column("Symbol", style="bold cyan")
+                trans_table.add_column("Transactions", justify="right")
+                trans_table.add_column("LTP (Rs)", justify="right", style="dim")
+                
+                for item in top_transactions:
+                    trans_table.add_row(
+                        item.get('symbol', 'N/A'),
+                        item.get('transactions', 'N/A'),
+                        item.get('ltp', 'N/A')
+                    )
+            
+            # Display in columns
+            if top_turnovers and top_traded and top_transactions:
+                console.print(Columns([turnover_table, traded_table, trans_table]))
+            
+        # Top Brokers Table
+        if top_brokers:
+            console.print("\n")
+            broker_table = Table(title="🏢 Top Brokers", box=box.ROUNDED, show_header=True, expand=True)
+            broker_table.add_column("Broker #", style="bold yellow", width=10)
+            broker_table.add_column("Purchase (Rs)", justify="right")
+            broker_table.add_column("Sales (Rs)", justify="right")
+            broker_table.add_column("Total (Rs)", justify="right", style="bold green")
+            
+            for item in top_brokers:
+                broker_table.add_row(
+                    item.get('broker', 'N/A'),
+                    item.get('purchase', 'N/A'),
+                    item.get('sales', 'N/A'),
+                    item.get('total', 'N/A')
+                )
+            
+            console.print(broker_table)
         
     except Exception as e:
-        console.print(f"[bold red]⚠️  Error fetching market summary:[/bold red] {str(e)}\n")
+        console.print(f"[bold red]⚠️  Error:[/bold red] {str(e)}\n")
 
 def cmd_topgl():
     """Display top 10 gainers and losers"""
@@ -3048,8 +3572,11 @@ def get_command_metadata():
         {"name": "apply-all", "description": "Apply IPO for all family members", "category": "IPO Management"},
         
         # Configuration
-        {"name": "add", "description": "Add/update family member", "category": "Configuration"},
+        {"name": "add", "description": "Add new family member", "category": "Configuration"},
         {"name": "list", "description": "List all family members", "category": "Configuration"},
+        {"name": "edit", "description": "Edit existing family member", "category": "Configuration"},
+        {"name": "delete", "description": "Delete family member", "category": "Configuration"},
+        {"name": "manage", "description": "Member management menu", "category": "Configuration"},
         {"name": "login [name]", "description": "Test login for member", "category": "Configuration"},
         {"name": "portfolio [name]", "description": "Get portfolio for member", "category": "Configuration"},
         {"name": "dp-list", "description": "List available DPs", "category": "Configuration"},
@@ -3269,6 +3796,15 @@ def execute_interactive_command(command: str, args: List[str], context: Dict[str
     if command == "list":
         context['list_members']()
         return True
+    if command == "edit":
+        context['edit_member']()
+        return True
+    if command == "delete":
+        context['delete_member']()
+        return True
+    if command == "manage":
+        context['manage_members']()
+        return True
     if command == "portfolio":
         member = None
         if positional_args:
@@ -3347,6 +3883,9 @@ def main():
         'apply_all': apply_ipo_for_all_members,
         'add_member': add_family_member,
         'list_members': list_family_members,
+        'edit_member': edit_family_member,
+        'delete_member': delete_family_member,
+        'manage_members': manage_family_members,
         'portfolio': get_portfolio_for_member,
         'login': test_login_for_member,
         'dp_list': get_dp_list,
