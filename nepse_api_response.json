@@ -1,0 +1,8388 @@
+{
+  "stock_live": {
+    "prices": [
+      {
+        "symbol": "RMF1",
+        "open": 8.9,
+        "percent_change": -1.98,
+        "high": 8.9,
+        "low": 8.9,
+        "close": 8.9,
+        "turn_over": 0,
+        "volume": 0,
+        "stockinfo": {
+          "symbol": "RMF1",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "CMF2",
+        "open": 9.18,
+        "percent_change": 2,
+        "high": 9.18,
+        "low": 9.18,
+        "close": 9.18,
+        "turn_over": 918,
+        "volume": 100,
+        "stockinfo": {
+          "symbol": "CMF2",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "SPL",
+        "open": 909,
+        "percent_change": 0.23,
+        "high": 927,
+        "low": 909,
+        "close": 927,
+        "turn_over": 27810,
+        "volume": 30,
+        "stockinfo": {
+          "symbol": "SPL",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "SWASTIK",
+        "open": 577.8,
+        "percent_change": 4.02,
+        "high": 589.3,
+        "low": 577.8,
+        "close": 589.3,
+        "turn_over": 17679,
+        "volume": 30,
+        "stockinfo": {
+          "symbol": "SWASTIK",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "NBF2",
+        "open": 9,
+        "percent_change": -0.88,
+        "high": 9,
+        "low": 9,
+        "close": 9,
+        "turn_over": 25056,
+        "volume": 2784,
+        "stockinfo": {
+          "symbol": "NBF2",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "NIBSF2",
+        "open": 8.47,
+        "percent_change": 0,
+        "high": 8.47,
+        "low": 8.47,
+        "close": 8.47,
+        "turn_over": 4235,
+        "volume": 500,
+        "stockinfo": {
+          "symbol": "NIBSF2",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "MDB",
+        "open": 573,
+        "percent_change": 1.58,
+        "high": 582.4,
+        "low": 573,
+        "close": 580,
+        "turn_over": 847380,
+        "volume": 1461,
+        "stockinfo": {
+          "symbol": "MDB",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "GLBSL",
+        "open": 2003,
+        "percent_change": -1.72,
+        "high": 2003,
+        "low": 2000,
+        "close": 2000,
+        "turn_over": 462000,
+        "volume": 231,
+        "stockinfo": {
+          "symbol": "GLBSL",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "ENL",
+        "open": 909,
+        "percent_change": -0.99,
+        "high": 927,
+        "low": 901,
+        "close": 901,
+        "turn_over": 366707,
+        "volume": 407,
+        "stockinfo": {
+          "symbol": "ENL",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "OHL",
+        "open": 675.3,
+        "percent_change": 1.6,
+        "high": 729,
+        "low": 675.3,
+        "close": 700,
+        "turn_over": 154700,
+        "volume": 221,
+        "stockinfo": {
+          "symbol": "OHL",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "RBCL",
+        "open": 14900,
+        "percent_change": 0.61,
+        "high": 14900,
+        "low": 14900,
+        "close": 14900,
+        "turn_over": 149000,
+        "volume": 10,
+        "stockinfo": {
+          "symbol": "RBCL",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "ANLB",
+        "open": 6199,
+        "percent_change": 0.62,
+        "high": 6233,
+        "low": 6199,
+        "close": 6233,
+        "turn_over": 1003513,
+        "volume": 161,
+        "stockinfo": {
+          "symbol": "ANLB",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "UNL",
+        "open": 47000,
+        "percent_change": 1.08,
+        "high": 47000,
+        "low": 47000,
+        "close": 47000,
+        "turn_over": 470000,
+        "volume": 10,
+        "stockinfo": {
+          "symbol": "UNL",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "SHLB",
+        "open": 1705.1,
+        "percent_change": 1.21,
+        "high": 1760,
+        "low": 1705,
+        "close": 1760,
+        "turn_over": 1314720,
+        "volume": 747,
+        "stockinfo": {
+          "symbol": "SHLB",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "NIFRAGED",
+        "open": 1014.1,
+        "percent_change": -1.95,
+        "high": 1014.1,
+        "low": 1014.1,
+        "close": 1014.1,
+        "turn_over": 25352.5,
+        "volume": 25,
+        "stockinfo": {
+          "symbol": "NIFRAGED",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "CBLD88",
+        "open": 1200,
+        "percent_change": -1.72,
+        "high": 1200,
+        "low": 1200,
+        "close": 1200,
+        "turn_over": 30000,
+        "volume": 25,
+        "stockinfo": {
+          "symbol": "CBLD88",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "MATRI",
+        "open": 979.5,
+        "percent_change": -0.93,
+        "high": 979.5,
+        "low": 960,
+        "close": 960,
+        "turn_over": 19200,
+        "volume": 20,
+        "stockinfo": {
+          "symbol": "MATRI",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "RBBD2088",
+        "open": 1061.4,
+        "percent_change": 0.04,
+        "high": 1061.4,
+        "low": 1061.4,
+        "close": 1061.4,
+        "turn_over": 26535,
+        "volume": 25,
+        "stockinfo": {
+          "symbol": "RBBD2088",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "KSY",
+        "open": 8.46,
+        "percent_change": -1.4,
+        "high": 8.46,
+        "low": 8.46,
+        "close": 8.46,
+        "turn_over": 846,
+        "volume": 100,
+        "stockinfo": {
+          "symbol": "KSY",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "ACLBSL",
+        "open": 1020,
+        "percent_change": -0.1,
+        "high": 1020,
+        "low": 1005,
+        "close": 1005,
+        "turn_over": 170850,
+        "volume": 170,
+        "stockinfo": {
+          "symbol": "ACLBSL",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "ICFCD88",
+        "open": 1117.2,
+        "percent_change": -2,
+        "high": 1117.2,
+        "low": 1117.2,
+        "close": 1117.2,
+        "turn_over": 27930,
+        "volume": 25,
+        "stockinfo": {
+          "symbol": "ICFCD88",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "GBIMESY2",
+        "open": 8.65,
+        "percent_change": -1.48,
+        "high": 8.66,
+        "low": 8.65,
+        "close": 8.66,
+        "turn_over": 2598,
+        "volume": 300,
+        "stockinfo": {
+          "symbol": "GBIMESY2",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "LVF2",
+        "open": 8.95,
+        "percent_change": -1.1,
+        "high": 8.95,
+        "low": 8.95,
+        "close": 8.95,
+        "turn_over": 1790,
+        "volume": 200,
+        "stockinfo": {
+          "symbol": "LVF2",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "SBCF",
+        "open": 8.87,
+        "percent_change": -1.44,
+        "high": 8.87,
+        "low": 8.87,
+        "close": 8.87,
+        "turn_over": 887,
+        "volume": 100,
+        "stockinfo": {
+          "symbol": "SBCF",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "ULBSL",
+        "open": 3742.7,
+        "percent_change": -1.26,
+        "high": 3895,
+        "low": 3700,
+        "close": 3771,
+        "turn_over": 618444,
+        "volume": 164,
+        "stockinfo": {
+          "symbol": "ULBSL",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "NABILD2089",
+        "open": 1071.2,
+        "percent_change": -2.35,
+        "high": 1071.2,
+        "low": 1061,
+        "close": 1061,
+        "turn_over": 186736,
+        "volume": 176,
+        "stockinfo": {
+          "symbol": "NABILD2089",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "SHINED",
+        "open": 1160,
+        "percent_change": 0.43,
+        "high": 1165,
+        "low": 1160,
+        "close": 1165,
+        "turn_over": 477650,
+        "volume": 410,
+        "stockinfo": {
+          "symbol": "SHINED",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "MCHL",
+        "open": 490,
+        "percent_change": 0.1,
+        "high": 490,
+        "low": 485.5,
+        "close": 485.5,
+        "turn_over": 21362,
+        "volume": 44,
+        "stockinfo": {
+          "symbol": "MCHL",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "EBLD86",
+        "open": 1105,
+        "percent_change": -0.64,
+        "high": 1105,
+        "low": 1105,
+        "close": 1105,
+        "turn_over": 33150,
+        "volume": 30,
+        "stockinfo": {
+          "symbol": "EBLD86",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "SAIL",
+        "open": 301.7,
+        "percent_change": 9.98,
+        "high": 331.8,
+        "low": 301.7,
+        "close": 331.8,
+        "turn_over": 36498,
+        "volume": 110,
+        "stockinfo": {
+          "symbol": "SAIL",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "PRSF",
+        "open": 10.17,
+        "percent_change": 1.67,
+        "high": 10.37,
+        "low": 10.17,
+        "close": 10.37,
+        "turn_over": 2074,
+        "volume": 200,
+        "stockinfo": {
+          "symbol": "PRSF",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "SALICO",
+        "open": 582.1,
+        "percent_change": 1.18,
+        "high": 598,
+        "low": 582.1,
+        "close": 598,
+        "turn_over": 223652,
+        "volume": 374,
+        "stockinfo": {
+          "symbol": "SALICO",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "BBC",
+        "open": 4960,
+        "percent_change": 1.32,
+        "high": 4996,
+        "low": 4862.1,
+        "close": 4994,
+        "turn_over": 978824,
+        "volume": 196,
+        "stockinfo": {
+          "symbol": "BBC",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "NIMBPO",
+        "open": 159,
+        "percent_change": 1.99,
+        "high": 159,
+        "low": 159,
+        "close": 159,
+        "turn_over": 133560,
+        "volume": 840,
+        "stockinfo": {
+          "symbol": "NIMBPO",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "MMF1",
+        "open": 8.68,
+        "percent_change": 1.06,
+        "high": 8.68,
+        "low": 8.35,
+        "close": 8.6,
+        "turn_over": 13760,
+        "volume": 1600,
+        "stockinfo": {
+          "symbol": "MMF1",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "GSY",
+        "open": 9,
+        "percent_change": 0,
+        "high": 9,
+        "low": 8.83,
+        "close": 9,
+        "turn_over": 10800,
+        "volume": 1200,
+        "stockinfo": {
+          "symbol": "GSY",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "NMBMF",
+        "open": 692,
+        "percent_change": 1.31,
+        "high": 708,
+        "low": 692,
+        "close": 694,
+        "turn_over": 1644780,
+        "volume": 2370,
+        "stockinfo": {
+          "symbol": "NMBMF",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "SIGS3",
+        "open": 9.01,
+        "percent_change": -0.99,
+        "high": 9.02,
+        "low": 9.01,
+        "close": 9.02,
+        "turn_over": 1804,
+        "volume": 200,
+        "stockinfo": {
+          "symbol": "SIGS3",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "KEF",
+        "open": 9,
+        "percent_change": 0,
+        "high": 9,
+        "low": 9,
+        "close": 9,
+        "turn_over": 4500,
+        "volume": 500,
+        "stockinfo": {
+          "symbol": "KEF",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "DOLTI",
+        "open": 520.2,
+        "percent_change": -0.15,
+        "high": 532,
+        "low": 520.2,
+        "close": 530,
+        "turn_over": 71550,
+        "volume": 135,
+        "stockinfo": {
+          "symbol": "DOLTI",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "TSHL",
+        "open": 714,
+        "percent_change": -1.14,
+        "high": 728.2,
+        "low": 690,
+        "close": 692,
+        "turn_over": 735596,
+        "volume": 1063,
+        "stockinfo": {
+          "symbol": "TSHL",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "SLCF",
+        "open": 9.01,
+        "percent_change": -0.98,
+        "high": 9.05,
+        "low": 9.01,
+        "close": 9.05,
+        "turn_over": 48870,
+        "volume": 5400,
+        "stockinfo": {
+          "symbol": "SLCF",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "HEIP",
+        "open": 315.6,
+        "percent_change": -1.99,
+        "high": 315.6,
+        "low": 315.5,
+        "close": 315.5,
+        "turn_over": 26186.5,
+        "volume": 83,
+        "stockinfo": {
+          "symbol": "HEIP",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "PSF",
+        "open": 10.2,
+        "percent_change": 0.29,
+        "high": 10.2,
+        "low": 10.2,
+        "close": 10.2,
+        "turn_over": 29580,
+        "volume": 2900,
+        "stockinfo": {
+          "symbol": "PSF",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "GUFL",
+        "open": 515,
+        "percent_change": 1.2,
+        "high": 515,
+        "low": 510,
+        "close": 515,
+        "turn_over": 57165,
+        "volume": 111,
+        "stockinfo": {
+          "symbol": "GUFL",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "CITY",
+        "open": 542,
+        "percent_change": -0.19,
+        "high": 543,
+        "low": 533,
+        "close": 533,
+        "turn_over": 1458288,
+        "volume": 2736,
+        "stockinfo": {
+          "symbol": "CITY",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "GFCL",
+        "open": 593,
+        "percent_change": 0.02,
+        "high": 593,
+        "low": 588.1,
+        "close": 588.1,
+        "turn_over": 1072694.4,
+        "volume": 1824,
+        "stockinfo": {
+          "symbol": "GFCL",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "MLBSL",
+        "open": 2000.1,
+        "percent_change": 0.01,
+        "high": 2030,
+        "low": 2000.1,
+        "close": 2030,
+        "turn_over": 582610,
+        "volume": 287,
+        "stockinfo": {
+          "symbol": "MLBSL",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "TAMOR",
+        "open": 480,
+        "percent_change": 0.74,
+        "high": 481.5,
+        "low": 472.2,
+        "close": 476,
+        "turn_over": 866320,
+        "volume": 1820,
+        "stockinfo": {
+          "symbol": "TAMOR",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "MLBS",
+        "open": 1534.5,
+        "percent_change": 0.95,
+        "high": 1534.5,
+        "low": 1534.5,
+        "close": 1534.5,
+        "turn_over": 15345,
+        "volume": 10,
+        "stockinfo": {
+          "symbol": "MLBS",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "MKJC",
+        "open": 537,
+        "percent_change": 0.22,
+        "high": 543.9,
+        "low": 531.6,
+        "close": 539,
+        "turn_over": 3110030,
+        "volume": 5770,
+        "stockinfo": {
+          "symbol": "MKJC",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "GILB",
+        "open": 1258,
+        "percent_change": 0.7,
+        "high": 1268.8,
+        "low": 1239,
+        "close": 1268.8,
+        "turn_over": 234728,
+        "volume": 185,
+        "stockinfo": {
+          "symbol": "GILB",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "IHL",
+        "open": 570,
+        "percent_change": -1.25,
+        "high": 570,
+        "low": 550,
+        "close": 555,
+        "turn_over": 1696080,
+        "volume": 3056,
+        "stockinfo": {
+          "symbol": "IHL",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "CFCL",
+        "open": 489.9,
+        "percent_change": -0.19,
+        "high": 489.9,
+        "low": 481.1,
+        "close": 483.1,
+        "turn_over": 1863799.8,
+        "volume": 3858,
+        "stockinfo": {
+          "symbol": "CFCL",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "TVCL",
+        "open": 428.7,
+        "percent_change": 0.26,
+        "high": 428.7,
+        "low": 420.5,
+        "close": 425.8,
+        "turn_over": 849045.2,
+        "volume": 1994,
+        "stockinfo": {
+          "symbol": "TVCL",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "SHL",
+        "open": 472,
+        "percent_change": 0.34,
+        "high": 479.8,
+        "low": 471.9,
+        "close": 473.5,
+        "turn_over": 2509550,
+        "volume": 5300,
+        "stockinfo": {
+          "symbol": "SHL",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "NICSF",
+        "open": 8.31,
+        "percent_change": -0.24,
+        "high": 8.34,
+        "low": 8.31,
+        "close": 8.34,
+        "turn_over": 4170,
+        "volume": 500,
+        "stockinfo": {
+          "symbol": "NICSF",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "SFCL",
+        "open": 401,
+        "percent_change": 0.98,
+        "high": 405,
+        "low": 396.2,
+        "close": 400,
+        "turn_over": 1739200,
+        "volume": 4348,
+        "stockinfo": {
+          "symbol": "SFCL",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "SWBBL",
+        "open": 802,
+        "percent_change": -0.25,
+        "high": 802,
+        "low": 781,
+        "close": 785,
+        "turn_over": 259050,
+        "volume": 330,
+        "stockinfo": {
+          "symbol": "SWBBL",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "UHEWA",
+        "open": 600,
+        "percent_change": 0.1,
+        "high": 609.9,
+        "low": 596,
+        "close": 600.6,
+        "turn_over": 3214411.2,
+        "volume": 5352,
+        "stockinfo": {
+          "symbol": "UHEWA",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "MLBBL",
+        "open": 1524,
+        "percent_change": 0.2,
+        "high": 1524,
+        "low": 1500,
+        "close": 1500,
+        "turn_over": 75000,
+        "volume": 50,
+        "stockinfo": {
+          "symbol": "MLBBL",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "USHL",
+        "open": 705,
+        "percent_change": 0.43,
+        "high": 732,
+        "low": 691,
+        "close": 695,
+        "turn_over": 641485,
+        "volume": 923,
+        "stockinfo": {
+          "symbol": "USHL",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "WNLB",
+        "open": 2048,
+        "percent_change": -1.41,
+        "high": 2048.1,
+        "low": 1979.6,
+        "close": 1979.6,
+        "turn_over": 140551.6,
+        "volume": 71,
+        "stockinfo": {
+          "symbol": "WNLB",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "VLBS",
+        "open": 811,
+        "percent_change": 1.54,
+        "high": 812,
+        "low": 800,
+        "close": 810,
+        "turn_over": 332100,
+        "volume": 410,
+        "stockinfo": {
+          "symbol": "VLBS",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "KMCDB",
+        "open": 994.7,
+        "percent_change": -0.29,
+        "high": 1034.7,
+        "low": 994.7,
+        "close": 1012.1,
+        "turn_over": 1046511.4,
+        "volume": 1034,
+        "stockinfo": {
+          "symbol": "KMCDB",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "MERO",
+        "open": 778,
+        "percent_change": 0.65,
+        "high": 778.9,
+        "low": 765.2,
+        "close": 770,
+        "turn_over": 599060,
+        "volume": 778,
+        "stockinfo": {
+          "symbol": "MERO",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "SMHL",
+        "open": 795,
+        "percent_change": 0,
+        "high": 809.9,
+        "low": 782,
+        "close": 795,
+        "turn_over": 1182960,
+        "volume": 1488,
+        "stockinfo": {
+          "symbol": "SMHL",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "RSY",
+        "open": 8.92,
+        "percent_change": -2.75,
+        "high": 8.92,
+        "low": 8.76,
+        "close": 8.85,
+        "turn_over": 9735,
+        "volume": 1100,
+        "stockinfo": {
+          "symbol": "RSY",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "HEI",
+        "open": 498,
+        "percent_change": 1.12,
+        "high": 500,
+        "low": 495,
+        "close": 495,
+        "turn_over": 1640925,
+        "volume": 3315,
+        "stockinfo": {
+          "symbol": "HEI",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "HATHY",
+        "open": 930,
+        "percent_change": 0.92,
+        "high": 938.5,
+        "low": 926.4,
+        "close": 933.3,
+        "turn_over": 2033660.7,
+        "volume": 2179,
+        "stockinfo": {
+          "symbol": "HATHY",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "KSBBL",
+        "open": 435,
+        "percent_change": -0.16,
+        "high": 440.5,
+        "low": 433.1,
+        "close": 433.3,
+        "turn_over": 6984362.7,
+        "volume": 16119,
+        "stockinfo": {
+          "symbol": "KSBBL",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "BGWT",
+        "open": 760.3,
+        "percent_change": 0.77,
+        "high": 770,
+        "low": 757,
+        "close": 770,
+        "turn_over": 169400,
+        "volume": 220,
+        "stockinfo": {
+          "symbol": "BGWT",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "MHNL",
+        "open": 259,
+        "percent_change": -0.77,
+        "high": 263.8,
+        "low": 255.1,
+        "close": 257,
+        "turn_over": 1080685,
+        "volume": 4205,
+        "stockinfo": {
+          "symbol": "MHNL",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "SLBSL",
+        "open": 1301,
+        "percent_change": -0.1,
+        "high": 1340,
+        "low": 1301,
+        "close": 1321.6,
+        "turn_over": 396480,
+        "volume": 300,
+        "stockinfo": {
+          "symbol": "SLBSL",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "KDL",
+        "open": 890.2,
+        "percent_change": 0,
+        "high": 905,
+        "low": 890.2,
+        "close": 901,
+        "turn_over": 666740,
+        "volume": 740,
+        "stockinfo": {
+          "symbol": "KDL",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "NMBHF2",
+        "open": 8.8,
+        "percent_change": 0,
+        "high": 9,
+        "low": 8.8,
+        "close": 8.83,
+        "turn_over": 150286.6,
+        "volume": 17020,
+        "stockinfo": {
+          "symbol": "NMBHF2",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "NFS",
+        "open": 655,
+        "percent_change": 1.16,
+        "high": 657.3,
+        "low": 651.2,
+        "close": 652,
+        "turn_over": 3021368,
+        "volume": 4634,
+        "stockinfo": {
+          "symbol": "NFS",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "SICL",
+        "open": 645,
+        "percent_change": 0.78,
+        "high": 652.8,
+        "low": 645,
+        "close": 645,
+        "turn_over": 1891140,
+        "volume": 2932,
+        "stockinfo": {
+          "symbol": "SICL",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "SMPDA",
+        "open": 886.9,
+        "percent_change": 1.02,
+        "high": 935.2,
+        "low": 886.9,
+        "close": 910.1,
+        "turn_over": 7949723.5,
+        "volume": 8735,
+        "stockinfo": {
+          "symbol": "SMPDA",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "HLICF",
+        "open": 8.95,
+        "percent_change": 1.22,
+        "high": 9.12,
+        "low": 8.95,
+        "close": 9.12,
+        "turn_over": 8208,
+        "volume": 900,
+        "stockinfo": {
+          "symbol": "HLICF",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "TRH",
+        "open": 705,
+        "percent_change": -0.26,
+        "high": 705,
+        "low": 693.2,
+        "close": 693.2,
+        "turn_over": 2135056,
+        "volume": 3080,
+        "stockinfo": {
+          "symbol": "TRH",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "UNLB",
+        "open": 2019,
+        "percent_change": -0.95,
+        "high": 2020,
+        "low": 1980,
+        "close": 1980,
+        "turn_over": 257400,
+        "volume": 130,
+        "stockinfo": {
+          "symbol": "UNLB",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "SKBBL",
+        "open": 877,
+        "percent_change": 0.83,
+        "high": 877,
+        "low": 859,
+        "close": 867,
+        "turn_over": 824517,
+        "volume": 951,
+        "stockinfo": {
+          "symbol": "SKBBL",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "EDBL",
+        "open": 605,
+        "percent_change": 0.2,
+        "high": 605,
+        "low": 600.2,
+        "close": 600.2,
+        "turn_over": 586395.4,
+        "volume": 977,
+        "stockinfo": {
+          "symbol": "EDBL",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "MFIL",
+        "open": 596.2,
+        "percent_change": 0.53,
+        "high": 597.4,
+        "low": 588,
+        "close": 590.1,
+        "turn_over": 445525.5,
+        "volume": 755,
+        "stockinfo": {
+          "symbol": "MFIL",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "PPCL",
+        "open": 333.2,
+        "percent_change": 0.24,
+        "high": 345,
+        "low": 333.2,
+        "close": 340.8,
+        "turn_over": 3187502.4,
+        "volume": 9353,
+        "stockinfo": {
+          "symbol": "PPCL",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "MPFL",
+        "open": 555,
+        "percent_change": 0.37,
+        "high": 555,
+        "low": 549,
+        "close": 549,
+        "turn_over": 898713,
+        "volume": 1637,
+        "stockinfo": {
+          "symbol": "MPFL",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "RURU",
+        "open": 747,
+        "percent_change": -0.62,
+        "high": 755,
+        "low": 747,
+        "close": 754.2,
+        "turn_over": 3329793,
+        "volume": 4415,
+        "stockinfo": {
+          "symbol": "RURU",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "LLBS",
+        "open": 977,
+        "percent_change": 1.88,
+        "high": 1017,
+        "low": 976.8,
+        "close": 976.8,
+        "turn_over": 1048106.4,
+        "volume": 1073,
+        "stockinfo": {
+          "symbol": "LLBS",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "GIBF1",
+        "open": 10,
+        "percent_change": -1.19,
+        "high": 10,
+        "low": 10,
+        "close": 10,
+        "turn_over": 9000,
+        "volume": 900,
+        "stockinfo": {
+          "symbol": "GIBF1",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "SIFC",
+        "open": 501,
+        "percent_change": 0.83,
+        "high": 501,
+        "low": 495,
+        "close": 499,
+        "turn_over": 306386,
+        "volume": 614,
+        "stockinfo": {
+          "symbol": "SIFC",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "RAWA",
+        "open": 710,
+        "percent_change": -0.69,
+        "high": 715,
+        "low": 710,
+        "close": 715,
+        "turn_over": 364650,
+        "volume": 510,
+        "stockinfo": {
+          "symbol": "RAWA",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "BEDC",
+        "open": 577,
+        "percent_change": 1.22,
+        "high": 588,
+        "low": 577,
+        "close": 582,
+        "turn_over": 1637748,
+        "volume": 2814,
+        "stockinfo": {
+          "symbol": "BEDC",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "MHL",
+        "open": 498,
+        "percent_change": 0.92,
+        "high": 498.7,
+        "low": 490,
+        "close": 493.5,
+        "turn_over": 5681172,
+        "volume": 11512,
+        "stockinfo": {
+          "symbol": "MHL",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "JSLBB",
+        "open": 1171,
+        "percent_change": 2.52,
+        "high": 1179.9,
+        "low": 1171,
+        "close": 1179,
+        "turn_over": 1108260,
+        "volume": 940,
+        "stockinfo": {
+          "symbol": "JSLBB",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "HHL",
+        "open": 347.7,
+        "percent_change": 0.44,
+        "high": 347.7,
+        "low": 340,
+        "close": 343,
+        "turn_over": 3924949,
+        "volume": 11443,
+        "stockinfo": {
+          "symbol": "HHL",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "KDBY",
+        "open": 9.06,
+        "percent_change": 0.11,
+        "high": 9.06,
+        "low": 9.06,
+        "close": 9.06,
+        "turn_over": 6342,
+        "volume": 700,
+        "stockinfo": {
+          "symbol": "KDBY",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "SMFBS",
+        "open": 1688,
+        "percent_change": -0.53,
+        "high": 1688,
+        "low": 1646.4,
+        "close": 1646.4,
+        "turn_over": 1070160,
+        "volume": 650,
+        "stockinfo": {
+          "symbol": "SMFBS",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "MHCL",
+        "open": 409,
+        "percent_change": 0.65,
+        "high": 416,
+        "low": 401,
+        "close": 403.6,
+        "turn_over": 1583726.4,
+        "volume": 3924,
+        "stockinfo": {
+          "symbol": "MHCL",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "BFC",
+        "open": 481,
+        "percent_change": 0.02,
+        "high": 481,
+        "low": 466,
+        "close": 472.1,
+        "turn_over": 2333118.2,
+        "volume": 4942,
+        "stockinfo": {
+          "symbol": "BFC",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "MNMF1",
+        "open": 8.78,
+        "percent_change": -1.79,
+        "high": 8.79,
+        "low": 8.78,
+        "close": 8.79,
+        "turn_over": 7911,
+        "volume": 900,
+        "stockinfo": {
+          "symbol": "MNMF1",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "MMKJL",
+        "open": 610.5,
+        "percent_change": -0.67,
+        "high": 610.5,
+        "low": 595,
+        "close": 597,
+        "turn_over": 1214895,
+        "volume": 2035,
+        "stockinfo": {
+          "symbol": "MMKJL",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "PMHPL",
+        "open": 341.8,
+        "percent_change": 0.18,
+        "high": 342,
+        "low": 336.6,
+        "close": 336.6,
+        "turn_over": 3190631.4,
+        "volume": 9479,
+        "stockinfo": {
+          "symbol": "PMHPL",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "NICFC",
+        "open": 8.47,
+        "percent_change": -1.74,
+        "high": 8.49,
+        "low": 8.47,
+        "close": 8.49,
+        "turn_over": 5094,
+        "volume": 600,
+        "stockinfo": {
+          "symbol": "NICFC",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "UMRH",
+        "open": 562,
+        "percent_change": -0.5,
+        "high": 562,
+        "low": 556.1,
+        "close": 556.2,
+        "turn_over": 1025632.8,
+        "volume": 1844,
+        "stockinfo": {
+          "symbol": "UMRH",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "SMATA",
+        "open": 830,
+        "percent_change": 0.85,
+        "high": 841.9,
+        "low": 830,
+        "close": 830,
+        "turn_over": 11525380,
+        "volume": 13886,
+        "stockinfo": {
+          "symbol": "SMATA",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "GHL",
+        "open": 217,
+        "percent_change": 0.32,
+        "high": 221,
+        "low": 217,
+        "close": 219,
+        "turn_over": 1482849,
+        "volume": 6771,
+        "stockinfo": {
+          "symbol": "GHL",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "SMB",
+        "open": 2159,
+        "percent_change": 1.67,
+        "high": 2198,
+        "low": 2159,
+        "close": 2198,
+        "turn_over": 131880,
+        "volume": 60,
+        "stockinfo": {
+          "symbol": "SMB",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "GLH",
+        "open": 265,
+        "percent_change": 0.12,
+        "high": 265,
+        "low": 260,
+        "close": 260.4,
+        "turn_over": 1798062,
+        "volume": 6905,
+        "stockinfo": {
+          "symbol": "GLH",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "CYCL",
+        "open": 1514,
+        "percent_change": 1.07,
+        "high": 1515,
+        "low": 1510,
+        "close": 1510,
+        "turn_over": 400150,
+        "volume": 265,
+        "stockinfo": {
+          "symbol": "CYCL",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "NIL",
+        "open": 605,
+        "percent_change": 0.17,
+        "high": 611.9,
+        "low": 600.1,
+        "close": 601.5,
+        "turn_over": 2352466.5,
+        "volume": 3911,
+        "stockinfo": {
+          "symbol": "NIL",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "USLB",
+        "open": 1810,
+        "percent_change": 1.33,
+        "high": 1840,
+        "low": 1795,
+        "close": 1828,
+        "turn_over": 4314080,
+        "volume": 2360,
+        "stockinfo": {
+          "symbol": "USLB",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "HLBSL",
+        "open": 930,
+        "percent_change": 1.96,
+        "high": 942,
+        "low": 930,
+        "close": 938,
+        "turn_over": 422100,
+        "volume": 450,
+        "stockinfo": {
+          "symbol": "HLBSL",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "PCBL",
+        "open": 256,
+        "percent_change": 0.4,
+        "high": 257,
+        "low": 252.1,
+        "close": 253,
+        "turn_over": 1652596,
+        "volume": 6532,
+        "stockinfo": {
+          "symbol": "PCBL",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "MSHL",
+        "open": 886,
+        "percent_change": 0.93,
+        "high": 903.7,
+        "low": 886,
+        "close": 903.7,
+        "turn_over": 93081.1,
+        "volume": 103,
+        "stockinfo": {
+          "symbol": "MSHL",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "NMIC",
+        "open": 1333,
+        "percent_change": -1.43,
+        "high": 1339.9,
+        "low": 1306,
+        "close": 1313,
+        "turn_over": 3161704,
+        "volume": 2408,
+        "stockinfo": {
+          "symbol": "NMIC",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "GRDBL",
+        "open": 1091.8,
+        "percent_change": -0.36,
+        "high": 1123,
+        "low": 1091.8,
+        "close": 1110,
+        "turn_over": 3159060,
+        "volume": 2846,
+        "stockinfo": {
+          "symbol": "GRDBL",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "LBBL",
+        "open": 457,
+        "percent_change": -0.64,
+        "high": 474.3,
+        "low": 457,
+        "close": 463,
+        "turn_over": 5739348,
+        "volume": 12396,
+        "stockinfo": {
+          "symbol": "LBBL",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "NMFBS",
+        "open": 1331,
+        "percent_change": 1.07,
+        "high": 1331,
+        "low": 1310,
+        "close": 1324,
+        "turn_over": 2561940,
+        "volume": 1935,
+        "stockinfo": {
+          "symbol": "NMFBS",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "MKCL",
+        "open": 1402,
+        "percent_change": 0.07,
+        "high": 1402,
+        "low": 1375.1,
+        "close": 1376,
+        "turn_over": 540768,
+        "volume": 393,
+        "stockinfo": {
+          "symbol": "MKCL",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "DLBS",
+        "open": 1372.5,
+        "percent_change": -3.53,
+        "high": 1476,
+        "low": 1347.2,
+        "close": 1351,
+        "turn_over": 5717432,
+        "volume": 4232,
+        "stockinfo": {
+          "symbol": "DLBS",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "SPHL",
+        "open": 540,
+        "percent_change": 2.59,
+        "high": 562,
+        "low": 540,
+        "close": 554,
+        "turn_over": 5185440,
+        "volume": 9360,
+        "stockinfo": {
+          "symbol": "SPHL",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "SPC",
+        "open": 489,
+        "percent_change": -0.2,
+        "high": 501,
+        "low": 489,
+        "close": 491,
+        "turn_over": 1640922,
+        "volume": 3342,
+        "stockinfo": {
+          "symbol": "SPC",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "NUBL",
+        "open": 754,
+        "percent_change": 0.03,
+        "high": 763.9,
+        "low": 754,
+        "close": 754.2,
+        "turn_over": 1700721,
+        "volume": 2255,
+        "stockinfo": {
+          "symbol": "NUBL",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "USHEC",
+        "open": 485,
+        "percent_change": 1.56,
+        "high": 495,
+        "low": 481.1,
+        "close": 488,
+        "turn_over": 15677488,
+        "volume": 32126,
+        "stockinfo": {
+          "symbol": "USHEC",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "MSLB",
+        "open": 1448,
+        "percent_change": -1.18,
+        "high": 1448,
+        "low": 1411,
+        "close": 1411,
+        "turn_over": 77605,
+        "volume": 55,
+        "stockinfo": {
+          "symbol": "MSLB",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "SAGAR",
+        "open": 929,
+        "percent_change": 9.99,
+        "high": 1001.8,
+        "low": 929,
+        "close": 1001.8,
+        "turn_over": 741332,
+        "volume": 740,
+        "stockinfo": {
+          "symbol": "SAGAR",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "GMLI",
+        "open": 1889.9,
+        "percent_change": -0.05,
+        "high": 1889.9,
+        "low": 1841.3,
+        "close": 1855,
+        "turn_over": 2454165,
+        "volume": 1323,
+        "stockinfo": {
+          "symbol": "GMLI",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "NHPC",
+        "open": 194,
+        "percent_change": 1.19,
+        "high": 196,
+        "low": 192,
+        "close": 196,
+        "turn_over": 3278492,
+        "volume": 16727,
+        "stockinfo": {
+          "symbol": "NHPC",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "MKHL",
+        "open": 800,
+        "percent_change": -1.72,
+        "high": 810,
+        "low": 800,
+        "close": 802,
+        "turn_over": 174836,
+        "volume": 218,
+        "stockinfo": {
+          "symbol": "MKHL",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "NICL",
+        "open": 518.8,
+        "percent_change": -0.19,
+        "high": 522,
+        "low": 512,
+        "close": 515,
+        "turn_over": 3245530,
+        "volume": 6302,
+        "stockinfo": {
+          "symbol": "NICL",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "MBLEF",
+        "open": 8.82,
+        "percent_change": 1.58,
+        "high": 8.99,
+        "low": 8.82,
+        "close": 8.99,
+        "turn_over": 8990,
+        "volume": 1000,
+        "stockinfo": {
+          "symbol": "MBLEF",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "NADEP",
+        "open": 760,
+        "percent_change": 0,
+        "high": 760,
+        "low": 751,
+        "close": 760,
+        "turn_over": 668800,
+        "volume": 880,
+        "stockinfo": {
+          "symbol": "NADEP",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "MKHC",
+        "open": 390.2,
+        "percent_change": 1.01,
+        "high": 404.4,
+        "low": 390.2,
+        "close": 402,
+        "turn_over": 624306,
+        "volume": 1553,
+        "stockinfo": {
+          "symbol": "MKHC",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "SLBBL",
+        "open": 853,
+        "percent_change": 1.61,
+        "high": 885,
+        "low": 853,
+        "close": 884,
+        "turn_over": 2039388,
+        "volume": 2307,
+        "stockinfo": {
+          "symbol": "SLBBL",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "FOWAD",
+        "open": 1119,
+        "percent_change": 1.3,
+        "high": 1120,
+        "low": 1116,
+        "close": 1120,
+        "turn_over": 618240,
+        "volume": 552,
+        "stockinfo": {
+          "symbol": "FOWAD",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "BHL",
+        "open": 182,
+        "percent_change": 1.38,
+        "high": 184.4,
+        "low": 181.9,
+        "close": 183.5,
+        "turn_over": 4687507.5,
+        "volume": 25545,
+        "stockinfo": {
+          "symbol": "BHL",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "SBL",
+        "open": 335,
+        "percent_change": 1.54,
+        "high": 338,
+        "low": 333,
+        "close": 337,
+        "turn_over": 15286994,
+        "volume": 45362,
+        "stockinfo": {
+          "symbol": "SBL",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "ADBL",
+        "open": 317.9,
+        "percent_change": 0.16,
+        "high": 318,
+        "low": 312,
+        "close": 316.5,
+        "turn_over": 3366294,
+        "volume": 10636,
+        "stockinfo": {
+          "symbol": "ADBL",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "RSDC",
+        "open": 655.7,
+        "percent_change": 0.79,
+        "high": 655.7,
+        "low": 629.8,
+        "close": 648,
+        "turn_over": 4995432,
+        "volume": 7709,
+        "stockinfo": {
+          "symbol": "RSDC",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "KKHC",
+        "open": 260.8,
+        "percent_change": 0.59,
+        "high": 260.8,
+        "low": 252.5,
+        "close": 257.5,
+        "turn_over": 1688427.5,
+        "volume": 6557,
+        "stockinfo": {
+          "symbol": "KKHC",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "ILBS",
+        "open": 1140,
+        "percent_change": 0.36,
+        "high": 1144.8,
+        "low": 1107,
+        "close": 1128,
+        "turn_over": 178224,
+        "volume": 158,
+        "stockinfo": {
+          "symbol": "ILBS",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "NLICL",
+        "open": 628,
+        "percent_change": 0.97,
+        "high": 628.7,
+        "low": 617,
+        "close": 624,
+        "turn_over": 14257776,
+        "volume": 22849,
+        "stockinfo": {
+          "symbol": "NLICL",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "CBBL",
+        "open": 1011,
+        "percent_change": 0.91,
+        "high": 1021,
+        "low": 1010,
+        "close": 1020,
+        "turn_over": 1917600,
+        "volume": 1880,
+        "stockinfo": {
+          "symbol": "CBBL",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "NWCL",
+        "open": 831,
+        "percent_change": -0.6,
+        "high": 846.9,
+        "low": 831,
+        "close": 831,
+        "turn_over": 1057863,
+        "volume": 1273,
+        "stockinfo": {
+          "symbol": "NWCL",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "SWMF",
+        "open": 712,
+        "percent_change": 0.46,
+        "high": 713.7,
+        "low": 695.3,
+        "close": 703,
+        "turn_over": 824619,
+        "volume": 1173,
+        "stockinfo": {
+          "symbol": "SWMF",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "SMJC",
+        "open": 520,
+        "percent_change": 1.37,
+        "high": 520,
+        "low": 508.1,
+        "close": 519,
+        "turn_over": 3103620,
+        "volume": 5980,
+        "stockinfo": {
+          "symbol": "SMJC",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "NIBLSTF",
+        "open": 8.2,
+        "percent_change": -1.08,
+        "high": 8.23,
+        "low": 8.18,
+        "close": 8.23,
+        "turn_over": 4938,
+        "volume": 600,
+        "stockinfo": {
+          "symbol": "NIBLSTF",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "IGI",
+        "open": 423,
+        "percent_change": 2.04,
+        "high": 440,
+        "low": 422.1,
+        "close": 425,
+        "turn_over": 3005175,
+        "volume": 7071,
+        "stockinfo": {
+          "symbol": "IGI",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "NBL",
+        "open": 240,
+        "percent_change": 0.38,
+        "high": 243,
+        "low": 239,
+        "close": 240.9,
+        "turn_over": 2270000.7,
+        "volume": 9423,
+        "stockinfo": {
+          "symbol": "NBL",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "CORBL",
+        "open": 1680,
+        "percent_change": 1.17,
+        "high": 1716,
+        "low": 1657,
+        "close": 1709.8,
+        "turn_over": 5555140.2,
+        "volume": 3249,
+        "stockinfo": {
+          "symbol": "CORBL",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "SHINE",
+        "open": 421.7,
+        "percent_change": 1.02,
+        "high": 421.7,
+        "low": 414,
+        "close": 417.7,
+        "turn_over": 1565539.6,
+        "volume": 3748,
+        "stockinfo": {
+          "symbol": "SHINE",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "SGIC",
+        "open": 470,
+        "percent_change": 2.54,
+        "high": 479.3,
+        "low": 463,
+        "close": 476,
+        "turn_over": 5297404,
+        "volume": 11129,
+        "stockinfo": {
+          "symbol": "SGIC",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "OMPL",
+        "open": 1200,
+        "percent_change": 0.11,
+        "high": 1217,
+        "low": 1195.7,
+        "close": 1200,
+        "turn_over": 2803200,
+        "volume": 2336,
+        "stockinfo": {
+          "symbol": "OMPL",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "NESDO",
+        "open": 1540,
+        "percent_change": -0.15,
+        "high": 1540,
+        "low": 1511,
+        "close": 1513,
+        "turn_over": 187612,
+        "volume": 124,
+        "stockinfo": {
+          "symbol": "NESDO",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "NYADI",
+        "open": 393.7,
+        "percent_change": 1.57,
+        "high": 409.5,
+        "low": 393.7,
+        "close": 408,
+        "turn_over": 455736,
+        "volume": 1117,
+        "stockinfo": {
+          "symbol": "NYADI",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "NICA",
+        "open": 309,
+        "percent_change": 1.55,
+        "high": 315,
+        "low": 309,
+        "close": 313.8,
+        "turn_over": 5017034.4,
+        "volume": 15988,
+        "stockinfo": {
+          "symbol": "NICA",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "GMFIL",
+        "open": 453,
+        "percent_change": 0.89,
+        "high": 455.6,
+        "low": 445.3,
+        "close": 451,
+        "turn_over": 2332121,
+        "volume": 5171,
+        "stockinfo": {
+          "symbol": "GMFIL",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "LSL",
+        "open": 233.8,
+        "percent_change": 0.43,
+        "high": 234,
+        "low": 232.4,
+        "close": 233,
+        "turn_over": 2300176,
+        "volume": 9872,
+        "stockinfo": {
+          "symbol": "LSL",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "HURJA",
+        "open": 234.9,
+        "percent_change": 1.61,
+        "high": 237,
+        "low": 233,
+        "close": 234,
+        "turn_over": 8856432,
+        "volume": 37848,
+        "stockinfo": {
+          "symbol": "HURJA",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "SINDU",
+        "open": 722,
+        "percent_change": -0.55,
+        "high": 730,
+        "low": 722,
+        "close": 729,
+        "turn_over": 2889027,
+        "volume": 3963,
+        "stockinfo": {
+          "symbol": "SINDU",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "NLG",
+        "open": 709,
+        "percent_change": 0.23,
+        "high": 709,
+        "low": 701,
+        "close": 703,
+        "turn_over": 8568867,
+        "volume": 12189,
+        "stockinfo": {
+          "symbol": "NLG",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "RHGCL",
+        "open": 275,
+        "percent_change": -1.23,
+        "high": 276,
+        "low": 268,
+        "close": 272,
+        "turn_over": 12921632,
+        "volume": 47506,
+        "stockinfo": {
+          "symbol": "RHGCL",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "ULHC",
+        "open": 458,
+        "percent_change": -0.76,
+        "high": 469.9,
+        "low": 458,
+        "close": 458,
+        "turn_over": 155262,
+        "volume": 339,
+        "stockinfo": {
+          "symbol": "ULHC",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "NBF3",
+        "open": 8.92,
+        "percent_change": -1.76,
+        "high": 9,
+        "low": 8.92,
+        "close": 8.94,
+        "turn_over": 109962,
+        "volume": 12300,
+        "stockinfo": {
+          "symbol": "NBF3",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "MLBL",
+        "open": 383,
+        "percent_change": -0.39,
+        "high": 389.7,
+        "low": 382.3,
+        "close": 383.3,
+        "turn_over": 4966418.1,
+        "volume": 12957,
+        "stockinfo": {
+          "symbol": "MLBL",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "JBBL",
+        "open": 314.6,
+        "percent_change": 0.31,
+        "high": 324,
+        "low": 314.6,
+        "close": 322,
+        "turn_over": 2723154,
+        "volume": 8457,
+        "stockinfo": {
+          "symbol": "JBBL",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "SMH",
+        "open": 795,
+        "percent_change": -0.85,
+        "high": 795,
+        "low": 787,
+        "close": 795,
+        "turn_over": 206700,
+        "volume": 260,
+        "stockinfo": {
+          "symbol": "SMH",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "SPIL",
+        "open": 668,
+        "percent_change": 0.45,
+        "high": 670.1,
+        "low": 668,
+        "close": 669,
+        "turn_over": 1543383,
+        "volume": 2307,
+        "stockinfo": {
+          "symbol": "SPIL",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "AKJCL",
+        "open": 193,
+        "percent_change": 0.36,
+        "high": 195,
+        "low": 192,
+        "close": 193.6,
+        "turn_over": 1668832,
+        "volume": 8620,
+        "stockinfo": {
+          "symbol": "AKJCL",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "AHL",
+        "open": 593,
+        "percent_change": 0.03,
+        "high": 628,
+        "low": 582,
+        "close": 605.1,
+        "turn_over": 1097046.3,
+        "volume": 1813,
+        "stockinfo": {
+          "symbol": "AHL",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "NICLBSL",
+        "open": 560,
+        "percent_change": 0.02,
+        "high": 568,
+        "low": 556.1,
+        "close": 560,
+        "turn_over": 1245440,
+        "volume": 2224,
+        "stockinfo": {
+          "symbol": "NICLBSL",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "SPDL",
+        "open": 438.6,
+        "percent_change": -0.21,
+        "high": 438.6,
+        "low": 426,
+        "close": 429.1,
+        "turn_over": 56574689.5,
+        "volume": 131845,
+        "stockinfo": {
+          "symbol": "SPDL",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "SADBL",
+        "open": 409,
+        "percent_change": 0.79,
+        "high": 410.2,
+        "low": 409,
+        "close": 410.2,
+        "turn_over": 5157444.6,
+        "volume": 12573,
+        "stockinfo": {
+          "symbol": "SADBL",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "LEC",
+        "open": 199,
+        "percent_change": 2.03,
+        "high": 204,
+        "low": 197.1,
+        "close": 201,
+        "turn_over": 5942766,
+        "volume": 29566,
+        "stockinfo": {
+          "symbol": "LEC",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "KPCL",
+        "open": 564.7,
+        "percent_change": 0.36,
+        "high": 564.7,
+        "low": 557.2,
+        "close": 560,
+        "turn_over": 641760,
+        "volume": 1146,
+        "stockinfo": {
+          "symbol": "KPCL",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "PPL",
+        "open": 335.9,
+        "percent_change": 0.64,
+        "high": 348.9,
+        "low": 335.9,
+        "close": 344.9,
+        "turn_over": 18112423.5,
+        "volume": 52515,
+        "stockinfo": {
+          "symbol": "PPL",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "JFL",
+        "open": 435.5,
+        "percent_change": 1.64,
+        "high": 435.5,
+        "low": 430,
+        "close": 434,
+        "turn_over": 287742,
+        "volume": 663,
+        "stockinfo": {
+          "symbol": "JFL",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "H8020",
+        "open": 10.45,
+        "percent_change": -0.19,
+        "high": 10.5,
+        "low": 10.45,
+        "close": 10.5,
+        "turn_over": 6300,
+        "volume": 600,
+        "stockinfo": {
+          "symbol": "H8020",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "AKPL",
+        "open": 248,
+        "percent_change": 0.77,
+        "high": 250.9,
+        "low": 247.2,
+        "close": 248.9,
+        "turn_over": 8099703.8,
+        "volume": 32542,
+        "stockinfo": {
+          "symbol": "AKPL",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "GBIME",
+        "open": 224,
+        "percent_change": 1.52,
+        "high": 226.9,
+        "low": 224,
+        "close": 226.9,
+        "turn_over": 9130002.2,
+        "volume": 40238,
+        "stockinfo": {
+          "symbol": "GBIME",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "HDHPC",
+        "open": 178,
+        "percent_change": 1.7,
+        "high": 179.8,
+        "low": 177.1,
+        "close": 179,
+        "turn_over": 3087213,
+        "volume": 17247,
+        "stockinfo": {
+          "symbol": "HDHPC",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "CHL",
+        "open": 282.5,
+        "percent_change": -0.32,
+        "high": 282.5,
+        "low": 276,
+        "close": 276.1,
+        "turn_over": 8964967,
+        "volume": 32470,
+        "stockinfo": {
+          "symbol": "CHL",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "GBBD85",
+        "open": 1089,
+        "percent_change": -1.27,
+        "high": 1089,
+        "low": 1075.2,
+        "close": 1075.2,
+        "turn_over": 53760,
+        "volume": 50,
+        "stockinfo": {
+          "symbol": "GBBD85",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "SARBTM",
+        "open": 904,
+        "percent_change": 0.56,
+        "high": 918,
+        "low": 895,
+        "close": 905,
+        "turn_over": 57701895,
+        "volume": 63759,
+        "stockinfo": {
+          "symbol": "SARBTM",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "CHCL",
+        "open": 497.2,
+        "percent_change": 0.67,
+        "high": 497.2,
+        "low": 488.5,
+        "close": 494,
+        "turn_over": 5330260,
+        "volume": 10790,
+        "stockinfo": {
+          "symbol": "CHCL",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "MEL",
+        "open": 297,
+        "percent_change": -1.3,
+        "high": 301.5,
+        "low": 291.2,
+        "close": 296,
+        "turn_over": 6008208,
+        "volume": 20298,
+        "stockinfo": {
+          "symbol": "MEL",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "NRM",
+        "open": 434.9,
+        "percent_change": 0.05,
+        "high": 434.9,
+        "low": 427.2,
+        "close": 430,
+        "turn_over": 4291400,
+        "volume": 9980,
+        "stockinfo": {
+          "symbol": "NRM",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "ALICL",
+        "open": 465.7,
+        "percent_change": 2,
+        "high": 475,
+        "low": 465.7,
+        "close": 475,
+        "turn_over": 17419675,
+        "volume": 36673,
+        "stockinfo": {
+          "symbol": "ALICL",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "CZBIL",
+        "open": 183.1,
+        "percent_change": 1.12,
+        "high": 189,
+        "low": 183.1,
+        "close": 188.9,
+        "turn_over": 861572.9,
+        "volume": 4561,
+        "stockinfo": {
+          "symbol": "CZBIL",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "HIDCLP",
+        "open": 189,
+        "percent_change": 1.07,
+        "high": 191,
+        "low": 188.3,
+        "close": 189,
+        "turn_over": 8440740,
+        "volume": 44660,
+        "stockinfo": {
+          "symbol": "HIDCLP",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "UMHL",
+        "open": 529.5,
+        "percent_change": 0,
+        "high": 548.9,
+        "low": 529.5,
+        "close": 540,
+        "turn_over": 28163700,
+        "volume": 52155,
+        "stockinfo": {
+          "symbol": "UMHL",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "NMB",
+        "open": 244.5,
+        "percent_change": 0.58,
+        "high": 244.5,
+        "low": 243.1,
+        "close": 244.4,
+        "turn_over": 2347217.6,
+        "volume": 9604,
+        "stockinfo": {
+          "symbol": "NMB",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "GVL",
+        "open": 528.1,
+        "percent_change": 0.08,
+        "high": 536,
+        "low": 528.1,
+        "close": 532,
+        "turn_over": 3119116,
+        "volume": 5863,
+        "stockinfo": {
+          "symbol": "GVL",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "RIDI",
+        "open": 237,
+        "percent_change": 0.6,
+        "high": 237,
+        "low": 235,
+        "close": 235.8,
+        "turn_over": 4041376.2,
+        "volume": 17139,
+        "stockinfo": {
+          "symbol": "RIDI",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "UNHPL",
+        "open": 512.7,
+        "percent_change": 0.98,
+        "high": 515,
+        "low": 511,
+        "close": 514,
+        "turn_over": 15245754,
+        "volume": 29661,
+        "stockinfo": {
+          "symbol": "UNHPL",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "BNHC",
+        "open": 440,
+        "percent_change": 0.9,
+        "high": 449,
+        "low": 440,
+        "close": 446,
+        "turn_over": 1837520,
+        "volume": 4120,
+        "stockinfo": {
+          "symbol": "BNHC",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "PRIN",
+        "open": 674,
+        "percent_change": 1.66,
+        "high": 687,
+        "low": 673,
+        "close": 673,
+        "turn_over": 6138433,
+        "volume": 9121,
+        "stockinfo": {
+          "symbol": "PRIN",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "SIKLES",
+        "open": 670,
+        "percent_change": -0.58,
+        "high": 683.9,
+        "low": 666.2,
+        "close": 667,
+        "turn_over": 10825410,
+        "volume": 16230,
+        "stockinfo": {
+          "symbol": "SIKLES",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "BPCL",
+        "open": 749.7,
+        "percent_change": 0.68,
+        "high": 749.7,
+        "low": 721,
+        "close": 740,
+        "turn_over": 14524720,
+        "volume": 19628,
+        "stockinfo": {
+          "symbol": "BPCL",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "RADHI",
+        "open": 784.3,
+        "percent_change": 0.13,
+        "high": 784.3,
+        "low": 770,
+        "close": 770,
+        "turn_over": 26661250,
+        "volume": 34625,
+        "stockinfo": {
+          "symbol": "RADHI",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "CGH",
+        "open": 887.9,
+        "percent_change": 1.36,
+        "high": 892.5,
+        "low": 885,
+        "close": 889.9,
+        "turn_over": 3677956.7,
+        "volume": 4133,
+        "stockinfo": {
+          "symbol": "CGH",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "KBL",
+        "open": 181,
+        "percent_change": 1,
+        "high": 183.7,
+        "low": 181,
+        "close": 182.5,
+        "turn_over": 8138770,
+        "volume": 44596,
+        "stockinfo": {
+          "symbol": "KBL",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "ICFC",
+        "open": 635.1,
+        "percent_change": 0.65,
+        "high": 644.9,
+        "low": 635,
+        "close": 638,
+        "turn_over": 2898434,
+        "volume": 4543,
+        "stockinfo": {
+          "symbol": "ICFC",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "SANIMA",
+        "open": 303,
+        "percent_change": 1.93,
+        "high": 308,
+        "low": 302,
+        "close": 307,
+        "turn_over": 6778253,
+        "volume": 22079,
+        "stockinfo": {
+          "symbol": "SANIMA",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "UPCL",
+        "open": 372,
+        "percent_change": 0.54,
+        "high": 377.9,
+        "low": 372,
+        "close": 374,
+        "turn_over": 15316048,
+        "volume": 40952,
+        "stockinfo": {
+          "symbol": "UPCL",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "AVYAN",
+        "open": 1003,
+        "percent_change": 0.71,
+        "high": 1003,
+        "low": 986,
+        "close": 996,
+        "turn_over": 488040,
+        "volume": 490,
+        "stockinfo": {
+          "symbol": "AVYAN",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "JHAPA",
+        "open": 511,
+        "percent_change": 10,
+        "high": 551.1,
+        "low": 511,
+        "close": 551.1,
+        "turn_over": 93687,
+        "volume": 170,
+        "stockinfo": {
+          "symbol": "JHAPA",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "GCIL",
+        "open": 437,
+        "percent_change": 0.69,
+        "high": 444,
+        "low": 437,
+        "close": 440,
+        "turn_over": 1778920,
+        "volume": 4043,
+        "stockinfo": {
+          "symbol": "GCIL",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "NRN",
+        "open": 1970,
+        "percent_change": -0.41,
+        "high": 1986,
+        "low": 1961,
+        "close": 1962,
+        "turn_over": 35072712,
+        "volume": 17876,
+        "stockinfo": {
+          "symbol": "NRN",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "PROFL",
+        "open": 470,
+        "percent_change": 0.45,
+        "high": 476.9,
+        "low": 468.1,
+        "close": 468.1,
+        "turn_over": 1111269.4,
+        "volume": 2374,
+        "stockinfo": {
+          "symbol": "PROFL",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "BNT",
+        "open": 12250.1,
+        "percent_change": -1.2,
+        "high": 12251.1,
+        "low": 12250,
+        "close": 12251.1,
+        "turn_over": 612555,
+        "volume": 50,
+        "stockinfo": {
+          "symbol": "BNT",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "EBL",
+        "open": 656,
+        "percent_change": -0.14,
+        "high": 656,
+        "low": 650,
+        "close": 651,
+        "turn_over": 3954825,
+        "volume": 6075,
+        "stockinfo": {
+          "symbol": "EBL",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "ALBSL",
+        "open": 1038.8,
+        "percent_change": -0.47,
+        "high": 1074,
+        "low": 1038.8,
+        "close": 1055,
+        "turn_over": 5707550,
+        "volume": 5410,
+        "stockinfo": {
+          "symbol": "ALBSL",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "SAGF",
+        "open": 9.1,
+        "percent_change": 1.96,
+        "high": 9.38,
+        "low": 9.1,
+        "close": 9.38,
+        "turn_over": 66598,
+        "volume": 7100,
+        "stockinfo": {
+          "symbol": "SAGF",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "MNBBL",
+        "open": 352.9,
+        "percent_change": 0.6,
+        "high": 355.8,
+        "low": 352.9,
+        "close": 355,
+        "turn_over": 2385245,
+        "volume": 6719,
+        "stockinfo": {
+          "symbol": "MNBBL",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "SAPDBL",
+        "open": 832,
+        "percent_change": -0.59,
+        "high": 848.5,
+        "low": 831,
+        "close": 843.9,
+        "turn_over": 9308217,
+        "volume": 11030,
+        "stockinfo": {
+          "symbol": "SAPDBL",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "HDL",
+        "open": 1157.8,
+        "percent_change": 1.14,
+        "high": 1157.8,
+        "low": 1135.5,
+        "close": 1148,
+        "turn_over": 25335212,
+        "volume": 22069,
+        "stockinfo": {
+          "symbol": "HDL",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "CHDC",
+        "open": 2296.9,
+        "percent_change": 1.01,
+        "high": 2329.9,
+        "low": 2296.9,
+        "close": 2320,
+        "turn_over": 62999600,
+        "volume": 27155,
+        "stockinfo": {
+          "symbol": "CHDC",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "SBI",
+        "open": 399.8,
+        "percent_change": 1.28,
+        "high": 415.8,
+        "low": 385,
+        "close": 397,
+        "turn_over": 2997747,
+        "volume": 7551,
+        "stockinfo": {
+          "symbol": "SBI",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "RFPL",
+        "open": 347.5,
+        "percent_change": 2.54,
+        "high": 367.2,
+        "low": 347.5,
+        "close": 363,
+        "turn_over": 4974189,
+        "volume": 13703,
+        "stockinfo": {
+          "symbol": "RFPL",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "VLUCL",
+        "open": 561,
+        "percent_change": -0.35,
+        "high": 570,
+        "low": 561,
+        "close": 565,
+        "turn_over": 149725,
+        "volume": 265,
+        "stockinfo": {
+          "symbol": "VLUCL",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "HIMSTAR",
+        "open": 809.7,
+        "percent_change": 1.07,
+        "high": 881,
+        "low": 809.7,
+        "close": 835,
+        "turn_over": 10123540,
+        "volume": 12124,
+        "stockinfo": {
+          "symbol": "HIMSTAR",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "SONA",
+        "open": 440,
+        "percent_change": -0.18,
+        "high": 440,
+        "low": 431.5,
+        "close": 435,
+        "turn_over": 3133305,
+        "volume": 7203,
+        "stockinfo": {
+          "symbol": "SONA",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "RNLI",
+        "open": 484.9,
+        "percent_change": 0.84,
+        "high": 484.9,
+        "low": 476.2,
+        "close": 480,
+        "turn_over": 32793120,
+        "volume": 68319,
+        "stockinfo": {
+          "symbol": "RNLI",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "STC",
+        "open": 5480,
+        "percent_change": 0.56,
+        "high": 5525,
+        "low": 5426,
+        "close": 5450,
+        "turn_over": 3706000,
+        "volume": 680,
+        "stockinfo": {
+          "symbol": "STC",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "NIMB",
+        "open": 197,
+        "percent_change": -0.51,
+        "high": 197.8,
+        "low": 193.9,
+        "close": 194,
+        "turn_over": 5353818,
+        "volume": 27597,
+        "stockinfo": {
+          "symbol": "NIMB",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "UAIL",
+        "open": 459.9,
+        "percent_change": 1.13,
+        "high": 460,
+        "low": 450,
+        "close": 458,
+        "turn_over": 1250340,
+        "volume": 2730,
+        "stockinfo": {
+          "symbol": "UAIL",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "BHDC",
+        "open": 510,
+        "percent_change": 0.02,
+        "high": 510,
+        "low": 500.1,
+        "close": 505,
+        "turn_over": 8720845,
+        "volume": 17269,
+        "stockinfo": {
+          "symbol": "BHDC",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "DORDI",
+        "open": 283.5,
+        "percent_change": -0.72,
+        "high": 283.5,
+        "low": 274.4,
+        "close": 276,
+        "turn_over": 17840640,
+        "volume": 64640,
+        "stockinfo": {
+          "symbol": "DORDI",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "CIT",
+        "open": 1862,
+        "percent_change": 0.59,
+        "high": 1865,
+        "low": 1855,
+        "close": 1865,
+        "turn_over": 2284625,
+        "volume": 1225,
+        "stockinfo": {
+          "symbol": "CIT",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "HPPL",
+        "open": 474,
+        "percent_change": 0.13,
+        "high": 487,
+        "low": 474,
+        "close": 480,
+        "turn_over": 6322560,
+        "volume": 13172,
+        "stockinfo": {
+          "symbol": "HPPL",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "RLFL",
+        "open": 436.9,
+        "percent_change": 0.93,
+        "high": 439.6,
+        "low": 433,
+        "close": 435,
+        "turn_over": 328425,
+        "volume": 755,
+        "stockinfo": {
+          "symbol": "RLFL",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "SHEL",
+        "open": 296,
+        "percent_change": 1.76,
+        "high": 303,
+        "low": 296,
+        "close": 299.9,
+        "turn_over": 31424121.8,
+        "volume": 104782,
+        "stockinfo": {
+          "symbol": "SHEL",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "CLI",
+        "open": 475,
+        "percent_change": 1.28,
+        "high": 479,
+        "low": 472,
+        "close": 476,
+        "turn_over": 2058224,
+        "volume": 4324,
+        "stockinfo": {
+          "symbol": "CLI",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "MBJC",
+        "open": 276.4,
+        "percent_change": 0.43,
+        "high": 287.8,
+        "low": 276.4,
+        "close": 283.2,
+        "turn_over": 2199897.6,
+        "volume": 7768,
+        "stockinfo": {
+          "symbol": "MBJC",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "FMDBL",
+        "open": 855.9,
+        "percent_change": 0.91,
+        "high": 855.9,
+        "low": 845.2,
+        "close": 850,
+        "turn_over": 8160000,
+        "volume": 9600,
+        "stockinfo": {
+          "symbol": "FMDBL",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "RHPL",
+        "open": 260.4,
+        "percent_change": 1.55,
+        "high": 270.9,
+        "low": 260.3,
+        "close": 269.2,
+        "turn_over": 2356846,
+        "volume": 8755,
+        "stockinfo": {
+          "symbol": "RHPL",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "AHPC",
+        "open": 281.9,
+        "percent_change": 1.06,
+        "high": 286,
+        "low": 281.9,
+        "close": 284.9,
+        "turn_over": 5950421.4,
+        "volume": 20886,
+        "stockinfo": {
+          "symbol": "AHPC",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "SNLI",
+        "open": 485,
+        "percent_change": 2.27,
+        "high": 497.5,
+        "low": 485,
+        "close": 495,
+        "turn_over": 11328570,
+        "volume": 22886,
+        "stockinfo": {
+          "symbol": "SNLI",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "PMLI",
+        "open": 495,
+        "percent_change": 1.07,
+        "high": 500,
+        "low": 488,
+        "close": 500,
+        "turn_over": 3870000,
+        "volume": 7740,
+        "stockinfo": {
+          "symbol": "PMLI",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "SHPC",
+        "open": 514,
+        "percent_change": 1.38,
+        "high": 524,
+        "low": 514,
+        "close": 521.1,
+        "turn_over": 16722099,
+        "volume": 32090,
+        "stockinfo": {
+          "symbol": "SHPC",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "MABEL",
+        "open": 689.2,
+        "percent_change": -3.01,
+        "high": 702.9,
+        "low": 662.5,
+        "close": 682,
+        "turn_over": 17579232,
+        "volume": 25776,
+        "stockinfo": {
+          "symbol": "MABEL",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "NLIC",
+        "open": 835,
+        "percent_change": 2.05,
+        "high": 850,
+        "low": 835,
+        "close": 847,
+        "turn_over": 76569647,
+        "volume": 90401,
+        "stockinfo": {
+          "symbol": "NLIC",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "MEHL",
+        "open": 421.1,
+        "percent_change": 2.48,
+        "high": 434,
+        "low": 421.1,
+        "close": 430.4,
+        "turn_over": 5679128,
+        "volume": 13195,
+        "stockinfo": {
+          "symbol": "MEHL",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "MANDU",
+        "open": 790,
+        "percent_change": 0.63,
+        "high": 800,
+        "low": 785.2,
+        "close": 795,
+        "turn_over": 206700,
+        "volume": 260,
+        "stockinfo": {
+          "symbol": "MANDU",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "NIFRA",
+        "open": 277,
+        "percent_change": 0.86,
+        "high": 281.9,
+        "low": 277,
+        "close": 280.4,
+        "turn_over": 11633235.2,
+        "volume": 41488,
+        "stockinfo": {
+          "symbol": "NIFRA",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "CREST",
+        "open": 1302,
+        "percent_change": -0.21,
+        "high": 1349,
+        "low": 1261,
+        "close": 1277.3,
+        "turn_over": 5307181.5,
+        "volume": 4155,
+        "stockinfo": {
+          "symbol": "CREST",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "SRLI",
+        "open": 404,
+        "percent_change": 1.04,
+        "high": 404,
+        "low": 392,
+        "close": 400.2,
+        "turn_over": 4524661.2,
+        "volume": 11306,
+        "stockinfo": {
+          "symbol": "SRLI",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "NTC",
+        "open": 865,
+        "percent_change": 0.68,
+        "high": 865,
+        "low": 855,
+        "close": 864.4,
+        "turn_over": 1130635.2,
+        "volume": 1308,
+        "stockinfo": {
+          "symbol": "NTC",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "SGHC",
+        "open": 420.2,
+        "percent_change": 5.1,
+        "high": 433.5,
+        "low": 404.9,
+        "close": 433,
+        "turn_over": 20645873,
+        "volume": 47681,
+        "stockinfo": {
+          "symbol": "SGHC",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "DHPL",
+        "open": 309.6,
+        "percent_change": 0.46,
+        "high": 315,
+        "low": 300,
+        "close": 305,
+        "turn_over": 1022665,
+        "volume": 3353,
+        "stockinfo": {
+          "symbol": "DHPL",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "PFL",
+        "open": 387,
+        "percent_change": 1.18,
+        "high": 387,
+        "low": 382,
+        "close": 386.8,
+        "turn_over": 167097.6,
+        "volume": 432,
+        "stockinfo": {
+          "symbol": "PFL",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "UPPER",
+        "open": 179,
+        "percent_change": 0.22,
+        "high": 181,
+        "low": 179,
+        "close": 179.4,
+        "turn_over": 3519828,
+        "volume": 19620,
+        "stockinfo": {
+          "symbol": "UPPER",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "BHCL",
+        "open": 467.6,
+        "percent_change": 1.09,
+        "high": 493,
+        "low": 467.6,
+        "close": 482.3,
+        "turn_over": 7552818,
+        "volume": 15660,
+        "stockinfo": {
+          "symbol": "BHCL",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "TPC",
+        "open": 347,
+        "percent_change": 0.17,
+        "high": 353,
+        "low": 342.6,
+        "close": 346.9,
+        "turn_over": 9415212.9,
+        "volume": 27141,
+        "stockinfo": {
+          "symbol": "TPC",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "API",
+        "open": 285,
+        "percent_change": 1.24,
+        "high": 288,
+        "low": 284.5,
+        "close": 286,
+        "turn_over": 7661654,
+        "volume": 26789,
+        "stockinfo": {
+          "symbol": "API",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "NMLBBL",
+        "open": 650,
+        "percent_change": 1.61,
+        "high": 668.9,
+        "low": 650,
+        "close": 657.3,
+        "turn_over": 6544078.8,
+        "volume": 9956,
+        "stockinfo": {
+          "symbol": "NMLBBL",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "HRL",
+        "open": 836,
+        "percent_change": 1.82,
+        "high": 840,
+        "low": 823,
+        "close": 835,
+        "turn_over": 81197905,
+        "volume": 97243,
+        "stockinfo": {
+          "symbol": "HRL",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "CKHL",
+        "open": 628,
+        "percent_change": 1.08,
+        "high": 651.9,
+        "low": 628,
+        "close": 646.9,
+        "turn_over": 1778975,
+        "volume": 2750,
+        "stockinfo": {
+          "symbol": "CKHL",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "NRIC",
+        "open": 1340,
+        "percent_change": 0.38,
+        "high": 1347,
+        "low": 1326,
+        "close": 1335,
+        "turn_over": 15672900,
+        "volume": 11740,
+        "stockinfo": {
+          "symbol": "NRIC",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "ILI",
+        "open": 461,
+        "percent_change": 1.02,
+        "high": 468,
+        "low": 461,
+        "close": 465.7,
+        "turn_over": 1188000.7,
+        "volume": 2551,
+        "stockinfo": {
+          "symbol": "ILI",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "JBLB",
+        "open": 1560,
+        "percent_change": 3.17,
+        "high": 1638,
+        "low": 1560,
+        "close": 1596,
+        "turn_over": 44245908,
+        "volume": 27723,
+        "stockinfo": {
+          "symbol": "JBLB",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "PURE",
+        "open": 848,
+        "percent_change": 2.14,
+        "high": 889,
+        "low": 837.1,
+        "close": 861,
+        "turn_over": 2575251,
+        "volume": 2991,
+        "stockinfo": {
+          "symbol": "PURE",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "PRVU",
+        "open": 189,
+        "percent_change": 2.18,
+        "high": 192.9,
+        "low": 189,
+        "close": 191.9,
+        "turn_over": 11776519.2,
+        "volume": 61368,
+        "stockinfo": {
+          "symbol": "PRVU",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "SJLIC",
+        "open": 438,
+        "percent_change": 4.58,
+        "high": 457,
+        "low": 438,
+        "close": 457,
+        "turn_over": 35498846,
+        "volume": 77678,
+        "stockinfo": {
+          "symbol": "SJLIC",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "GMFBS",
+        "open": 1598,
+        "percent_change": -2.4,
+        "high": 1598,
+        "low": 1508,
+        "close": 1530.1,
+        "turn_over": 841555,
+        "volume": 550,
+        "stockinfo": {
+          "symbol": "GMFBS",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "NGPL",
+        "open": 391.9,
+        "percent_change": 0.57,
+        "high": 391.9,
+        "low": 387.4,
+        "close": 389,
+        "turn_over": 32978253,
+        "volume": 84777,
+        "stockinfo": {
+          "symbol": "NGPL",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "NABIL",
+        "open": 508,
+        "percent_change": 0.29,
+        "high": 513.9,
+        "low": 507,
+        "close": 511,
+        "turn_over": 2263219,
+        "volume": 4429,
+        "stockinfo": {
+          "symbol": "NABIL",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "TTL",
+        "open": 760.1,
+        "percent_change": -0.7,
+        "high": 778.6,
+        "low": 760.1,
+        "close": 764.5,
+        "turn_over": 4663450,
+        "volume": 6100,
+        "stockinfo": {
+          "symbol": "TTL",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "BHPL",
+        "open": 662.1,
+        "percent_change": -0.18,
+        "high": 664.8,
+        "low": 662.1,
+        "close": 664.8,
+        "turn_over": 19944,
+        "volume": 30,
+        "stockinfo": {
+          "symbol": "BHPL",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "GBBL",
+        "open": 383,
+        "percent_change": 1.18,
+        "high": 385.5,
+        "low": 383,
+        "close": 385.5,
+        "turn_over": 14537976,
+        "volume": 37712,
+        "stockinfo": {
+          "symbol": "GBBL",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "SANVI",
+        "open": 626.3,
+        "percent_change": 2.25,
+        "high": 664,
+        "low": 626.3,
+        "close": 653.4,
+        "turn_over": 11556685.8,
+        "volume": 17687,
+        "stockinfo": {
+          "symbol": "SANVI",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "LICN",
+        "open": 894,
+        "percent_change": 2.3,
+        "high": 900,
+        "low": 880,
+        "close": 900,
+        "turn_over": 24701400,
+        "volume": 27446,
+        "stockinfo": {
+          "symbol": "LICN",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "SCB",
+        "open": 645,
+        "percent_change": 0.8,
+        "high": 648.8,
+        "low": 645,
+        "close": 646.1,
+        "turn_over": 2950092.6,
+        "volume": 4566,
+        "stockinfo": {
+          "symbol": "SCB",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "HIDCL",
+        "open": 267,
+        "percent_change": 1.88,
+        "high": 278,
+        "low": 267,
+        "close": 276.5,
+        "turn_over": 20518235.5,
+        "volume": 74207,
+        "stockinfo": {
+          "symbol": "HIDCL",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "EHPL",
+        "open": 431.2,
+        "percent_change": 1.36,
+        "high": 454.9,
+        "low": 431.2,
+        "close": 446,
+        "turn_over": 46918308,
+        "volume": 105198,
+        "stockinfo": {
+          "symbol": "EHPL",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "NEPSE",
+        "open": 2601.51,
+        "percent_change": 0.86,
+        "high": 2625.5,
+        "low": 2601.49,
+        "close": 2622.73,
+        "turn_over": 4647282731813.3,
+        "volume": 1771925715.5,
+        "stockinfo": {
+          "symbol": "NEPSE",
+          "type": "index"
+        }
+      },
+      {
+        "symbol": "SJCL",
+        "open": 293.5,
+        "percent_change": 0.68,
+        "high": 297,
+        "low": 292.1,
+        "close": 294,
+        "turn_over": 2699802,
+        "volume": 9183,
+        "stockinfo": {
+          "symbol": "SJCL",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "NABBC",
+        "open": 847,
+        "percent_change": 1.27,
+        "high": 870,
+        "low": 846.1,
+        "close": 869.9,
+        "turn_over": 6767822,
+        "volume": 7780,
+        "stockinfo": {
+          "symbol": "NABBC",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "BUNGAL",
+        "open": 591.4,
+        "percent_change": -1.19,
+        "high": 591.4,
+        "low": 569,
+        "close": 573,
+        "turn_over": 7267932,
+        "volume": 12684,
+        "stockinfo": {
+          "symbol": "BUNGAL",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "HBL",
+        "open": 184.6,
+        "percent_change": 1.96,
+        "high": 193.3,
+        "low": 184.6,
+        "close": 192,
+        "turn_over": 5508480,
+        "volume": 28690,
+        "stockinfo": {
+          "symbol": "HBL",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "MEN",
+        "open": 672,
+        "percent_change": 0.66,
+        "high": 672,
+        "low": 668,
+        "close": 670.4,
+        "turn_over": 28902284.8,
+        "volume": 43112,
+        "stockinfo": {
+          "symbol": "MEN",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "SSHL",
+        "open": 170,
+        "percent_change": 0.95,
+        "high": 170,
+        "low": 168.1,
+        "close": 169.6,
+        "turn_over": 2126784,
+        "volume": 12540,
+        "stockinfo": {
+          "symbol": "SSHL",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "PHCL",
+        "open": 290,
+        "percent_change": 1.31,
+        "high": 297,
+        "low": 289,
+        "close": 294.7,
+        "turn_over": 24563539.7,
+        "volume": 83351,
+        "stockinfo": {
+          "symbol": "PHCL",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "HLI",
+        "open": 381,
+        "percent_change": 1.74,
+        "high": 382.5,
+        "low": 375,
+        "close": 380.1,
+        "turn_over": 9657580.8,
+        "volume": 25408,
+        "stockinfo": {
+          "symbol": "HLI",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "JOSHI",
+        "open": 353.9,
+        "percent_change": -0.82,
+        "high": 375.3,
+        "low": 346.9,
+        "close": 351,
+        "turn_over": 20383623,
+        "volume": 58073,
+        "stockinfo": {
+          "symbol": "JOSHI",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "MAKAR",
+        "open": 573.5,
+        "percent_change": 0.59,
+        "high": 582.8,
+        "low": 566.5,
+        "close": 566.5,
+        "turn_over": 812927.5,
+        "volume": 1435,
+        "stockinfo": {
+          "symbol": "MAKAR",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "SHIVM",
+        "open": 605,
+        "percent_change": 0.83,
+        "high": 612,
+        "low": 605,
+        "close": 606,
+        "turn_over": 36080028,
+        "volume": 59538,
+        "stockinfo": {
+          "symbol": "SHIVM",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "DHEL",
+        "open": 556,
+        "percent_change": 1.08,
+        "high": 568,
+        "low": 555,
+        "close": 562,
+        "turn_over": 9114516,
+        "volume": 16218,
+        "stockinfo": {
+          "symbol": "DHEL",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "MBL",
+        "open": 217.9,
+        "percent_change": -0.14,
+        "high": 218.1,
+        "low": 214,
+        "close": 215.7,
+        "turn_over": 1575257.1,
+        "volume": 7303,
+        "stockinfo": {
+          "symbol": "MBL",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "BARUN",
+        "open": 354.9,
+        "percent_change": -0.29,
+        "high": 354.9,
+        "low": 345,
+        "close": 347,
+        "turn_over": 12738370,
+        "volume": 36710,
+        "stockinfo": {
+          "symbol": "BARUN",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "BANDIPUR",
+        "open": 684.9,
+        "percent_change": 9.99,
+        "high": 738.6,
+        "low": 684.9,
+        "close": 738.6,
+        "turn_over": 31124604,
+        "volume": 42140,
+        "stockinfo": {
+          "symbol": "BANDIPUR",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "SAHAS",
+        "open": 563.2,
+        "percent_change": 1.17,
+        "high": 570,
+        "low": 563.2,
+        "close": 568.7,
+        "turn_over": 20832049.7,
+        "volume": 36631,
+        "stockinfo": {
+          "symbol": "SAHAS",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "DDBL",
+        "open": 858,
+        "percent_change": 0.7,
+        "high": 875,
+        "low": 858,
+        "close": 861,
+        "turn_over": 5711013,
+        "volume": 6633,
+        "stockinfo": {
+          "symbol": "DDBL",
+          "type": "stock"
+        }
+      },
+      {
+        "symbol": "SENSITIVE",
+        "open": 448.46,
+        "percent_change": 0.83,
+        "high": 452.16,
+        "low": 448.35,
+        "close": 452.03,
+        "turn_over": 0,
+        "volume": 0,
+        "stockinfo": {
+          "symbol": "SENSITIVE",
+          "type": "index"
+        }
+      },
+      {
+        "symbol": "MICROFINANCE",
+        "open": 4927.52,
+        "percent_change": 0.7,
+        "high": 4980.92,
+        "low": 4924.19,
+        "close": 4957.47,
+        "turn_over": 132970867.3,
+        "volume": 132970867.3,
+        "stockinfo": {
+          "symbol": "MICROFINANCE",
+          "type": "index"
+        }
+      },
+      {
+        "symbol": "HYDROPOWER",
+        "open": 3391.48,
+        "percent_change": 0.59,
+        "high": 3419.3,
+        "low": 3390.54,
+        "close": 3411.89,
+        "turn_over": 739594766.9,
+        "volume": 739594766.9,
+        "stockinfo": {
+          "symbol": "HYDROPOWER",
+          "type": "index"
+        }
+      },
+      {
+        "symbol": "HOTELS",
+        "open": 6793.82,
+        "percent_change": 1.76,
+        "high": 6914.76,
+        "low": 6793.82,
+        "close": 6854.2,
+        "turn_over": 41710264,
+        "volume": 41710264,
+        "stockinfo": {
+          "symbol": "HOTELS",
+          "type": "index"
+        }
+      },
+      {
+        "symbol": "SENFLOAT",
+        "open": 152.18,
+        "percent_change": 0.79,
+        "high": 153.34,
+        "low": 152.13,
+        "close": 153.23,
+        "turn_over": 0,
+        "volume": 0,
+        "stockinfo": {
+          "symbol": "SENFLOAT",
+          "type": "index"
+        }
+      },
+      {
+        "symbol": "DEVBANK",
+        "open": 5401.01,
+        "percent_change": 0.4,
+        "high": 5447.59,
+        "low": 5400.74,
+        "close": 5438.73,
+        "turn_over": 73609675,
+        "volume": 73609675,
+        "stockinfo": {
+          "symbol": "DEVBANK",
+          "type": "index"
+        }
+      },
+      {
+        "symbol": "MANUFACTURE",
+        "open": 7517.84,
+        "percent_change": 0.79,
+        "high": 7581,
+        "low": 7501.92,
+        "close": 7553.21,
+        "turn_over": 130502707.8,
+        "volume": 130502707.8,
+        "stockinfo": {
+          "symbol": "MANUFACTURE",
+          "type": "index"
+        }
+      },
+      {
+        "symbol": "OTHERS",
+        "open": 2349.28,
+        "percent_change": 0.78,
+        "high": 2366.79,
+        "low": 2343.1,
+        "close": 2358.86,
+        "turn_over": 111138238,
+        "volume": 111138238,
+        "stockinfo": {
+          "symbol": "OTHERS",
+          "type": "index"
+        }
+      },
+      {
+        "symbol": "FLOAT",
+        "open": 177.96,
+        "percent_change": 0.83,
+        "high": 179.57,
+        "low": 177.95,
+        "close": 179.34,
+        "turn_over": 0,
+        "volume": 0,
+        "stockinfo": {
+          "symbol": "FLOAT",
+          "type": "index"
+        }
+      },
+      {
+        "symbol": "BANKING",
+        "open": 1343.33,
+        "percent_change": 0.76,
+        "high": 1358.35,
+        "low": 1343.06,
+        "close": 1355.51,
+        "turn_over": 93463355.8,
+        "volume": 93463355.8,
+        "stockinfo": {
+          "symbol": "BANKING",
+          "type": "index"
+        }
+      },
+      {
+        "symbol": "NONLIFEINSU",
+        "open": 10736.39,
+        "percent_change": 0.73,
+        "high": 10855.39,
+        "low": 10736.39,
+        "close": 10814.86,
+        "turn_over": 39312070.3,
+        "volume": 39312070.3,
+        "stockinfo": {
+          "symbol": "NONLIFEINSU",
+          "type": "index"
+        }
+      },
+      {
+        "symbol": "MUTUAL",
+        "open": 19.81,
+        "percent_change": -0.18,
+        "high": 19.82,
+        "low": 19.69,
+        "close": 19.78,
+        "turn_over": 0,
+        "volume": 0,
+        "stockinfo": {
+          "symbol": "MUTUAL",
+          "type": "index"
+        }
+      },
+      {
+        "symbol": "LIFEINSU",
+        "open": 13091.51,
+        "percent_change": 1.69,
+        "high": 13276.81,
+        "low": 13071.91,
+        "close": 13275.81,
+        "turn_over": 240780130.6,
+        "volume": 240780130.6,
+        "stockinfo": {
+          "symbol": "LIFEINSU",
+          "type": "index"
+        }
+      },
+      {
+        "symbol": "FINANCE",
+        "open": 2283.16,
+        "percent_change": 0.65,
+        "high": 2303.22,
+        "low": 2283.16,
+        "close": 2295.68,
+        "turn_over": 18953750.4,
+        "volume": 18953750.4,
+        "stockinfo": {
+          "symbol": "FINANCE",
+          "type": "index"
+        }
+      },
+      {
+        "symbol": "TRADING",
+        "open": 3830.66,
+        "percent_change": 1.25,
+        "high": 3883.04,
+        "low": 3788.88,
+        "close": 3878.81,
+        "turn_over": 4697832.3,
+        "volume": 4697832.3,
+        "stockinfo": {
+          "symbol": "TRADING",
+          "type": "index"
+        }
+      },
+      {
+        "symbol": "INVESTMENT",
+        "open": 104.3,
+        "percent_change": 0.85,
+        "high": 105.73,
+        "low": 104.3,
+        "close": 105.54,
+        "turn_over": 143395181.9,
+        "volume": 143395181.9,
+        "stockinfo": {
+          "symbol": "INVESTMENT",
+          "type": "index"
+        }
+      }
+    ],
+    "asOf": "2025-11-24 12:10:01"
+  },
+  "looser_gainer": [
+    {
+      "gainer": [
+        "JHAPA",
+        "Jhapa Energy Limited",
+        10
+      ],
+      "looser": [
+        "DLBS",
+        "Dhaulagiri Laghubitta Bittiya Sanstha Limited",
+        -3.53
+      ],
+      "turnover": [
+        "HRL",
+        "Himalayan Reinsurance Limited",
+        8.105067309999999
+      ]
+    },
+    {
+      "gainer": [
+        "BANDIPUR",
+        "Bandipur Cablecar and Tourism Limited",
+        9.99
+      ],
+      "looser": [
+        "MABEL",
+        "Mabilung Energy Limited",
+        -3.01
+      ],
+      "turnover": [
+        "NLIC",
+        "Nepal Life Insurance Co. Ltd.",
+        7.63219318
+      ]
+    },
+    {
+      "gainer": [
+        "SAGAR",
+        "Sagar Distillery Limited",
+        9.99
+      ],
+      "looser": [
+        "GMFBS",
+        "Ganapati Laghubitta Bittiya Sanstha Limited",
+        -2.4
+      ],
+      "turnover": [
+        "CHDC",
+        "CEDB Holdings Limited",
+        6.28246637
+      ]
+    },
+    {
+      "gainer": [
+        "SAIL",
+        "Shreenagar Agritech Industries Limited",
+        9.98
+      ],
+      "looser": [
+        "HEIP",
+        "Himalayan Everest Insurance Limited Promoter",
+        -1.99
+      ],
+      "turnover": [
+        "SARBTM",
+        "Sarbottam Cement Limited",
+        5.93758198
+      ]
+    },
+    {
+      "gainer": [
+        "SGHC",
+        "Swet-Ganga Hydropower & Construction Limited",
+        5.1
+      ],
+      "looser": [
+        "GLBSL",
+        "Gurans Laghubitta Bittiya Sanstha Limited",
+        -1.72
+      ],
+      "turnover": [
+        "SPDL",
+        "Synergy Power Development Ltd.",
+        5.71392955
+      ]
+    },
+    {
+      "gainer": [
+        "SJLIC",
+        "SuryaJyoti Life Insurance Company Limited",
+        4.58
+      ],
+      "looser": [
+        "MKHL",
+        "Mai Khola Hydropower Limited",
+        -1.72
+      ],
+      "turnover": [
+        "EHPL",
+        "Eastern Hydropower Limited",
+        4.64099572
+      ]
+    },
+    {
+      "gainer": [
+        "SWASTIK",
+        "Swastik Laghubitta Bittiya Sanstha Limited",
+        4.02
+      ],
+      "looser": [
+        "NMIC",
+        "Nepal Micro Insurance Company Limited",
+        -1.43
+      ],
+      "turnover": [
+        "JBLB",
+        "Jeevan Bikas Laghubitta  Bittya Sanstha Ltd",
+        4.42421635
+      ]
+    },
+    {
+      "gainer": [
+        "JBLB",
+        "Jeevan Bikas Laghubitta  Bittya Sanstha Ltd",
+        3.17
+      ],
+      "looser": [
+        "WNLB",
+        "Wean Nepal Laghubitta Bittiya Sanstha Limited",
+        -1.41
+      ],
+      "turnover": [
+        "SHIVM",
+        "SHIVAM CEMENTS LTD",
+        3.6248701299999997
+      ]
+    },
+    {
+      "gainer": [
+        "SPHL",
+        "Sayapatri Hydropower Limited",
+        2.59
+      ],
+      "looser": [
+        "MEL",
+        "Modi Energy Limited",
+        -1.3
+      ],
+      "turnover": [
+        "NRN",
+        "NRN Infrastructure and Development Limited",
+        3.5299387
+      ]
+    },
+    {
+      "gainer": [
+        "RFPL",
+        "River Falls Power Limited",
+        2.54
+      ],
+      "looser": [
+        "ULBSL",
+        "Upakar Laghubitta Bittiya Sanstha Limited",
+        -1.26
+      ],
+      "turnover": [
+        "SJLIC",
+        "SuryaJyoti Life Insurance Company Limited",
+        3.5065074899999997
+      ]
+    }
+  ],
+  "live_stock_price": [
+    {
+      "symbol": "NEPSE",
+      "close": 2601.51,
+      "date": "2025-11-24 11:00:16"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2601.49,
+      "date": "2025-11-24 11:00:26"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2601.74,
+      "date": "2025-11-24 11:00:36"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2601.85,
+      "date": "2025-11-24 11:00:46"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2602.17,
+      "date": "2025-11-24 11:00:56"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2602.07,
+      "date": "2025-11-24 11:01:27"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2603.14,
+      "date": "2025-11-24 11:01:37"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2603.45,
+      "date": "2025-11-24 11:01:47"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2604.26,
+      "date": "2025-11-24 11:01:57"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2605.72,
+      "date": "2025-11-24 11:02:28"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2606.43,
+      "date": "2025-11-24 11:02:38"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2606.09,
+      "date": "2025-11-24 11:02:48"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2606.05,
+      "date": "2025-11-24 11:02:58"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2609.3,
+      "date": "2025-11-24 11:03:30"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2609.46,
+      "date": "2025-11-24 11:03:40"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2610.23,
+      "date": "2025-11-24 11:03:50"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2610.47,
+      "date": "2025-11-24 11:04:00"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2610.65,
+      "date": "2025-11-24 11:04:31"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2610.77,
+      "date": "2025-11-24 11:04:41"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2610.36,
+      "date": "2025-11-24 11:04:51"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2608.95,
+      "date": "2025-11-24 11:05:01"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2609.1,
+      "date": "2025-11-24 11:05:38"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2610.13,
+      "date": "2025-11-24 11:05:48"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2610.21,
+      "date": "2025-11-24 11:05:58"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2610.25,
+      "date": "2025-11-24 11:06:08"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2610.51,
+      "date": "2025-11-24 11:06:18"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2610.38,
+      "date": "2025-11-24 11:06:28"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2610.42,
+      "date": "2025-11-24 11:06:38"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2609.83,
+      "date": "2025-11-24 11:06:48"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2610.3,
+      "date": "2025-11-24 11:06:58"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2610.16,
+      "date": "2025-11-24 11:07:08"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2610.24,
+      "date": "2025-11-24 11:07:18"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2610.74,
+      "date": "2025-11-24 11:07:28"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2611.2,
+      "date": "2025-11-24 11:07:38"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2612.56,
+      "date": "2025-11-24 11:07:48"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2612.54,
+      "date": "2025-11-24 11:07:58"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2613.05,
+      "date": "2025-11-24 11:08:08"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2612.74,
+      "date": "2025-11-24 11:08:18"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2612.64,
+      "date": "2025-11-24 11:08:28"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2612.98,
+      "date": "2025-11-24 11:08:38"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2613.1,
+      "date": "2025-11-24 11:08:48"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2613.4,
+      "date": "2025-11-24 11:08:58"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2613.41,
+      "date": "2025-11-24 11:09:08"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2613.36,
+      "date": "2025-11-24 11:09:18"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2613.29,
+      "date": "2025-11-24 11:09:28"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2613.58,
+      "date": "2025-11-24 11:09:38"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2614.06,
+      "date": "2025-11-24 11:09:48"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2613.65,
+      "date": "2025-11-24 11:09:58"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2614.15,
+      "date": "2025-11-24 11:10:17"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2615.43,
+      "date": "2025-11-24 11:10:48"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2615.81,
+      "date": "2025-11-24 11:10:58"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2615.97,
+      "date": "2025-11-24 11:11:08"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2615.94,
+      "date": "2025-11-24 11:11:19"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2616.58,
+      "date": "2025-11-24 11:11:50"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2616.34,
+      "date": "2025-11-24 11:12:00"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2616.85,
+      "date": "2025-11-24 11:12:10"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2616.87,
+      "date": "2025-11-24 11:12:20"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2617.11,
+      "date": "2025-11-24 11:12:51"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2617.51,
+      "date": "2025-11-24 11:13:01"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2615.84,
+      "date": "2025-11-24 11:13:11"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2615.8,
+      "date": "2025-11-24 11:13:21"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2616.18,
+      "date": "2025-11-24 11:13:52"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2616.44,
+      "date": "2025-11-24 11:14:02"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2616.41,
+      "date": "2025-11-24 11:14:12"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2616.22,
+      "date": "2025-11-24 11:14:22"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2615.83,
+      "date": "2025-11-24 11:14:53"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2616.13,
+      "date": "2025-11-24 11:15:03"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2615.78,
+      "date": "2025-11-24 11:15:18"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2615.83,
+      "date": "2025-11-24 11:15:28"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2615.4,
+      "date": "2025-11-24 11:15:59"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2615.54,
+      "date": "2025-11-24 11:16:09"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2615.52,
+      "date": "2025-11-24 11:16:20"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2615.64,
+      "date": "2025-11-24 11:16:30"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2618.57,
+      "date": "2025-11-24 11:17:01"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2618.27,
+      "date": "2025-11-24 11:17:11"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2618.09,
+      "date": "2025-11-24 11:17:21"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2618.02,
+      "date": "2025-11-24 11:17:31"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2618.3,
+      "date": "2025-11-24 11:18:02"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2618.44,
+      "date": "2025-11-24 11:18:12"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2618.45,
+      "date": "2025-11-24 11:18:22"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2618.55,
+      "date": "2025-11-24 11:18:32"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2618.16,
+      "date": "2025-11-24 11:19:03"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2617.43,
+      "date": "2025-11-24 11:19:13"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2617.59,
+      "date": "2025-11-24 11:19:23"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2617.62,
+      "date": "2025-11-24 11:19:33"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2615.98,
+      "date": "2025-11-24 11:20:05"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2616.21,
+      "date": "2025-11-24 11:20:19"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2616.36,
+      "date": "2025-11-24 11:20:29"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2616.69,
+      "date": "2025-11-24 11:20:39"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2617.27,
+      "date": "2025-11-24 11:21:10"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2617.01,
+      "date": "2025-11-24 11:21:20"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2617.69,
+      "date": "2025-11-24 11:21:30"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2617.49,
+      "date": "2025-11-24 11:21:40"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2617.63,
+      "date": "2025-11-24 11:22:11"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2617.72,
+      "date": "2025-11-24 11:22:21"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2618.74,
+      "date": "2025-11-24 11:22:31"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2618.45,
+      "date": "2025-11-24 11:22:41"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2617.9,
+      "date": "2025-11-24 11:23:13"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2617.63,
+      "date": "2025-11-24 11:23:23"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2618.32,
+      "date": "2025-11-24 11:23:33"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2618.19,
+      "date": "2025-11-24 11:23:43"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2618.52,
+      "date": "2025-11-24 11:24:14"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2618.56,
+      "date": "2025-11-24 11:24:24"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2618.5,
+      "date": "2025-11-24 11:24:34"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2619.06,
+      "date": "2025-11-24 11:24:44"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2619.19,
+      "date": "2025-11-24 11:25:20"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2618.13,
+      "date": "2025-11-24 11:25:30"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2618.55,
+      "date": "2025-11-24 11:25:40"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2618.73,
+      "date": "2025-11-24 11:25:50"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2619.01,
+      "date": "2025-11-24 11:26:21"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2619.07,
+      "date": "2025-11-24 11:26:31"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2619.25,
+      "date": "2025-11-24 11:26:41"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2619.63,
+      "date": "2025-11-24 11:26:51"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2618.74,
+      "date": "2025-11-24 11:27:22"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2619.26,
+      "date": "2025-11-24 11:27:32"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2619.58,
+      "date": "2025-11-24 11:27:42"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2620.21,
+      "date": "2025-11-24 11:27:52"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2620.12,
+      "date": "2025-11-24 11:28:24"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2620.25,
+      "date": "2025-11-24 11:28:34"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2620.43,
+      "date": "2025-11-24 11:28:44"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2620.12,
+      "date": "2025-11-24 11:28:54"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2620.49,
+      "date": "2025-11-24 11:29:25"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2620.95,
+      "date": "2025-11-24 11:29:35"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2620.68,
+      "date": "2025-11-24 11:29:45"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2620.61,
+      "date": "2025-11-24 11:29:55"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2621.47,
+      "date": "2025-11-24 11:30:20"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2621.93,
+      "date": "2025-11-24 11:30:30"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2621.96,
+      "date": "2025-11-24 11:30:40"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2621.88,
+      "date": "2025-11-24 11:30:51"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2622.05,
+      "date": "2025-11-24 11:31:01"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2623.29,
+      "date": "2025-11-24 11:31:32"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2623.64,
+      "date": "2025-11-24 11:31:42"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2623.18,
+      "date": "2025-11-24 11:31:52"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2623.67,
+      "date": "2025-11-24 11:32:02"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2623.69,
+      "date": "2025-11-24 11:32:33"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2623.76,
+      "date": "2025-11-24 11:32:43"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2623.78,
+      "date": "2025-11-24 11:32:53"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2623.83,
+      "date": "2025-11-24 11:33:03"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2624.04,
+      "date": "2025-11-24 11:33:35"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2623.9,
+      "date": "2025-11-24 11:33:45"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2624.06,
+      "date": "2025-11-24 11:33:55"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2624.75,
+      "date": "2025-11-24 11:34:05"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2624.8,
+      "date": "2025-11-24 11:34:36"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2624.92,
+      "date": "2025-11-24 11:34:46"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2624.63,
+      "date": "2025-11-24 11:34:56"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2624.47,
+      "date": "2025-11-24 11:35:06"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2624.59,
+      "date": "2025-11-24 11:35:43"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2624.97,
+      "date": "2025-11-24 11:35:53"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2624.62,
+      "date": "2025-11-24 11:36:03"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2625.05,
+      "date": "2025-11-24 11:36:13"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2625.15,
+      "date": "2025-11-24 11:36:44"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2625.5,
+      "date": "2025-11-24 11:36:54"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2625.35,
+      "date": "2025-11-24 11:37:04"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2624.69,
+      "date": "2025-11-24 11:37:14"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2624.72,
+      "date": "2025-11-24 11:37:45"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2624.86,
+      "date": "2025-11-24 11:37:55"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2625.08,
+      "date": "2025-11-24 11:38:06"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2624.56,
+      "date": "2025-11-24 11:38:16"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2624.7,
+      "date": "2025-11-24 11:38:47"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2624.59,
+      "date": "2025-11-24 11:38:57"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2624.58,
+      "date": "2025-11-24 11:39:07"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2624.94,
+      "date": "2025-11-24 11:39:17"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2624.69,
+      "date": "2025-11-24 11:39:48"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2624.61,
+      "date": "2025-11-24 11:39:58"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2624.8,
+      "date": "2025-11-24 11:40:08"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2624.64,
+      "date": "2025-11-24 11:40:22"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2625.02,
+      "date": "2025-11-24 11:40:53"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2624.76,
+      "date": "2025-11-24 11:41:03"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2625.11,
+      "date": "2025-11-24 11:41:13"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2625.35,
+      "date": "2025-11-24 11:41:23"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2624.86,
+      "date": "2025-11-24 11:41:55"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2624.69,
+      "date": "2025-11-24 11:42:05"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2624.65,
+      "date": "2025-11-24 11:42:15"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2624.79,
+      "date": "2025-11-24 11:42:25"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2624.83,
+      "date": "2025-11-24 11:42:56"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2625.08,
+      "date": "2025-11-24 11:43:06"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2624.9,
+      "date": "2025-11-24 11:43:16"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2624.89,
+      "date": "2025-11-24 11:43:26"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2624.69,
+      "date": "2025-11-24 11:43:57"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2624.99,
+      "date": "2025-11-24 11:44:07"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2624.76,
+      "date": "2025-11-24 11:44:17"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2625.05,
+      "date": "2025-11-24 11:44:27"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2624.92,
+      "date": "2025-11-24 11:44:59"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2624.89,
+      "date": "2025-11-24 11:45:09"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2624.96,
+      "date": "2025-11-24 11:45:23"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2622.43,
+      "date": "2025-11-24 11:45:33"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2621.74,
+      "date": "2025-11-24 11:46:04"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2624.22,
+      "date": "2025-11-24 11:46:14"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2623.91,
+      "date": "2025-11-24 11:46:24"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2624.11,
+      "date": "2025-11-24 11:46:34"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2624.17,
+      "date": "2025-11-24 11:47:06"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2624.13,
+      "date": "2025-11-24 11:47:16"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2624.19,
+      "date": "2025-11-24 11:47:26"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2624.19,
+      "date": "2025-11-24 11:47:36"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2623.95,
+      "date": "2025-11-24 11:48:07"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2623.96,
+      "date": "2025-11-24 11:48:17"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2624.11,
+      "date": "2025-11-24 11:48:27"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2624.16,
+      "date": "2025-11-24 11:48:37"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2624.11,
+      "date": "2025-11-24 11:49:08"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2623.79,
+      "date": "2025-11-24 11:49:18"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2623.76,
+      "date": "2025-11-24 11:49:29"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2623.87,
+      "date": "2025-11-24 11:49:39"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2623.48,
+      "date": "2025-11-24 11:50:10"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2623.75,
+      "date": "2025-11-24 11:50:24"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2623.69,
+      "date": "2025-11-24 11:50:34"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2623.77,
+      "date": "2025-11-24 11:50:44"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2623.48,
+      "date": "2025-11-24 11:51:15"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2623.47,
+      "date": "2025-11-24 11:51:25"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2623.32,
+      "date": "2025-11-24 11:51:35"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2623.22,
+      "date": "2025-11-24 11:51:45"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2623.08,
+      "date": "2025-11-24 11:52:16"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2623.13,
+      "date": "2025-11-24 11:52:26"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2622.83,
+      "date": "2025-11-24 11:52:36"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2622.27,
+      "date": "2025-11-24 11:52:46"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2622.36,
+      "date": "2025-11-24 11:53:17"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2622.31,
+      "date": "2025-11-24 11:53:27"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2622.54,
+      "date": "2025-11-24 11:53:37"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2622.29,
+      "date": "2025-11-24 11:53:47"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2621.46,
+      "date": "2025-11-24 11:54:19"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2621.31,
+      "date": "2025-11-24 11:54:29"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2621.15,
+      "date": "2025-11-24 11:54:39"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2621.05,
+      "date": "2025-11-24 11:54:49"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2620.81,
+      "date": "2025-11-24 11:55:24"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2620.9,
+      "date": "2025-11-24 11:55:34"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2621.03,
+      "date": "2025-11-24 11:55:45"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2620.55,
+      "date": "2025-11-24 11:55:55"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2620.36,
+      "date": "2025-11-24 11:56:26"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2620.06,
+      "date": "2025-11-24 11:56:36"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2620.07,
+      "date": "2025-11-24 11:56:46"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2620.02,
+      "date": "2025-11-24 11:56:56"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2619.96,
+      "date": "2025-11-24 11:57:27"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2619.93,
+      "date": "2025-11-24 11:57:37"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2619.51,
+      "date": "2025-11-24 11:57:47"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2619.64,
+      "date": "2025-11-24 11:57:57"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2619.58,
+      "date": "2025-11-24 11:58:28"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2619.54,
+      "date": "2025-11-24 11:58:38"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2619.66,
+      "date": "2025-11-24 11:58:49"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2619.67,
+      "date": "2025-11-24 11:58:59"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2619.82,
+      "date": "2025-11-24 11:59:30"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2619.75,
+      "date": "2025-11-24 11:59:40"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2619.51,
+      "date": "2025-11-24 11:59:50"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2619.34,
+      "date": "2025-11-24 12:00:00"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2619.16,
+      "date": "2025-11-24 12:00:25"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2619.18,
+      "date": "2025-11-24 12:00:35"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2619.12,
+      "date": "2025-11-24 12:00:45"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2619.12,
+      "date": "2025-11-24 12:00:55"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2619.03,
+      "date": "2025-11-24 12:01:06"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2618.71,
+      "date": "2025-11-24 12:01:37"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2619.17,
+      "date": "2025-11-24 12:01:47"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2619.26,
+      "date": "2025-11-24 12:01:57"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2619.03,
+      "date": "2025-11-24 12:02:07"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2619.97,
+      "date": "2025-11-24 12:02:38"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2620.15,
+      "date": "2025-11-24 12:02:48"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2620.07,
+      "date": "2025-11-24 12:02:58"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2619.99,
+      "date": "2025-11-24 12:03:08"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2620.22,
+      "date": "2025-11-24 12:03:40"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2619.95,
+      "date": "2025-11-24 12:03:50"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2620.01,
+      "date": "2025-11-24 12:04:00"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2619.93,
+      "date": "2025-11-24 12:04:10"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2620.51,
+      "date": "2025-11-24 12:04:41"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2620.73,
+      "date": "2025-11-24 12:04:51"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2620.72,
+      "date": "2025-11-24 12:05:01"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2620.79,
+      "date": "2025-11-24 12:05:11"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2621.27,
+      "date": "2025-11-24 12:05:47"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2621.35,
+      "date": "2025-11-24 12:05:57"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2621.56,
+      "date": "2025-11-24 12:06:08"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2621.74,
+      "date": "2025-11-24 12:06:18"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2622.14,
+      "date": "2025-11-24 12:06:49"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2622.25,
+      "date": "2025-11-24 12:06:59"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2622.25,
+      "date": "2025-11-24 12:07:09"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2622.34,
+      "date": "2025-11-24 12:07:19"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2622.77,
+      "date": "2025-11-24 12:07:50"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2622.51,
+      "date": "2025-11-24 12:08:00"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2622.71,
+      "date": "2025-11-24 12:08:10"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2622.82,
+      "date": "2025-11-24 12:08:20"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2623.12,
+      "date": "2025-11-24 12:08:52"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2623.25,
+      "date": "2025-11-24 12:09:02"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2623.13,
+      "date": "2025-11-24 12:09:12"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2623.22,
+      "date": "2025-11-24 12:09:22"
+    },
+    {
+      "symbol": "NEPSE",
+      "close": 2622.73,
+      "date": "2025-11-24 12:09:53"
+    }
+  ],
+  "latest_price": {
+    "symbol": "NEPSE",
+    "today_price": "2622.73",
+    "percent_change": "0.86",
+    "previous_close": "2600.22",
+    "date": "2025-11-24 12:09:53",
+    "actual_volume": "1771925715.5"
+  },
+  "sectors": {
+    "CORPDEBEN": "Corporate Debenture",
+    "MICROFINANCE": "Microfinance",
+    "BANKING": "Commercial Banks",
+    "NONLIFEINSU": "Non Life Insurance",
+    "HYDROPOWER": "Hydro Power",
+    "MANUFACTURE": "Manufacturing And Processing",
+    "LIFEINSU": "Life Insurance",
+    "FINANCE": "Finance",
+    "DEVBANK": "Development Banks",
+    "MUTUAL": "Mutual Fund",
+    "PRESTOCK": "Preferred Stock",
+    "PROMOTSHARE": "Promoter Share",
+    "HOTELS": "Hotels",
+    "OTHERS": "Others",
+    "TRADING": "Tradings",
+    "INVESTMENT": "Investment"
+  },
+  "is_market_open": true,
+  "stock_sentiment_summary": [
+    {
+      "symbol": "MEGA",
+      "percent_change": "0.92165898617512"
+    },
+    {
+      "symbol": "NBB",
+      "percent_change": "-0.25"
+    },
+    {
+      "symbol": "BOKL",
+      "percent_change": "0.048262548262559"
+    },
+    {
+      "symbol": "SLI",
+      "percent_change": "-1.2935323383085"
+    },
+    {
+      "symbol": "NCCB",
+      "percent_change": "0.90763481046449"
+    },
+    {
+      "symbol": "NEF",
+      "percent_change": "0.20242914979757"
+    },
+    {
+      "symbol": "NIB",
+      "percent_change": "4.149377593361"
+    },
+    {
+      "symbol": "GLICL",
+      "percent_change": "-1.994301994302"
+    },
+    {
+      "symbol": "NIBPO",
+      "percent_change": "4.5454545454545"
+    },
+    {
+      "symbol": "CCBL",
+      "percent_change": "3.3143448990161"
+    },
+    {
+      "symbol": "RLI",
+      "percent_change": "-1.7766497461929"
+    },
+    {
+      "symbol": "SRBL",
+      "percent_change": "2.9744199881023"
+    },
+    {
+      "symbol": "PLIC",
+      "percent_change": "-3.8733389878428"
+    },
+    {
+      "symbol": "SMFDB",
+      "percent_change": "-1.7276422764228"
+    },
+    {
+      "symbol": "EIC",
+      "percent_change": "-4.0307101727447"
+    },
+    {
+      "symbol": "RMDC",
+      "percent_change": "-0.51347881899872"
+    },
+    {
+      "symbol": "SLBS",
+      "percent_change": "-3.1163395735535"
+    },
+    {
+      "symbol": "HGI",
+      "percent_change": "-3.7215330494353"
+    },
+    {
+      "symbol": "GIMES1",
+      "percent_change": "0.62695924764891"
+    },
+    {
+      "symbol": "LBL",
+      "percent_change": "0.58139534883721"
+    },
+    {
+      "symbol": "NMBHF1",
+      "percent_change": "-1.4"
+    },
+    {
+      "symbol": "WOMIPO",
+      "percent_change": "0"
+    },
+    {
+      "symbol": "SBBLPO",
+      "percent_change": "0"
+    },
+    {
+      "symbol": "KRBLPO",
+      "percent_change": "0"
+    },
+    {
+      "symbol": "PICL",
+      "percent_change": "-1.1562247916106"
+    },
+    {
+      "symbol": "NUBLPO",
+      "percent_change": "0"
+    },
+    {
+      "symbol": "RULB",
+      "percent_change": "-0.64482168706408"
+    },
+    {
+      "symbol": "KLBS",
+      "percent_change": "-2.1077283372365"
+    },
+    {
+      "symbol": "MEGAPO",
+      "percent_change": "0"
+    },
+    {
+      "symbol": "CCBLPO",
+      "percent_change": "0"
+    },
+    {
+      "symbol": "NSLB",
+      "percent_change": "0.65312046444122"
+    },
+    {
+      "symbol": "NADEPP",
+      "percent_change": "0"
+    },
+    {
+      "symbol": "NCCBPO",
+      "percent_change": "0"
+    },
+    {
+      "symbol": "SFCLP",
+      "percent_change": "0"
+    },
+    {
+      "symbol": "PLICPO",
+      "percent_change": "-1.3157894736842"
+    },
+    {
+      "symbol": "RRHP",
+      "percent_change": "-0.1418691257315"
+    },
+    {
+      "symbol": "CFCLPO",
+      "percent_change": "0"
+    },
+    {
+      "symbol": "DDBLPO",
+      "percent_change": "0"
+    },
+    {
+      "symbol": "ULI",
+      "percent_change": "10"
+    },
+    {
+      "symbol": "CBL",
+      "percent_change": "-1.3370216689719"
+    },
+    {
+      "symbol": "NIBSF1",
+      "percent_change": "-0.24115755627009"
+    },
+    {
+      "symbol": "LGIL",
+      "percent_change": "-4.1541353383459"
+    },
+    {
+      "symbol": "EICPO",
+      "percent_change": "-5.848291835553"
+    },
+    {
+      "symbol": "UICPO",
+      "percent_change": "0"
+    },
+    {
+      "symbol": "SILPO",
+      "percent_change": "0.14117647058824"
+    },
+    {
+      "symbol": "AKBSL",
+      "percent_change": "-3.5879143936215"
+    },
+    {
+      "symbol": "SICPO",
+      "percent_change": "-3.7991858887381"
+    },
+    {
+      "symbol": "PRINPO",
+      "percent_change": "0"
+    },
+    {
+      "symbol": "SRBLPO",
+      "percent_change": "0"
+    },
+    {
+      "symbol": "PICPO",
+      "percent_change": "0"
+    },
+    {
+      "symbol": "GFCLPO",
+      "percent_change": "0"
+    },
+    {
+      "symbol": "GLICLP",
+      "percent_change": "0"
+    },
+    {
+      "symbol": "EBLCP",
+      "percent_change": "-1.0828821324448"
+    },
+    {
+      "symbol": "ADLB",
+      "percent_change": "-1.5682349015682"
+    },
+    {
+      "symbol": "PIC",
+      "percent_change": "-3.8520801232666"
+    },
+    {
+      "symbol": "PICLPO",
+      "percent_change": "-1.9771863117871"
+    },
+    {
+      "symbol": "SLICL",
+      "percent_change": "5.7377049180328"
+    },
+    {
+      "symbol": "SIC",
+      "percent_change": "-4.8571428571429"
+    },
+    {
+      "symbol": "LBLPO",
+      "percent_change": "0"
+    },
+    {
+      "symbol": "CBLPO",
+      "percent_change": "0"
+    },
+    {
+      "symbol": "SMFDBP",
+      "percent_change": "-1.9819367787255"
+    },
+    {
+      "symbol": "UIC",
+      "percent_change": "-0.75158990171516"
+    },
+    {
+      "symbol": "MEROPO",
+      "percent_change": "-36.516853932584"
+    },
+    {
+      "symbol": "AIL",
+      "percent_change": "-3.6324786324786"
+    },
+    {
+      "symbol": "RSDCP",
+      "percent_change": "0"
+    },
+    {
+      "symbol": "BOKLPO",
+      "percent_change": "0"
+    },
+    {
+      "symbol": "SLICLP",
+      "percent_change": "0"
+    },
+    {
+      "symbol": "SIL",
+      "percent_change": "6.4052287581699"
+    },
+    {
+      "symbol": "GIC",
+      "percent_change": "0.84491687108204"
+    },
+    {
+      "symbol": "SGI",
+      "percent_change": "1.9553072625698"
+    },
+    {
+      "symbol": "GBLBSP",
+      "percent_change": "0"
+    },
+    {
+      "symbol": "JLI",
+      "percent_change": "-1.9777158774373"
+    },
+    {
+      "symbol": "NIBLPF",
+      "percent_change": "-0.21413276231263"
+    },
+    {
+      "symbol": "NLBBLP",
+      "percent_change": "0"
+    },
+    {
+      "symbol": "BPW",
+      "percent_change": "-3.0408561963815"
+    },
+    {
+      "symbol": "MMFDB",
+      "percent_change": "5.4545454545455"
+    },
+    {
+      "symbol": "NLBBL",
+      "percent_change": "7.2265273022166"
+    },
+    {
+      "symbol": "MMFDBP",
+      "percent_change": "0"
+    },
+    {
+      "symbol": "SINDUP",
+      "percent_change": "0"
+    },
+    {
+      "symbol": "GBD80/81",
+      "percent_change": "0"
+    },
+    {
+      "symbol": "SRD80",
+      "percent_change": "-1.8112488083889"
+    },
+    {
+      "symbol": "NRICP",
+      "percent_change": "0"
+    },
+    {
+      "symbol": "LEMF",
+      "percent_change": "-3.2686414708886"
+    },
+    {
+      "symbol": "MFILPO",
+      "percent_change": "-1.978021978022"
+    },
+    {
+      "symbol": "MKLB",
+      "percent_change": "-2.9875518672199"
+    },
+    {
+      "symbol": "GRDBLP",
+      "percent_change": "0"
+    },
+    {
+      "symbol": "SABSL",
+      "percent_change": "-2.5186567164179"
+    },
+    {
+      "symbol": "SDLBSL",
+      "percent_change": "-4.561717352415"
+    },
+    {
+      "symbol": "JALPA",
+      "percent_change": "0.14583333333333"
+    },
+    {
+      "symbol": "KLBSL",
+      "percent_change": "3.7827352085354"
+    },
+    {
+      "symbol": "SWBBLP",
+      "percent_change": "0"
+    },
+    {
+      "symbol": "NFSPO",
+      "percent_change": "0"
+    },
+    {
+      "symbol": "JFLPO",
+      "percent_change": "0"
+    },
+    {
+      "symbol": "LBBLPO",
+      "percent_change": "0"
+    },
+    {
+      "symbol": "NABILP",
+      "percent_change": "-1.9856770833333"
+    },
+    {
+      "symbol": "SAEF",
+      "percent_change": "0.44642857142858"
+    },
+    {
+      "symbol": "KRBL",
+      "percent_change": "4.2739443872297"
+    },
+    {
+      "symbol": "ALICLP",
+      "percent_change": "0"
+    },
+    {
+      "symbol": "NICAD8182",
+      "percent_change": "2"
+    },
+    {
+      "symbol": "SICLPO",
+      "percent_change": "0"
+    },
+    {
+      "symbol": "NICLPO",
+      "percent_change": "0"
+    },
+    {
+      "symbol": "EDBLPO",
+      "percent_change": "0"
+    },
+    {
+      "symbol": "CMF1",
+      "percent_change": "1.2126865671642"
+    },
+    {
+      "symbol": "NICGF",
+      "percent_change": "0"
+    },
+    {
+      "symbol": "SKBBLP",
+      "percent_change": "0"
+    },
+    {
+      "symbol": "MLBBLP",
+      "percent_change": "-68.174603174603"
+    },
+    {
+      "symbol": "SMBPO",
+      "percent_change": "0"
+    },
+    {
+      "symbol": "GILBPO",
+      "percent_change": "0"
+    },
+    {
+      "symbol": "NLICLP",
+      "percent_change": "0"
+    },
+    {
+      "symbol": "MBLPO",
+      "percent_change": "0"
+    },
+    {
+      "symbol": "GUFLPO",
+      "percent_change": "0"
+    },
+    {
+      "symbol": "SHINEP",
+      "percent_change": "0"
+    },
+    {
+      "symbol": "GMFILP",
+      "percent_change": "0"
+    },
+    {
+      "symbol": "IGIPO",
+      "percent_change": "0"
+    },
+    {
+      "symbol": "ILBSP",
+      "percent_change": "-1.9852777158153"
+    },
+    {
+      "symbol": "KMCDBP",
+      "percent_change": "0"
+    },
+    {
+      "symbol": "NLICP",
+      "percent_change": "0"
+    },
+    {
+      "symbol": "MPFLPO",
+      "percent_change": "0"
+    },
+    {
+      "symbol": "PFLPO",
+      "percent_change": "0"
+    },
+    {
+      "symbol": "SLBBLP",
+      "percent_change": "0"
+    },
+    {
+      "symbol": "VLBSPO",
+      "percent_change": "0"
+    },
+    {
+      "symbol": "MDBPO",
+      "percent_change": "0"
+    },
+    {
+      "symbol": "BFCPO",
+      "percent_change": "-1.969208736126"
+    },
+    {
+      "symbol": "FMDBLP",
+      "percent_change": "0"
+    },
+    {
+      "symbol": "MSLBP",
+      "percent_change": "0"
+    },
+    {
+      "symbol": "ICFCPO",
+      "percent_change": "0"
+    },
+    {
+      "symbol": "KBLPO",
+      "percent_change": "0"
+    },
+    {
+      "symbol": "RLFLPO",
+      "percent_change": "0"
+    },
+    {
+      "symbol": "SADBLP",
+      "percent_change": "0"
+    },
+    {
+      "symbol": "SBLPO",
+      "percent_change": "-1.7441860465116"
+    },
+    {
+      "symbol": "NICAD8283",
+      "percent_change": "-0.48336650554449"
+    },
+    {
+      "symbol": "CBBLPO",
+      "percent_change": "0"
+    },
+    {
+      "symbol": "KSBBLP",
+      "percent_change": "0"
+    },
+    {
+      "symbol": "SIFCPO",
+      "percent_change": "0"
+    },
+    {
+      "symbol": "PROFLP",
+      "percent_change": "0"
+    },
+    {
+      "symbol": "SRBLD83",
+      "percent_change": "0.90909090909091"
+    },
+    {
+      "symbol": "NILPO",
+      "percent_change": "0"
+    },
+    {
+      "symbol": "MNBBLP",
+      "percent_change": "-3.9446929646198"
+    },
+    {
+      "symbol": "SAMAJ",
+      "percent_change": "-9.9990403991939"
+    },
+    {
+      "symbol": "GBLBS",
+      "percent_change": "-1.8867924528302"
+    },
+    {
+      "symbol": "NMBPO",
+      "percent_change": "-1.9852941176471"
+    },
+    {
+      "symbol": "SRLIP",
+      "percent_change": "0"
+    },
+    {
+      "symbol": "MLBLPO",
+      "percent_change": "-1.9417475728155"
+    },
+    {
+      "symbol": "PBLD86",
+      "percent_change": "-3.9417309340188"
+    },
+    {
+      "symbol": "GBBLPO",
+      "percent_change": "0"
+    },
+    {
+      "symbol": "MATRIP",
+      "percent_change": "0"
+    },
+    {
+      "symbol": "SBIBD86",
+      "percent_change": "1.027397260274"
+    },
+    {
+      "symbol": "KBLD90",
+      "percent_change": "0"
+    },
+    {
+      "symbol": "CSY",
+      "percent_change": "0"
+    },
+    {
+      "symbol": "GBIMEP",
+      "percent_change": "-1.9607843137255"
+    },
+    {
+      "symbol": "JSLBBP",
+      "percent_change": "-1.9876733436055"
+    },
+    {
+      "symbol": "NICAELIS",
+      "percent_change": "0"
+    },
+    {
+      "symbol": "NMFBSP",
+      "percent_change": "0"
+    },
+    {
+      "symbol": "SBLD83",
+      "percent_change": "0.38968268695491"
+    },
+    {
+      "symbol": "SMATAP",
+      "percent_change": "0"
+    },
+    {
+      "symbol": "CZBILP",
+      "percent_change": "0"
+    },
+    {
+      "symbol": "HBLPO",
+      "percent_change": "0"
+    },
+    {
+      "symbol": "NICAP",
+      "percent_change": "0"
+    },
+    {
+      "symbol": "GBILD86/87",
+      "percent_change": "-0.989110707804"
+    },
+    {
+      "symbol": "NBLD82",
+      "percent_change": "0.47309833024118"
+    },
+    {
+      "symbol": "NCCD86",
+      "percent_change": "-1.9330463052456"
+    },
+    {
+      "symbol": "NBLD85",
+      "percent_change": "9.9074074074074"
+    },
+    {
+      "symbol": "NLO",
+      "percent_change": "0"
+    },
+    {
+      "symbol": "PCBLP",
+      "percent_change": "0"
+    },
+    {
+      "symbol": "RBBD83",
+      "percent_change": "0"
+    },
+    {
+      "symbol": "KSLY",
+      "percent_change": "0"
+    },
+    {
+      "symbol": "NADDF",
+      "percent_change": "0"
+    },
+    {
+      "symbol": "NFCF",
+      "percent_change": "0"
+    },
+    {
+      "symbol": "NI31",
+      "percent_change": "0"
+    },
+    {
+      "symbol": "NIBLSF",
+      "percent_change": "0"
+    },
+    {
+      "symbol": "NMBSBF",
+      "percent_change": "0"
+    },
+    {
+      "symbol": "PSIS",
+      "percent_change": "0"
+    },
+    {
+      "symbol": "SFF",
+      "percent_change": "0"
+    },
+    {
+      "symbol": "SLK",
+      "percent_change": "0"
+    },
+    {
+      "symbol": "SSIS",
+      "percent_change": "0"
+    },
+    {
+      "symbol": "PBLD84",
+      "percent_change": "2.2583559168925"
+    },
+    {
+      "symbol": "SDBD87",
+      "percent_change": "0"
+    },
+    {
+      "symbol": "NIBD84",
+      "percent_change": "-0.092165898617512"
+    },
+    {
+      "symbol": "HBLD86",
+      "percent_change": "1.9438078261608"
+    },
+    {
+      "symbol": "MFLD85",
+      "percent_change": "-1.9349164467898"
+    },
+    {
+      "symbol": "SCBD",
+      "percent_change": "0.16625103906899"
+    },
+    {
+      "symbol": "SBID83",
+      "percent_change": "2.3081721771678"
+    },
+    {
+      "symbol": "LSLPO",
+      "percent_change": "0"
+    },
+    {
+      "symbol": "MBLD2085",
+      "percent_change": "-1.8503620273532"
+    },
+    {
+      "symbol": "NMBD2085",
+      "percent_change": "1.3738373581364"
+    },
+    {
+      "symbol": "PBD84",
+      "percent_change": "1.984126984127"
+    },
+    {
+      "symbol": "SBLD2082",
+      "percent_change": "-1.998311286237"
+    },
+    {
+      "symbol": "HBLD83",
+      "percent_change": "-1.8181818181818"
+    },
+    {
+      "symbol": "BOKD86KA",
+      "percent_change": "-1.9558676028084"
+    },
+    {
+      "symbol": "CIZBD86",
+      "percent_change": "-1.9135802469136"
+    },
+    {
+      "symbol": "LBLD86",
+      "percent_change": "1.996386630533"
+    },
+    {
+      "symbol": "NIMBD90",
+      "percent_change": "-2"
+    },
+    {
+      "symbol": "NMBD89/90",
+      "percent_change": "-1.998502994012"
+    },
+    {
+      "symbol": "SBD89",
+      "percent_change": "0.90909090909091"
+    },
+    {
+      "symbol": "SBLD89",
+      "percent_change": "-1.7543859649123"
+    },
+    {
+      "symbol": "NBLD87",
+      "percent_change": "1.2798084890894"
+    },
+    {
+      "symbol": "SIGS2",
+      "percent_change": "0.88888888888889"
+    },
+    {
+      "symbol": "NIFRAUR85/86",
+      "percent_change": "-0.18832391713748"
+    },
+    {
+      "symbol": "NMB50",
+      "percent_change": "-0.40404040404041"
+    },
+    {
+      "symbol": "JBBLPO",
+      "percent_change": "0"
+    },
+    {
+      "symbol": "KBLD86",
+      "percent_change": "-0.95403295750217"
+    },
+    {
+      "symbol": "MBLD87",
+      "percent_change": "-1.7960288808664"
+    },
+    {
+      "symbol": "NIBD2082",
+      "percent_change": "-1.5219337511191"
+    },
+    {
+      "symbol": "PBD85",
+      "percent_change": "0.27472527472527"
+    },
+    {
+      "symbol": "SBD87",
+      "percent_change": "-1.0396716826265"
+    },
+    {
+      "symbol": "SBLD2091",
+      "percent_change": "0.64492687800889"
+    },
+    {
+      "symbol": "EBLD91",
+      "percent_change": "4.4237918215613"
+    },
+    {
+      "symbol": "NICAD2091",
+      "percent_change": "2"
+    },
+    {
+      "symbol": "NHDL",
+      "percent_change": "1.3117621337997"
+    },
+    {
+      "symbol": "NICGF2",
+      "percent_change": "1.063829787234"
+    },
+    {
+      "symbol": "SFEF",
+      "percent_change": "-1.3114754098361"
+    },
+    {
+      "symbol": "SBID89",
+      "percent_change": "1.25"
+    },
+    {
+      "symbol": "NIBLGF",
+      "percent_change": "-0.24009603841536"
+    },
+    {
+      "symbol": "CCBD88",
+      "percent_change": "6.1981371718882"
+    },
+    {
+      "symbol": "NMBD87/88",
+      "percent_change": "1.9963702359347"
+    },
+    {
+      "symbol": "LBBLD89",
+      "percent_change": "4.0330188679245"
+    },
+    {
+      "symbol": "BOKD86",
+      "percent_change": "1.3368983957219"
+    },
+    {
+      "symbol": "NSIF2",
+      "percent_change": "1.1964107676969"
+    },
+    {
+      "symbol": "PRVUPO",
+      "percent_change": "0"
+    },
+    {
+      "symbol": "NICBF",
+      "percent_change": "-1.9384264538198"
+    },
+    {
+      "symbol": "RMF2",
+      "percent_change": "-0.4494382022472"
+    },
+    {
+      "symbol": "C30MF",
+      "percent_change": "0.56179775280898"
+    },
+    {
+      "symbol": "SBID2090",
+      "percent_change": "1.1382878645343"
+    },
+    {
+      "symbol": "CIZBD90",
+      "percent_change": "4.4715447154472"
+    },
+    {
+      "symbol": "KBSH",
+      "percent_change": "2.7319936780312"
+    },
+    {
+      "symbol": "ADBLD83",
+      "percent_change": "0.45454545454545"
+    },
+    {
+      "symbol": "SEF",
+      "percent_change": "-0.22002200220022"
+    },
+    {
+      "symbol": "EBLD85",
+      "percent_change": "0.43478260869565"
+    },
+    {
+      "symbol": "SFMF",
+      "percent_change": "-2"
+    },
+    {
+      "symbol": "NICD88",
+      "percent_change": "0.088888888888889"
+    },
+    {
+      "symbol": "BNL",
+      "percent_change": "0"
+    },
+    {
+      "symbol": "EBLEB89",
+      "percent_change": "-1.5625"
+    },
+    {
+      "symbol": "GBILD84/85",
+      "percent_change": "2"
+    },
+    {
+      "symbol": "GWFD83",
+      "percent_change": "-1.5820149875104"
+    },
+    {
+      "symbol": "ICFCD83",
+      "percent_change": "-1.6666666666667"
+    },
+    {
+      "symbol": "JBBD87",
+      "percent_change": "-2.0034843205575"
+    },
+    {
+      "symbol": "KBLD89",
+      "percent_change": "0.62402496099844"
+    },
+    {
+      "symbol": "LUK",
+      "percent_change": "1.9607843137255"
+    },
+    {
+      "symbol": "NABILD87",
+      "percent_change": "-0.4776378636561"
+    },
+    {
+      "symbol": "NBBD2085",
+      "percent_change": "-0.70727610290867"
+    },
+    {
+      "symbol": "NICAD85/86",
+      "percent_change": "-1.4782608695652"
+    },
+    {
+      "symbol": "NICD83/84",
+      "percent_change": "-1.9555555555556"
+    },
+    {
+      "symbol": "PBD88",
+      "percent_change": "0"
+    },
+    {
+      "symbol": "RBCLPO",
+      "percent_change": "-0.72799470549305"
+    },
+    {
+      "symbol": "SAND2085",
+      "percent_change": "-0.017464198393298"
+    },
+    {
+      "symbol": "SBLD84",
+      "percent_change": "-1.4914380408765"
+    },
+    {
+      "symbol": "RMF1",
+      "percent_change": "-1.98"
+    },
+    {
+      "symbol": "CMF2",
+      "percent_change": "2"
+    },
+    {
+      "symbol": "SPL",
+      "percent_change": "0.23"
+    },
+    {
+      "symbol": "SWASTIK",
+      "percent_change": "4.02"
+    },
+    {
+      "symbol": "NBF2",
+      "percent_change": "-0.88"
+    },
+    {
+      "symbol": "NIBSF2",
+      "percent_change": "0"
+    },
+    {
+      "symbol": "MDB",
+      "percent_change": "1.58"
+    },
+    {
+      "symbol": "GLBSL",
+      "percent_change": "-1.72"
+    },
+    {
+      "symbol": "ENL",
+      "percent_change": "-0.99"
+    },
+    {
+      "symbol": "OHL",
+      "percent_change": "1.6"
+    },
+    {
+      "symbol": "RBCL",
+      "percent_change": "0.61"
+    },
+    {
+      "symbol": "ANLB",
+      "percent_change": "0.62"
+    },
+    {
+      "symbol": "UNL",
+      "percent_change": "1.08"
+    },
+    {
+      "symbol": "SHLB",
+      "percent_change": "1.21"
+    },
+    {
+      "symbol": "NIFRAGED",
+      "percent_change": "-1.95"
+    },
+    {
+      "symbol": "CBLD88",
+      "percent_change": "-1.72"
+    },
+    {
+      "symbol": "MATRI",
+      "percent_change": "-0.93"
+    },
+    {
+      "symbol": "RBBD2088",
+      "percent_change": "0.04"
+    },
+    {
+      "symbol": "KSY",
+      "percent_change": "-1.4"
+    },
+    {
+      "symbol": "ACLBSL",
+      "percent_change": "-0.1"
+    },
+    {
+      "symbol": "ICFCD88",
+      "percent_change": "-2"
+    },
+    {
+      "symbol": "GBIMESY2",
+      "percent_change": "-1.48"
+    },
+    {
+      "symbol": "LVF2",
+      "percent_change": "-1.1"
+    },
+    {
+      "symbol": "SBCF",
+      "percent_change": "-1.44"
+    },
+    {
+      "symbol": "ULBSL",
+      "percent_change": "-1.26"
+    },
+    {
+      "symbol": "NABILD2089",
+      "percent_change": "-2.35"
+    },
+    {
+      "symbol": "SHINED",
+      "percent_change": "0.43"
+    },
+    {
+      "symbol": "MCHL",
+      "percent_change": "0.1"
+    },
+    {
+      "symbol": "EBLD86",
+      "percent_change": "-0.64"
+    },
+    {
+      "symbol": "SAIL",
+      "percent_change": "9.98"
+    },
+    {
+      "symbol": "PRSF",
+      "percent_change": "1.67"
+    },
+    {
+      "symbol": "SALICO",
+      "percent_change": "1.18"
+    },
+    {
+      "symbol": "BBC",
+      "percent_change": "1.32"
+    },
+    {
+      "symbol": "NIMBPO",
+      "percent_change": "1.99"
+    },
+    {
+      "symbol": "MMF1",
+      "percent_change": "1.06"
+    },
+    {
+      "symbol": "GSY",
+      "percent_change": "0"
+    },
+    {
+      "symbol": "NMBMF",
+      "percent_change": "1.31"
+    },
+    {
+      "symbol": "SIGS3",
+      "percent_change": "-0.99"
+    },
+    {
+      "symbol": "KEF",
+      "percent_change": "0"
+    },
+    {
+      "symbol": "DOLTI",
+      "percent_change": "-0.15"
+    },
+    {
+      "symbol": "TSHL",
+      "percent_change": "-1.14"
+    },
+    {
+      "symbol": "SLCF",
+      "percent_change": "-0.98"
+    },
+    {
+      "symbol": "HEIP",
+      "percent_change": "-1.99"
+    },
+    {
+      "symbol": "PSF",
+      "percent_change": "0.29"
+    },
+    {
+      "symbol": "GUFL",
+      "percent_change": "1.2"
+    },
+    {
+      "symbol": "CITY",
+      "percent_change": "-0.19"
+    },
+    {
+      "symbol": "GFCL",
+      "percent_change": "0.02"
+    },
+    {
+      "symbol": "MLBSL",
+      "percent_change": "0.01"
+    },
+    {
+      "symbol": "TAMOR",
+      "percent_change": "0.74"
+    },
+    {
+      "symbol": "MLBS",
+      "percent_change": "0.95"
+    },
+    {
+      "symbol": "MKJC",
+      "percent_change": "0.22"
+    },
+    {
+      "symbol": "GILB",
+      "percent_change": "0.7"
+    },
+    {
+      "symbol": "IHL",
+      "percent_change": "-1.25"
+    },
+    {
+      "symbol": "CFCL",
+      "percent_change": "-0.19"
+    },
+    {
+      "symbol": "TVCL",
+      "percent_change": "0.26"
+    },
+    {
+      "symbol": "SHL",
+      "percent_change": "0.34"
+    },
+    {
+      "symbol": "NICSF",
+      "percent_change": "-0.24"
+    },
+    {
+      "symbol": "SFCL",
+      "percent_change": "0.98"
+    },
+    {
+      "symbol": "SWBBL",
+      "percent_change": "-0.25"
+    },
+    {
+      "symbol": "UHEWA",
+      "percent_change": "0.1"
+    },
+    {
+      "symbol": "MLBBL",
+      "percent_change": "0.2"
+    },
+    {
+      "symbol": "USHL",
+      "percent_change": "0.43"
+    },
+    {
+      "symbol": "WNLB",
+      "percent_change": "-1.41"
+    },
+    {
+      "symbol": "VLBS",
+      "percent_change": "1.54"
+    },
+    {
+      "symbol": "KMCDB",
+      "percent_change": "-0.29"
+    },
+    {
+      "symbol": "MERO",
+      "percent_change": "0.65"
+    },
+    {
+      "symbol": "SMHL",
+      "percent_change": "0"
+    },
+    {
+      "symbol": "RSY",
+      "percent_change": "-2.75"
+    },
+    {
+      "symbol": "HEI",
+      "percent_change": "1.12"
+    },
+    {
+      "symbol": "HATHY",
+      "percent_change": "0.92"
+    },
+    {
+      "symbol": "KSBBL",
+      "percent_change": "-0.16"
+    },
+    {
+      "symbol": "BGWT",
+      "percent_change": "0.77"
+    },
+    {
+      "symbol": "MHNL",
+      "percent_change": "-0.77"
+    },
+    {
+      "symbol": "SLBSL",
+      "percent_change": "-0.1"
+    },
+    {
+      "symbol": "KDL",
+      "percent_change": "0"
+    },
+    {
+      "symbol": "NMBHF2",
+      "percent_change": "0"
+    },
+    {
+      "symbol": "NFS",
+      "percent_change": "1.16"
+    },
+    {
+      "symbol": "SICL",
+      "percent_change": "0.78"
+    },
+    {
+      "symbol": "SMPDA",
+      "percent_change": "1.02"
+    },
+    {
+      "symbol": "HLICF",
+      "percent_change": "1.22"
+    },
+    {
+      "symbol": "TRH",
+      "percent_change": "-0.26"
+    },
+    {
+      "symbol": "UNLB",
+      "percent_change": "-0.95"
+    },
+    {
+      "symbol": "SKBBL",
+      "percent_change": "0.83"
+    },
+    {
+      "symbol": "EDBL",
+      "percent_change": "0.2"
+    },
+    {
+      "symbol": "MFIL",
+      "percent_change": "0.53"
+    },
+    {
+      "symbol": "PPCL",
+      "percent_change": "0.24"
+    },
+    {
+      "symbol": "MPFL",
+      "percent_change": "0.37"
+    },
+    {
+      "symbol": "RURU",
+      "percent_change": "-0.62"
+    },
+    {
+      "symbol": "LLBS",
+      "percent_change": "1.88"
+    },
+    {
+      "symbol": "GIBF1",
+      "percent_change": "-1.19"
+    },
+    {
+      "symbol": "SIFC",
+      "percent_change": "0.83"
+    },
+    {
+      "symbol": "RAWA",
+      "percent_change": "-0.69"
+    },
+    {
+      "symbol": "BEDC",
+      "percent_change": "1.22"
+    },
+    {
+      "symbol": "MHL",
+      "percent_change": "0.92"
+    },
+    {
+      "symbol": "JSLBB",
+      "percent_change": "2.52"
+    },
+    {
+      "symbol": "HHL",
+      "percent_change": "0.44"
+    },
+    {
+      "symbol": "KDBY",
+      "percent_change": "0.11"
+    },
+    {
+      "symbol": "SMFBS",
+      "percent_change": "-0.53"
+    },
+    {
+      "symbol": "MHCL",
+      "percent_change": "0.65"
+    },
+    {
+      "symbol": "BFC",
+      "percent_change": "0.02"
+    },
+    {
+      "symbol": "MNMF1",
+      "percent_change": "-1.79"
+    },
+    {
+      "symbol": "MMKJL",
+      "percent_change": "-0.67"
+    },
+    {
+      "symbol": "PMHPL",
+      "percent_change": "0.18"
+    },
+    {
+      "symbol": "NICFC",
+      "percent_change": "-1.74"
+    },
+    {
+      "symbol": "UMRH",
+      "percent_change": "-0.5"
+    },
+    {
+      "symbol": "SMATA",
+      "percent_change": "0.85"
+    },
+    {
+      "symbol": "GHL",
+      "percent_change": "0.32"
+    },
+    {
+      "symbol": "SMB",
+      "percent_change": "1.67"
+    },
+    {
+      "symbol": "GLH",
+      "percent_change": "0.12"
+    },
+    {
+      "symbol": "CYCL",
+      "percent_change": "1.07"
+    },
+    {
+      "symbol": "NIL",
+      "percent_change": "0.17"
+    },
+    {
+      "symbol": "USLB",
+      "percent_change": "1.33"
+    },
+    {
+      "symbol": "HLBSL",
+      "percent_change": "1.96"
+    },
+    {
+      "symbol": "PCBL",
+      "percent_change": "0.4"
+    },
+    {
+      "symbol": "MSHL",
+      "percent_change": "0.93"
+    },
+    {
+      "symbol": "NMIC",
+      "percent_change": "-1.43"
+    },
+    {
+      "symbol": "GRDBL",
+      "percent_change": "-0.36"
+    },
+    {
+      "symbol": "LBBL",
+      "percent_change": "-0.64"
+    },
+    {
+      "symbol": "NMFBS",
+      "percent_change": "1.07"
+    },
+    {
+      "symbol": "MKCL",
+      "percent_change": "0.07"
+    },
+    {
+      "symbol": "DLBS",
+      "percent_change": "-3.53"
+    },
+    {
+      "symbol": "SPHL",
+      "percent_change": "2.59"
+    },
+    {
+      "symbol": "SPC",
+      "percent_change": "-0.2"
+    },
+    {
+      "symbol": "NUBL",
+      "percent_change": "0.03"
+    },
+    {
+      "symbol": "USHEC",
+      "percent_change": "1.56"
+    },
+    {
+      "symbol": "MSLB",
+      "percent_change": "-1.18"
+    },
+    {
+      "symbol": "SAGAR",
+      "percent_change": "9.99"
+    },
+    {
+      "symbol": "GMLI",
+      "percent_change": "-0.05"
+    },
+    {
+      "symbol": "NHPC",
+      "percent_change": "1.19"
+    },
+    {
+      "symbol": "MKHL",
+      "percent_change": "-1.72"
+    },
+    {
+      "symbol": "NICL",
+      "percent_change": "-0.19"
+    },
+    {
+      "symbol": "MBLEF",
+      "percent_change": "1.58"
+    },
+    {
+      "symbol": "NADEP",
+      "percent_change": "0"
+    },
+    {
+      "symbol": "MKHC",
+      "percent_change": "1.01"
+    },
+    {
+      "symbol": "SLBBL",
+      "percent_change": "1.61"
+    },
+    {
+      "symbol": "FOWAD",
+      "percent_change": "1.3"
+    },
+    {
+      "symbol": "BHL",
+      "percent_change": "1.38"
+    },
+    {
+      "symbol": "SBL",
+      "percent_change": "1.54"
+    },
+    {
+      "symbol": "ADBL",
+      "percent_change": "0.16"
+    },
+    {
+      "symbol": "RSDC",
+      "percent_change": "0.79"
+    },
+    {
+      "symbol": "KKHC",
+      "percent_change": "0.59"
+    },
+    {
+      "symbol": "ILBS",
+      "percent_change": "0.36"
+    },
+    {
+      "symbol": "NLICL",
+      "percent_change": "0.97"
+    },
+    {
+      "symbol": "CBBL",
+      "percent_change": "0.91"
+    },
+    {
+      "symbol": "NWCL",
+      "percent_change": "-0.6"
+    },
+    {
+      "symbol": "SWMF",
+      "percent_change": "0.46"
+    },
+    {
+      "symbol": "SMJC",
+      "percent_change": "1.37"
+    },
+    {
+      "symbol": "NIBLSTF",
+      "percent_change": "-1.08"
+    },
+    {
+      "symbol": "IGI",
+      "percent_change": "2.04"
+    },
+    {
+      "symbol": "NBL",
+      "percent_change": "0.38"
+    },
+    {
+      "symbol": "CORBL",
+      "percent_change": "1.17"
+    },
+    {
+      "symbol": "SHINE",
+      "percent_change": "1.02"
+    },
+    {
+      "symbol": "SGIC",
+      "percent_change": "2.54"
+    },
+    {
+      "symbol": "OMPL",
+      "percent_change": "0.11"
+    },
+    {
+      "symbol": "NESDO",
+      "percent_change": "-0.15"
+    },
+    {
+      "symbol": "NYADI",
+      "percent_change": "1.57"
+    },
+    {
+      "symbol": "NICA",
+      "percent_change": "1.55"
+    },
+    {
+      "symbol": "GMFIL",
+      "percent_change": "0.89"
+    },
+    {
+      "symbol": "LSL",
+      "percent_change": "0.43"
+    },
+    {
+      "symbol": "HURJA",
+      "percent_change": "1.61"
+    },
+    {
+      "symbol": "SINDU",
+      "percent_change": "-0.55"
+    },
+    {
+      "symbol": "NLG",
+      "percent_change": "0.23"
+    },
+    {
+      "symbol": "RHGCL",
+      "percent_change": "-1.23"
+    },
+    {
+      "symbol": "ULHC",
+      "percent_change": "-0.76"
+    },
+    {
+      "symbol": "NBF3",
+      "percent_change": "-1.76"
+    },
+    {
+      "symbol": "MLBL",
+      "percent_change": "-0.39"
+    },
+    {
+      "symbol": "JBBL",
+      "percent_change": "0.31"
+    },
+    {
+      "symbol": "SMH",
+      "percent_change": "-0.85"
+    },
+    {
+      "symbol": "SPIL",
+      "percent_change": "0.45"
+    },
+    {
+      "symbol": "AKJCL",
+      "percent_change": "0.36"
+    },
+    {
+      "symbol": "AHL",
+      "percent_change": "0.03"
+    },
+    {
+      "symbol": "NICLBSL",
+      "percent_change": "0.02"
+    },
+    {
+      "symbol": "SPDL",
+      "percent_change": "-0.21"
+    },
+    {
+      "symbol": "SADBL",
+      "percent_change": "0.79"
+    },
+    {
+      "symbol": "LEC",
+      "percent_change": "2.03"
+    },
+    {
+      "symbol": "KPCL",
+      "percent_change": "0.36"
+    },
+    {
+      "symbol": "PPL",
+      "percent_change": "0.64"
+    },
+    {
+      "symbol": "JFL",
+      "percent_change": "1.64"
+    },
+    {
+      "symbol": "H8020",
+      "percent_change": "-0.19"
+    },
+    {
+      "symbol": "AKPL",
+      "percent_change": "0.77"
+    },
+    {
+      "symbol": "GBIME",
+      "percent_change": "1.52"
+    },
+    {
+      "symbol": "HDHPC",
+      "percent_change": "1.7"
+    },
+    {
+      "symbol": "CHL",
+      "percent_change": "-0.32"
+    },
+    {
+      "symbol": "GBBD85",
+      "percent_change": "-1.27"
+    },
+    {
+      "symbol": "SARBTM",
+      "percent_change": "0.56"
+    },
+    {
+      "symbol": "CHCL",
+      "percent_change": "0.67"
+    },
+    {
+      "symbol": "MEL",
+      "percent_change": "-1.3"
+    },
+    {
+      "symbol": "NRM",
+      "percent_change": "0.05"
+    },
+    {
+      "symbol": "ALICL",
+      "percent_change": "2"
+    },
+    {
+      "symbol": "CZBIL",
+      "percent_change": "1.12"
+    },
+    {
+      "symbol": "HIDCLP",
+      "percent_change": "1.07"
+    },
+    {
+      "symbol": "UMHL",
+      "percent_change": "0"
+    },
+    {
+      "symbol": "NMB",
+      "percent_change": "0.58"
+    },
+    {
+      "symbol": "GVL",
+      "percent_change": "0.08"
+    },
+    {
+      "symbol": "RIDI",
+      "percent_change": "0.6"
+    },
+    {
+      "symbol": "UNHPL",
+      "percent_change": "0.98"
+    },
+    {
+      "symbol": "BNHC",
+      "percent_change": "0.9"
+    },
+    {
+      "symbol": "PRIN",
+      "percent_change": "1.66"
+    },
+    {
+      "symbol": "SIKLES",
+      "percent_change": "-0.58"
+    },
+    {
+      "symbol": "BPCL",
+      "percent_change": "0.68"
+    },
+    {
+      "symbol": "RADHI",
+      "percent_change": "0.13"
+    },
+    {
+      "symbol": "CGH",
+      "percent_change": "1.36"
+    },
+    {
+      "symbol": "KBL",
+      "percent_change": "1"
+    },
+    {
+      "symbol": "ICFC",
+      "percent_change": "0.65"
+    },
+    {
+      "symbol": "SANIMA",
+      "percent_change": "1.93"
+    },
+    {
+      "symbol": "UPCL",
+      "percent_change": "0.54"
+    },
+    {
+      "symbol": "AVYAN",
+      "percent_change": "0.71"
+    },
+    {
+      "symbol": "JHAPA",
+      "percent_change": "10"
+    },
+    {
+      "symbol": "GCIL",
+      "percent_change": "0.69"
+    },
+    {
+      "symbol": "NRN",
+      "percent_change": "-0.41"
+    },
+    {
+      "symbol": "PROFL",
+      "percent_change": "0.45"
+    },
+    {
+      "symbol": "BNT",
+      "percent_change": "-1.2"
+    },
+    {
+      "symbol": "EBL",
+      "percent_change": "-0.14"
+    },
+    {
+      "symbol": "ALBSL",
+      "percent_change": "-0.47"
+    },
+    {
+      "symbol": "SAGF",
+      "percent_change": "1.96"
+    },
+    {
+      "symbol": "MNBBL",
+      "percent_change": "0.6"
+    },
+    {
+      "symbol": "SAPDBL",
+      "percent_change": "-0.59"
+    },
+    {
+      "symbol": "HDL",
+      "percent_change": "1.14"
+    },
+    {
+      "symbol": "CHDC",
+      "percent_change": "1.01"
+    },
+    {
+      "symbol": "SBI",
+      "percent_change": "1.28"
+    },
+    {
+      "symbol": "RFPL",
+      "percent_change": "2.54"
+    },
+    {
+      "symbol": "VLUCL",
+      "percent_change": "-0.35"
+    },
+    {
+      "symbol": "HIMSTAR",
+      "percent_change": "1.07"
+    },
+    {
+      "symbol": "SONA",
+      "percent_change": "-0.18"
+    },
+    {
+      "symbol": "RNLI",
+      "percent_change": "0.84"
+    },
+    {
+      "symbol": "STC",
+      "percent_change": "0.56"
+    },
+    {
+      "symbol": "NIMB",
+      "percent_change": "-0.51"
+    },
+    {
+      "symbol": "UAIL",
+      "percent_change": "1.13"
+    },
+    {
+      "symbol": "BHDC",
+      "percent_change": "0.02"
+    },
+    {
+      "symbol": "DORDI",
+      "percent_change": "-0.72"
+    },
+    {
+      "symbol": "CIT",
+      "percent_change": "0.59"
+    },
+    {
+      "symbol": "HPPL",
+      "percent_change": "0.13"
+    },
+    {
+      "symbol": "RLFL",
+      "percent_change": "0.93"
+    },
+    {
+      "symbol": "SHEL",
+      "percent_change": "1.76"
+    },
+    {
+      "symbol": "CLI",
+      "percent_change": "1.28"
+    },
+    {
+      "symbol": "MBJC",
+      "percent_change": "0.43"
+    },
+    {
+      "symbol": "FMDBL",
+      "percent_change": "0.91"
+    },
+    {
+      "symbol": "RHPL",
+      "percent_change": "1.55"
+    },
+    {
+      "symbol": "AHPC",
+      "percent_change": "1.06"
+    },
+    {
+      "symbol": "SNLI",
+      "percent_change": "2.27"
+    },
+    {
+      "symbol": "PMLI",
+      "percent_change": "1.07"
+    },
+    {
+      "symbol": "SHPC",
+      "percent_change": "1.38"
+    },
+    {
+      "symbol": "MABEL",
+      "percent_change": "-3.01"
+    },
+    {
+      "symbol": "NLIC",
+      "percent_change": "2.05"
+    },
+    {
+      "symbol": "MEHL",
+      "percent_change": "2.48"
+    },
+    {
+      "symbol": "MANDU",
+      "percent_change": "0.63"
+    },
+    {
+      "symbol": "NIFRA",
+      "percent_change": "0.86"
+    },
+    {
+      "symbol": "CREST",
+      "percent_change": "-0.21"
+    },
+    {
+      "symbol": "SRLI",
+      "percent_change": "1.04"
+    },
+    {
+      "symbol": "NTC",
+      "percent_change": "0.68"
+    },
+    {
+      "symbol": "SGHC",
+      "percent_change": "5.1"
+    },
+    {
+      "symbol": "DHPL",
+      "percent_change": "0.46"
+    },
+    {
+      "symbol": "PFL",
+      "percent_change": "1.18"
+    },
+    {
+      "symbol": "UPPER",
+      "percent_change": "0.22"
+    },
+    {
+      "symbol": "BHCL",
+      "percent_change": "1.09"
+    },
+    {
+      "symbol": "TPC",
+      "percent_change": "0.17"
+    },
+    {
+      "symbol": "API",
+      "percent_change": "1.24"
+    },
+    {
+      "symbol": "NMLBBL",
+      "percent_change": "1.61"
+    },
+    {
+      "symbol": "HRL",
+      "percent_change": "1.82"
+    },
+    {
+      "symbol": "CKHL",
+      "percent_change": "1.08"
+    },
+    {
+      "symbol": "NRIC",
+      "percent_change": "0.38"
+    },
+    {
+      "symbol": "ILI",
+      "percent_change": "1.02"
+    },
+    {
+      "symbol": "JBLB",
+      "percent_change": "3.17"
+    },
+    {
+      "symbol": "PURE",
+      "percent_change": "2.14"
+    },
+    {
+      "symbol": "PRVU",
+      "percent_change": "2.18"
+    },
+    {
+      "symbol": "SJLIC",
+      "percent_change": "4.58"
+    },
+    {
+      "symbol": "GMFBS",
+      "percent_change": "-2.4"
+    },
+    {
+      "symbol": "NGPL",
+      "percent_change": "0.57"
+    },
+    {
+      "symbol": "NABIL",
+      "percent_change": "0.29"
+    },
+    {
+      "symbol": "TTL",
+      "percent_change": "-0.7"
+    },
+    {
+      "symbol": "BHPL",
+      "percent_change": "-0.18"
+    },
+    {
+      "symbol": "GBBL",
+      "percent_change": "1.18"
+    },
+    {
+      "symbol": "SANVI",
+      "percent_change": "2.25"
+    },
+    {
+      "symbol": "LICN",
+      "percent_change": "2.3"
+    },
+    {
+      "symbol": "SCB",
+      "percent_change": "0.8"
+    },
+    {
+      "symbol": "HIDCL",
+      "percent_change": "1.88"
+    },
+    {
+      "symbol": "EHPL",
+      "percent_change": "1.36"
+    },
+    {
+      "symbol": "SJCL",
+      "percent_change": "0.68"
+    },
+    {
+      "symbol": "NABBC",
+      "percent_change": "1.27"
+    },
+    {
+      "symbol": "BUNGAL",
+      "percent_change": "-1.19"
+    },
+    {
+      "symbol": "HBL",
+      "percent_change": "1.96"
+    },
+    {
+      "symbol": "MEN",
+      "percent_change": "0.66"
+    },
+    {
+      "symbol": "SSHL",
+      "percent_change": "0.95"
+    },
+    {
+      "symbol": "PHCL",
+      "percent_change": "1.31"
+    },
+    {
+      "symbol": "HLI",
+      "percent_change": "1.74"
+    },
+    {
+      "symbol": "JOSHI",
+      "percent_change": "-0.82"
+    },
+    {
+      "symbol": "MAKAR",
+      "percent_change": "0.59"
+    },
+    {
+      "symbol": "SHIVM",
+      "percent_change": "0.83"
+    },
+    {
+      "symbol": "DHEL",
+      "percent_change": "1.08"
+    },
+    {
+      "symbol": "MBL",
+      "percent_change": "-0.14"
+    },
+    {
+      "symbol": "BARUN",
+      "percent_change": "-0.29"
+    },
+    {
+      "symbol": "BANDIPUR",
+      "percent_change": "9.99"
+    },
+    {
+      "symbol": "SAHAS",
+      "percent_change": "1.17"
+    },
+    {
+      "symbol": "DDBL",
+      "percent_change": "0.7"
+    }
+  ],
+  "marketSummary": [],
+  "master_data": [
+    "ADBL",
+    "BHDC",
+    "DORDI",
+    "HHL",
+    "CZBIL",
+    "EBL",
+    "UHEWA",
+    "CHDC",
+    "SPHL",
+    "USHL",
+    "MBL",
+    "BHL",
+    "NABIL",
+    "WNLB",
+    "NBL",
+    "PPL",
+    "SGHC",
+    "NICA",
+    "NMB",
+    "PCBL",
+    "PRVU",
+    "SANIMA",
+    "SBI",
+    "SBL",
+    "SCB",
+    "GCIL",
+    "CORBL",
+    "EDBL",
+    "GBBL",
+    "GRDBL",
+    "JBBL",
+    "SMPDA",
+    "KSBBL",
+    "LBBL",
+    "MDB",
+    "MLBL",
+    "MNBBL",
+    "SADBL",
+    "SAPDBL",
+    "SHINE",
+    "SINDU",
+    "BFC",
+    "CFCL",
+    "GFCL",
+    "GMFIL",
+    "GUFL",
+    "ICFC",
+    "JFL",
+    "MFIL",
+    "MPFL",
+    "NFS",
+    "PFL",
+    "PROFL",
+    "RLFL",
+    "SFCL",
+    "SIFC",
+    "GLH",
+    "OHL",
+    "SHL",
+    "TRH",
+    "AHPC",
+    "AKJCL",
+    "AKPL",
+    "API",
+    "BARUN",
+    "BPCL",
+    "CHCL",
+    "CHL",
+    "DHPL",
+    "GHL",
+    "HDHPC",
+    "HPPL",
+    "HURJA",
+    "JOSHI",
+    "KKHC",
+    "KPCL",
+    "LEC",
+    "MHNL",
+    "NGPL",
+    "NHDL",
+    "NHPC",
+    "PMHPL",
+    "PPCL",
+    "RADHI",
+    "AVYAN",
+    "RHPL",
+    "NLO",
+    "SHPC",
+    "SJCL",
+    "SPDL",
+    "SSHL",
+    "UMHL",
+    "UNHPL",
+    "UPCL",
+    "UPPER",
+    "ALICL",
+    "MHL",
+    "LICN",
+    "NLIC",
+    "NLICL",
+    "SWMF",
+    "HBL",
+    "USHEC",
+    "BNL",
+    "BNT",
+    "HDL",
+    "SHIVM",
+    "UNL",
+    "ALBSL",
+    "CBBL",
+    "HLBSL",
+    "DDBL",
+    "FMDBL",
+    "FOWAD",
+    "BHCL",
+    "GILB",
+    "GLBSL",
+    "GMFBS",
+    "ILBS",
+    "JSLBB",
+    "KMCDB",
+    "LLBS",
+    "MERO",
+    "MLBBL",
+    "NWCL",
+    "RHGCL",
+    "NESDO",
+    "HRL",
+    "MLBSL",
+    "NMBMF",
+    "DLBS",
+    "RURU",
+    "NUBL",
+    "TSHL",
+    "RSDC",
+    "PMLI",
+    "MKCL",
+    "CKHL",
+    "SLBBL",
+    "GVL",
+    "SLBSL",
+    "SMB",
+    "SMFBS",
+    "ENL",
+    "ILI",
+    "SWBBL",
+    "USLB",
+    "VLBS",
+    "RIDI",
+    "HEI",
+    "RFPL",
+    "SALICO",
+    "NICL",
+    "NIL",
+    "NLG",
+    "DOLTI",
+    "RBCL",
+    "SICL",
+    "BEDC",
+    "CIT",
+    "HIDCL",
+    "NRIC",
+    "NRN",
+    "NTC",
+    "BBC",
+    "STC",
+    "NABBC",
+    "MEN",
+    "NIFRA",
+    "UMRH",
+    "DHEL",
+    "CGH",
+    "MSLB",
+    "VLUCL",
+    "ACLBSL",
+    "NICLBSL",
+    "SMATA",
+    "ULBSL",
+    "SHEL",
+    "JBLB",
+    "SARBTM",
+    "MKJC",
+    "MLBS",
+    "SAHAS",
+    "TPC",
+    "SPC",
+    "NYADI",
+    "MBJC",
+    "BNHC",
+    "SIKLES",
+    "UAIL",
+    "SMHL",
+    "NIMB",
+    "UNLB",
+    "KBL",
+    "SKBBL",
+    "KBSH",
+    "SPL",
+    "SJLIC",
+    "MHCL",
+    "PRIN",
+    "SPIL",
+    "MCHL",
+    "IGI",
+    "NADEP",
+    "NMFBS",
+    "TAMOR",
+    "GBIME",
+    "MKHC",
+    "NRM",
+    "KDL",
+    "SMH",
+    "AHL",
+    "SGIC",
+    "HIMSTAR",
+    "EHPL",
+    "SHLB",
+    "PHCL",
+    "BHPL",
+    "MAKAR",
+    "SRLI",
+    "SAGAR",
+    "MKHL",
+    "SMJC",
+    "NMLBBL",
+    "ANLB",
+    "CITY",
+    "IHL",
+    "HLI",
+    "CYCL",
+    "MEL",
+    "RAWA",
+    "BUNGAL",
+    "LSL",
+    "RNLI",
+    "SNLI",
+    "ULHC",
+    "MEHL",
+    "CLI",
+    "HATHY",
+    "MANDU",
+    "BGWT",
+    "MSHL",
+    "BANDIPUR",
+    "SONA",
+    "MMKJL",
+    "TVCL",
+    "MATRI",
+    "GMLI",
+    "NMIC",
+    "CREST",
+    "OMPL",
+    "PURE",
+    "TTL",
+    "SANVI",
+    "MABEL",
+    "SWASTIK",
+    "JHAPA",
+    "HIDCLP",
+    "NIMBPO",
+    "HEIP"
+  ]
+}

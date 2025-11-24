@@ -2673,10 +2673,23 @@ def cmd_nepse():
         with console.status("[bold green]Fetching NEPSE indices...", spinner="dots"):
             import cloudscraper
             scraper = cloudscraper.create_scraper()
+            
+            # Fetch NepseAlpha data
             url = "https://nepsealpha.com/live/stocks"
             response = scraper.get(url, timeout=10)
             response.raise_for_status()
             data = response.json()
+            
+            # Fetch ShareHub data for market status
+            market_status = "UNKNOWN"
+            try:
+                sharehub_response = requests.get("https://sharehubnepal.com/live/api/v2/nepselive/home-page-data", timeout=10)
+                if sharehub_response.status_code == 200:
+                    sharehub_data = sharehub_response.json()
+                    market_status_obj = sharehub_data.get('marketStatus', {})
+                    market_status = market_status_obj.get('status', 'UNKNOWN')
+            except:
+                pass
         
         # Get all indices from stock_live.prices where type is 'index'
         prices = data.get('stock_live', {}).get('prices', [])
@@ -2689,22 +2702,45 @@ def cmd_nepse():
         # Get timestamp
         timestamp = data.get('stock_live', {}).get('asOf', 'N/A')
         
-        table = Table(title=f"NEPSE Index Data (Live) - {timestamp}", box=box.ROUNDED, header_style="bold cyan")
-        table.add_column("Index", style="bold white")
-        table.add_column("Close", justify="right")
-        table.add_column("Change", justify="right")
-        table.add_column("% Change", justify="right")
-        table.add_column("Trend", justify="center")
-        table.add_column("Range", justify="center", style="dim")
-        table.add_column("Turnover", justify="right")
+        # Create market status indicator
+        if market_status == "OPEN":
+            status_indicator = "[bold green]●[/bold green] OPEN"
+            status_color = "green"
+        elif market_status == "CLOSE":
+            status_indicator = "[bold red]●[/bold red] CLOSE"
+            status_color = "red"
+        else:
+            status_indicator = "[bold yellow]●[/bold yellow] UNKNOWN"
+            status_color = "yellow"
         
-        for item in indices:
+        # Separate main indices (NEPSE, SENSITIVE, FLOAT, SENFLOAT) from sub-indices
+        main_index_names = ['NEPSE', 'SENSITIVE', 'FLOAT', 'SENFLOAT']
+        main_indices = [item for item in indices if item.get('symbol', '') in main_index_names]
+        sub_indices = [item for item in indices if item.get('symbol', '') not in main_index_names]
+        
+        # Sort main indices in specific order
+        main_order = {name: idx for idx, name in enumerate(main_index_names)}
+        main_indices.sort(key=lambda x: main_order.get(x.get('symbol', ''), 999))
+        
+        # Main Indices Table
+        main_table = Table(title=f"📊 Main Indices (Live) - {timestamp} | Market: {status_indicator}", box=box.ROUNDED, header_style="bold cyan", border_style=status_color)
+        main_table.add_column("Index", style="bold white", width=16)
+        main_table.add_column("Open", justify="right")
+        main_table.add_column("Close", justify="right")
+        main_table.add_column("Change", justify="right")
+        main_table.add_column("% Change", justify="right")
+        main_table.add_column("Trend", justify="center")
+        main_table.add_column("Range (L-H)", justify="center", style="dim")
+        main_table.add_column("Turnover", justify="right")
+        
+        for item in main_indices:
             index_name = item.get('symbol', 'N/A')
+            open_val = item.get('open', 0)
             close_val = item.get('close', 0)
             pct_change = item.get('percent_change', 0)
             low_val = item.get('low', 0)
             high_val = item.get('high', 0)
-            turnover = item.get('volume', 0)  # Using volume as turnover
+            turnover = item.get('turn_over', item.get('volume', 0))
             
             # Calculate point change
             try:
@@ -2721,8 +2757,9 @@ def cmd_nepse():
             
             range_str = f"{low_val:,.2f} - {high_val:,.2f}"
             
-            table.add_row(
+            main_table.add_row(
                 index_name,
+                f"{open_val:,.2f}",
                 f"{close_val:,.2f}",
                 f"[{color}]{point_change:+,.2f}[/{color}]",
                 f"[{color}]{pct_change:+.2f}%[/{color}]",
@@ -2731,7 +2768,51 @@ def cmd_nepse():
                 format_number(turnover)
             )
         
-        console.print(table)
+        console.print(main_table)
+        
+        # Sub-Indices Table (if any)
+        if sub_indices:
+            console.print("\n")
+            sub_table = Table(title="📈 Sub-Indices", box=box.ROUNDED, header_style="bold magenta")
+            sub_table.add_column("Index", style="bold white")
+            sub_table.add_column("Close", justify="right")
+            sub_table.add_column("Change", justify="right")
+            sub_table.add_column("% Change", justify="right")
+            sub_table.add_column("Trend", justify="center")
+            sub_table.add_column("Range (L-H)", justify="center", style="dim")
+            
+            for item in sub_indices:
+                index_name = item.get('symbol', 'N/A')
+                close_val = item.get('close', 0)
+                pct_change = item.get('percent_change', 0)
+                low_val = item.get('low', 0)
+                high_val = item.get('high', 0)
+                
+                # Calculate point change
+                try:
+                    if pct_change != 0 and close_val != 0:
+                        prev_close = close_val / (1 + pct_change / 100)
+                        point_change = close_val - prev_close
+                    else:
+                        point_change = 0
+                except:
+                    point_change = 0
+                
+                color = "green" if pct_change > 0 else "red" if pct_change < 0 else "yellow"
+                trend_icon = "▲" if pct_change > 0 else "▼" if pct_change < 0 else "•"
+                
+                range_str = f"{low_val:,.2f} - {high_val:,.2f}"
+                
+                sub_table.add_row(
+                    index_name,
+                    f"{close_val:,.2f}",
+                    f"[{color}]{point_change:+,.2f}[/{color}]",
+                    f"[{color}]{pct_change:+.2f}%[/{color}]",
+                    f"[{color}]{trend_icon}[/{color}]",
+                    range_str
+                )
+            
+            console.print(sub_table)
         
     except Exception as e:
         console.print(f"[bold red]⚠️  Error fetching NEPSE data:[/bold red] {str(e)}\n")
@@ -3059,10 +3140,30 @@ def cmd_mktsum():
         current_price = float(nepse_index.get('currentValue', 0))
         daily_gain = float(nepse_index.get('changePercent', 0))
         
-        # Get Total Turnover
+        # Get market summary data from ShareHub
+        turnover = 0
+        total_traded_shares = 0
+        total_transactions = 0
+        total_scrips_traded = 0
+        total_float_market_cap = 0
+        nepse_market_cap = 0
+        
         market_summary = sharehub_data.get("marketSummary", [])
-        turnover_item = next((i for i in market_summary if "Turnover" in i.get("name", "")), {})
-        turnover = float(turnover_item.get('value', 0))
+        for item in market_summary:
+            name = item.get('name', '')
+            value = item.get('value', 0)
+            if 'Turnover' in name:
+                turnover = float(value)
+            elif 'Traded Shares' in name:
+                total_traded_shares = int(value)
+            elif 'Transactions' in name:
+                total_transactions = int(value)
+            elif 'Scrips Traded' in name:
+                total_scrips_traded = int(value)
+            elif 'Total Market Capitalization' in name and 'Float' not in name:
+                nepse_market_cap = float(value)
+            elif 'Float Market Capitalization' in name:
+                total_float_market_cap = float(value)
         
         # Get Trading Activity
         stock_summary = sharehub_data.get("stockSummary", {})
@@ -3085,6 +3186,18 @@ def cmd_mktsum():
         nepse_grid.add_row("Current Index", f"{current_price:,.2f}")
         nepse_grid.add_row("Daily Gain", f"[{color}]{daily_gain:+.2f}% {trend_icon}[/{color}]")
         nepse_grid.add_row("Turnover", format_number(turnover))
+        
+        # Add additional data from ShareHub marketSummary
+        if total_traded_shares > 0:
+            nepse_grid.add_row("Traded Shares", format_number(total_traded_shares))
+        if total_transactions > 0:
+            nepse_grid.add_row("Transactions", format_number(total_transactions))
+        if total_scrips_traded > 0:
+            nepse_grid.add_row("Scrips Traded", str(total_scrips_traded))
+        if total_float_market_cap > 0:
+            nepse_grid.add_row("Float Market Cap", format_rupees(total_float_market_cap))
+        if nepse_market_cap > 0:
+            nepse_grid.add_row("Total Market Cap", format_rupees(nepse_market_cap))
         
         nepse_panel = Panel(
             nepse_grid,
@@ -3117,7 +3230,7 @@ def cmd_mktsum():
         # Display Date and Notice
         date_str = sharesansar_data.get('as_of', 'N/A')
         console.print(f"\n[bold cyan]📅 Market Data as of:[/] [yellow]{date_str}[/yellow]")
-        console.print("[dim italic]ℹ️  Note: Market summary data will be updated after market closes[/dim italic]\n")
+        console.print("[dim italic]ℹ️  Note: Market data from ShareHub and ShareSansar APIs[/dim italic]\n")
         
         # Sector Table
         table = Table(title="Sector Performance", box=box.ROUNDED, expand=True)
