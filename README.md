@@ -23,6 +23,11 @@ A modern, interactive command-line tool to automate IPO applications on Meroshar
 pip install nepse-cli
 ```
 
+**Update to the latest version:**
+```bash
+pip install --upgrade nepse-cli
+```
+
 Then run:
 ```bash
 nepse
