@@ -1,28 +1,10 @@
-## IPO Result Automation (Playwright)
+# Nepse CLI - Meroshare IPO Automation & Market Data
 
-This repo now includes a small helper `iporesult_playwright.py` that opens https://iporesult.cdsc.com.np/, fills your BOID, and lets you solve the CAPTCHA manually before submitting.
+![Nepse CLI](nepse-cli-image.png)
 
-Quick start (Windows PowerShell):
+A modern, interactive command-line tool to automate IPO applications on Meroshare for multiple family members and view real-time NEPSE market data.
 
-```
-python -m pip install --upgrade pip
-pip install playwright
-python -m playwright install chromium
-
-# Run (UI mode, manual CAPTCHA)
-python iporesult_playwright.py --boid 1234567890123456 --company "SY Panel Nepal Limited (For General Public)"
-```
-
-Notes:
-- The script will NOT bypass CAPTCHA. You need to type it yourself in the opened browser window.
-- `--company` is optional; if omitted, the currently shown issue stays selected.
-- Add `--headless` to run without opening a visible window.
-
-# Nepse CLI - Meroshare IPO Automation
-
-A command-line tool to automate IPO applications on Meroshare for multiple family members.
-
-**✨ Features visual progress bars for all operations!**
+**✨ Now featuring a beautiful TUI with Rich tables, interactive menus, and fuzzy search!**
 
 ```
 [██████████████████░░░░░░░░░░░░] 50% (3/6) Selecting DP (value: 10900)...
@@ -30,23 +12,47 @@ A command-line tool to automate IPO applications on Meroshare for multiple famil
 
 ## Installation
 
-1. **Install the CLI globally:**
-   ```powershell
-   cd "Nepse CLI"
-   pip install -e .
-   ```
+### 🚀 Easy Start (Windows)
+If you have the source code folder:
+1.  Double-click **`start_nepse.bat`**.
+2.  That's it! It will check for Python, install dependencies, and launch the tool.
 
-2. **Install Playwright browsers (first time only):**
-   ```powershell
-   playwright install chromium
-   ```
+### Option 1: Install from Source (Recommended for Development)
+```powershell
+cd "Nepse CLI"
+pip install -e .
+```
+
+### Option 2: Install as Package (Coming Soon)
+Once published to PyPI:
+```bash
+pip install nepse-cli
+```
+
+### Browser Setup
+The CLI will automatically install Playwright browsers on first run if they're not already installed. If you prefer to install manually:
+```powershell
+playwright install chromium
+```
 
 ## Usage
 
-### Interactive Menu (Default)
+### Interactive Shell (Recommended)
+Simply run `nepse` to enter the modern interactive shell:
 ```powershell
 nepse
 ```
+Once inside the shell, you **do not** need to type `nepse` again. Just type the command directly:
+*   `stonk NABIL`
+*   `ipo`
+*   `apply`
+*   `mktsum`
+
+**Shell Features:**
+*   **Command Palette**: Type `/` to search all available commands.
+*   **Autocompletion**: Type commands and see suggestions.
+*   **History**: Use Up/Down arrows to cycle through command history.
+*   **Help**: Type `help` or `?` to see the command list.
 
 ### Direct Commands
 
@@ -65,25 +71,25 @@ nepse apply-all
 nepse apply-all --gui
 
 # Add or update a family member
-nepse add
+nepse add-member
 
 # List all family members
-nepse list
+nepse list-members
 
 # Get portfolio (headless by default)
-nepse portfolio
+nepse get-portfolio
 
 # Get portfolio with browser window visible
-nepse portfolio --gui
+nepse get-portfolio --gui
 
 # Test login (headless by default)
-nepse login
+nepse test-login
 
 # Test login with browser window visible
-nepse login --gui
+nepse test-login --gui
 
 # View available DP list
-nepse dp-list
+nepse dplist
 ```
 
 #### Market Data Commands
@@ -111,24 +117,25 @@ nepse stonk NICA
 
 ## Features
 
-### Meroshare Automation
-- ✅ Multi-member family support
-- ✅ Automated IPO application
-- ✅ Multi-tab IPO application for all family members
-- ✅ Portfolio fetching
-- ✅ Login testing
-- ✅ Secure credential storage
-- ✅ **Headless mode by default** - fast and silent operation
-- ✅ Optional GUI mode with `--gui` flag for debugging
+### 🖥️ Modern UI & UX
+- **Rich TUI**: Beautiful tables, panels, and colored output for all commands.
+- **Interactive Menus**: Select family members using arrow keys (no more typing IDs!).
+- **Smart Shell**: Autocompletion, fuzzy search, and command history.
+- **Progress Bars**: Visual feedback for all long-running operations.
 
-### Market Data
-- ✅ View open IPOs/FPOs with detailed information
-- ✅ View NEPSE indices (main index, sensitive, float, etc.)
-- ✅ View sub-indices (Banking, Hydropower, Finance, etc.)
-- ✅ View market summary (turnover, volume, market cap)
-- ✅ View top 10 gainers and losers
-- ✅ View individual stock details (price, volume, sector, etc.)
-- ✅ Real-time data from ShareSansar, MeroLagani, and NepseAlpha APIs
+### 🤖 Meroshare Automation
+- ✅ **Multi-member Support**: Manage credentials for the whole family.
+- ✅ **One-Command Apply**: `nepse apply-all` applies for everyone in sequence.
+- ✅ **Interactive Selection**: Choose a specific member from a list using arrow keys.
+- ✅ **Headless Mode**: Fast and silent operation by default.
+- ✅ **Secure Storage**: Credentials stored locally in your user directory.
+
+### 📈 Market Data
+- ✅ **Live Indices**: NEPSE, Sensitive, Float, and Sub-indices.
+- ✅ **Market Summary**: Turnover, volume, market cap, and active stocks.
+- ✅ **Top Gainers/Losers**: Real-time lists of best and worst performers.
+- ✅ **Stock Details**: Price, volume, sector, and changes for any listed company.
+- ✅ **IPO Watch**: List of all open and upcoming IPOs/FPOs/Right Shares.
 
 ## Configuration
 
@@ -139,6 +146,7 @@ All credential data is stored in a **fixed location** to avoid path issues:
 Files stored here:
 - `family_members.json` - All family member credentials
 - `ipo_config.json` - IPO application settings (if any)
+- `nepse_cli_history.txt` - Command history for the interactive shell
 
 This means the CLI works from **any directory** - your data is always in the same place!
 
@@ -176,6 +184,6 @@ Family member data structure:
 - Run: `playwright install chromium`
 
 **Login fails:**
-- Test with: `nepse login`
-- Verify credentials with: `nepse list`
-- Update credentials with: `nepse add`
+- Test with: `nepse test-login`
+- Verify credentials with: `nepse list-members`
+- Update credentials with: `nepse add-member`

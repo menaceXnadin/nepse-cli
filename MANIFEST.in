@@ -1,0 +1,7 @@
+include README.md
+include QUICK_REFERENCE.md
+include FAMILY_IPO_README.md
+include LICENSE
+include nepse-cli-image.png
+recursive-include . *.json
+recursive-include . *.txt

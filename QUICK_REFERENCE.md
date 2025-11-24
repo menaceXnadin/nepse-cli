@@ -1,6 +1,15 @@
 # Nepse CLI - Quick Reference Card
 
-## Market Data Commands (NEW!)
+## Interactive Shell (Recommended)
+
+```bash
+nepse
+```
+*   **Search**: Type `/` to search commands.
+*   **Navigate**: Use Up/Down arrows for history.
+*   **Select**: Use arrow keys for menus.
+
+## Market Data Commands
 
 ```bash
 # View all open IPOs/FPOs
@@ -47,9 +56,6 @@ nepse stonk UPPER             # Upper Tamakoshi
 ## Meroshare IPO Automation
 
 ```bash
-# Interactive menu
-nepse
-
 # Apply for IPO (single member)
 nepse apply                   # Headless mode (default)
 nepse apply --gui             # Show browser
@@ -59,20 +65,23 @@ nepse apply-all               # Headless mode (default)
 nepse apply-all --gui         # Show browser
 
 # Manage family members
-nepse add                     # Add/update member
-nepse list                    # List all members
+nepse add-member              # Add/update member
+nepse list-members            # List all members
 
 # Portfolio and login
-nepse portfolio               # Get portfolio (headless)
-nepse portfolio --gui         # Get portfolio (show browser)
-nepse login                   # Test login (headless)
-nepse login --gui             # Test login (show browser)
+nepse get-portfolio           # Get portfolio (headless)
+nepse get-portfolio --gui     # Get portfolio (show browser)
+nepse test-login              # Test login (headless)
+nepse test-login --gui        # Test login (show browser)
 
 # Utilities
-nepse dp-list                 # View available DPs
+nepse dplist                  # View available DPs
 ```
 
 ## Quick Tips
+
+💡 **Interactive Selection:**
+When running `nepse apply` or `nepse login`, use **Up/Down arrows** to select a family member from the list and press **Enter**.
 
 💡 **Check IPO before applying:**
 ```bash
@@ -96,7 +105,7 @@ nepse subidx BANKING  # Check sector trend
 💡 **Monitor portfolio:**
 ```bash
 nepse stonk <SYMBOL>  # Check stock price
-nepse portfolio       # View holdings
+nepse get-portfolio   # View holdings
 ```
 
 ## Notes

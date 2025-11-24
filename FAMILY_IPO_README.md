@@ -7,7 +7,7 @@ This updated system allows you to manage and apply for IPOs for multiple family 
 - ✅ **Multi-member support** - Add Dad, Mom, siblings, etc.
 - ✅ **Individual credentials** - Each member has their own login details
 - ✅ **Separate IPO settings** - Different Kitta amounts and CRN per member
-- ✅ **Easy selection** - Numbered list to choose who to apply for
+- ✅ **Interactive Selection** - Use arrow keys to choose who to apply for
 - ✅ **Portfolio tracking** - Check holdings for each family member
 - ✅ **Auto-migration** - Old single-member config automatically converts
 
@@ -16,8 +16,7 @@ This updated system allows you to manage and apply for IPOs for multiple family 
 ### 1️⃣ First Time Setup
 Run the program and choose option **2** to add family members:
 ```bash
-python main.py
-# Choose: 2. Add/Update family member
+nepse add-member
 ```
 
 ### 2️⃣ Add Each Family Member
@@ -31,11 +30,10 @@ For each person (Dad, Mom, Brother, etc.), provide:
 - **CRN Number**: Customer Reference Number
 
 ### 3️⃣ Apply for IPO
-Choose option **1** and select which family member to apply for:
+Run the apply command and select which family member to apply for:
 ```bash
-python main.py
-# Choose: 1. Apply for IPO
-# Then select: 1 = Dad, 2 = Mom, 3 = Me, 4 = Brother
+nepse apply
+# Use Up/Down arrows to select member and press Enter
 ```
 
 ## 📁 File Structure
@@ -65,8 +63,8 @@ Template file showing the structure for 4 family members.
 ## 🎮 Menu Options
 
 ### **1. Apply for IPO**
-- Shows numbered list of all family members
-- Select who to apply for
+- Shows interactive list of all family members
+- Select who to apply for using arrow keys
 - Automatically fills their details
 - Complete automation from login to submission
 
@@ -118,37 +116,35 @@ If you have an existing `meroshare_config.json`, the system will:
 
 ```bash
 # Step 1: Add all 4 members (one-time setup)
-python main.py
-> Choose: 2 (Add family member)
+nepse add-member
 > Enter details for Dad
 > Run again for Mom, Me, Brother
 
 # Step 2: Apply for Dad
-python main.py
-> Choose: 1 (Apply for IPO)
-> Select: 1 (Dad)
+nepse apply
+> Select: Dad (Use arrow keys)
 > Automation runs for Dad
 
 # Step 3: Apply for Mom
-python main.py
-> Choose: 1 (Apply for IPO)
-> Select: 2 (Mom)
+nepse apply
+> Select: Mom (Use arrow keys)
 > Automation runs for Mom
 
-# Continue for all members...
+# OR Apply for everyone at once!
+nepse apply-all
 ```
 
 ## 🛠️ Troubleshooting
 
 ### "No family members found"
-- Run option 2 to add members first
+- Run `nepse add-member` to add members first
 
 ### "CRN number is required"
 - Make sure you entered CRN during member setup
-- Use option 2 to update the member
+- Use `nepse add-member` to update the member
 
 ### "Login failed"
-- Verify credentials using option 5 (Test Login)
+- Verify credentials using `nepse test-login`
 - Check DP value is correct
 - Ensure username/password are valid
 
