@@ -16,6 +16,9 @@ A modern, interactive command-line tool to automate IPO applications on Meroshar
 ## Installation
 
 ### 📦 Install from PyPI (Recommended)
+
+**⚠️ Important for Windows Users:** If you installed Python from **Microsoft Store**, please uninstall it and install Python from the [official Python website](https://www.python.org/downloads/) instead. Microsoft Store Python has PATH issues that prevent `nepse` command from working properly.
+
 ```bash
 pip install nepse-cli
 ```
@@ -216,6 +219,18 @@ Family member data structure:
 **'nepse' is not recognized (Windows):**
 
 If you get `'nepse' is not recognized as an internal or external command` after installation:
+
+**⚠️ Most Common Issue - Microsoft Store Python:**
+If you installed Python from Microsoft Store, this is likely your problem. The Microsoft Store version of Python has PATH configuration issues.
+
+**Solution:**
+1. Uninstall Python from Microsoft Store (Settings → Apps → Python → Uninstall)
+2. Download and install Python from [python.org](https://www.python.org/downloads/)
+3. **Important:** Check "Add Python to PATH" during installation
+4. Reinstall nepse-cli: `pip install nepse-cli`
+5. The `nepse` command should now work without any extra configuration!
+
+**Other Options if you want to keep Microsoft Store Python:**
 
 **Option 1: Use Python module syntax (Quick Fix)**
 ```bash
