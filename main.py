@@ -3379,7 +3379,12 @@ def cmd_stonk(stock_name):
                         "h1", style="color: #333;font-size: 20px;font-weight: 600;"
                     )
                     if company_full_form_tag is not None:
-                        company_details["company_fullform"] = company_full_form_tag.text
+                        # Get text and clean up extra whitespace
+                        full_text = company_full_form_tag.get_text(strip=True)
+                        # Remove the symbol in parentheses if present
+                        import re
+                        full_text = re.sub(r'\s*\(\s*[A-Z]+\s*\)\s*$', '', full_text)
+                        company_details["company_fullform"] = full_text.strip()
             except:
                 pass
             
