@@ -15,23 +15,46 @@ A modern, interactive command-line tool to automate IPO applications on Meroshar
 
 ## Installation
 
-### Option 1: Install from PyPI (Recommended)
+### 📦 Install from PyPI (Recommended)
 ```bash
 pip install nepse-cli
 ```
 
-### Option 2: Install from Source (For Development)
+Then run:
+```bash
+nepse
+```
+
+**⚠️ Windows Users:** If you get `'nepse' is not recognized` error after installation:
+
+**Quick Fix - Use this command instead:**
+```bash
+python -m nepse_cli
+```
+
+**Permanent Fix - Add Python Scripts to PATH:**
+1. Find the Scripts path from the pip warning (e.g., `C:\Users\YourName\AppData\Local\Packages\Python...\Scripts`)
+2. Add it to your system PATH environment variable
+3. Restart your terminal
+
+See detailed steps in [Troubleshooting](#troubleshooting) section below.
+
+---
+
+### 🛠️ Other Installation Options
+
+**Install from Source (For Development):**
 ```powershell
 cd "Nepse CLI"
 pip install -e .
 ```
 
-### 🚀 Easy Start (Windows)
+**🚀 Easy Start (Windows - Source Code):**
 If you have the source code folder:
 1.  Double-click **`start_nepse.bat`**.
 2.  That's it! It will check for Python, install dependencies, and launch the tool.
 
-### Browser Setup
+**Browser Setup:**
 The CLI will automatically install Playwright browsers on first run if they're not already installed. If you prefer to install manually:
 ```powershell
 playwright install chromium
@@ -178,12 +201,47 @@ Family member data structure:
 
 ## Troubleshooting
 
-**Command not found:**
-- Make sure you ran `pip install -e .` in the Nepse CLI directory
+**'nepse' is not recognized (Windows):**
+
+If you get `'nepse' is not recognized as an internal or external command` after installation:
+
+**Option 1: Use Python module syntax (Quick Fix)**
+```bash
+python -m nepse_cli
+```
+
+**Option 2: Run with full path**
+```bash
+# Find your Python Scripts path from the pip warning, then:
+C:\Users\YourUsername\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_xxx\LocalCache\local-packages\Python313\Scripts\nepse.exe
+```
+
+**Option 3: Add to PATH (Permanent Fix)**
+1. Copy the Scripts path from the pip warning message
+2. Press `Win + R`, type `sysdm.cpl`, press Enter
+3. Go to `Advanced` tab → `Environment Variables`
+4. Under `User variables`, select `Path` → Click `Edit`
+5. Click `New` → Paste the Scripts path
+6. Click `OK` on all dialogs
+7. **Restart your terminal** (or reboot)
+8. Now `nepse` command will work
+
+**Option 4: Install with --user flag**
+```bash
+pip install --user nepse-cli
+# Then add: %APPDATA%\Python\Python313\Scripts to PATH
+```
+
+**Command not found (Linux/Mac):**
+- Make sure `~/.local/bin` is in your PATH
+- Or install with: `pip install --user nepse-cli`
 - Restart your terminal after installation
 
 **Browser not installed:**
-- Run: `playwright install chromium`
+```bash
+playwright install chromium
+# Or use: python -m playwright install chromium
+```
 
 **Login fails:**
 - Test with: `nepse test-login`
