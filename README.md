@@ -33,11 +33,23 @@ python -m nepse_cli
 ```
 
 **Permanent Fix - Add Python Scripts to PATH:**
-1. Find the Scripts path from the pip warning (e.g., `C:\Users\YourName\AppData\Local\Packages\Python...\Scripts`)
-2. Add it to your system PATH environment variable
-3. Restart your terminal
 
-See detailed steps in [Troubleshooting](#troubleshooting) section below.
+**Step 1: Find your Scripts path**
+```bash
+# Run this command to find where nepse.exe is installed:
+python -c "import sys; import os; print(os.path.join(sys.prefix, 'Scripts'))"
+```
+Copy the output path (e.g., `C:\Users\YourName\AppData\Local\Packages\Python...\Scripts`)
+
+**Step 2: Add to PATH**
+- Press `Win + R`, type `sysdm.cpl`, press Enter
+- Go to `Advanced` tab → `Environment Variables`
+- Under `User variables`, select `Path` → Click `Edit`
+- Click `New` → Paste the Scripts path from Step 1
+- Click `OK` on all dialogs
+- **Restart your terminal**
+
+See more details in [Troubleshooting](#troubleshooting) section below.
 
 ---
 
@@ -210,24 +222,35 @@ If you get `'nepse' is not recognized as an internal or external command` after 
 python -m nepse_cli
 ```
 
-**Option 2: Run with full path**
+**Option 2: Find and run nepse.exe directly**
 ```bash
-# Find your Python Scripts path from the pip warning, then:
+# First, find where nepse.exe is installed:
+python -c "import sys; import os; print(os.path.join(sys.prefix, 'Scripts', 'nepse.exe'))"
+
+# Then run the output path, for example:
 C:\Users\YourUsername\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_xxx\LocalCache\local-packages\Python313\Scripts\nepse.exe
 ```
 
-**Option 3: Add to PATH (Permanent Fix)**
-1. Copy the Scripts path from the pip warning message
-2. Press `Win + R`, type `sysdm.cpl`, press Enter
-3. Go to `Advanced` tab → `Environment Variables`
-4. Under `User variables`, select `Path` → Click `Edit`
-5. Click `New` → Paste the Scripts path
-6. Click `OK` on all dialogs
-7. **Restart your terminal** (or reboot)
-8. Now `nepse` command will work
+**Option 3: Add Scripts folder to PATH (Permanent Fix)**
 
-**Option 4: Install with --user flag**
+**Step 1 - Find your Scripts path:**
 ```bash
+python -c "import sys; import os; print(os.path.join(sys.prefix, 'Scripts'))"
+```
+Copy the output path.
+
+**Step 2 - Add to PATH:**
+1. Press `Win + R`, type `sysdm.cpl`, press Enter
+2. Go to `Advanced` tab → `Environment Variables`
+3. Under `User variables`, select `Path` → Click `Edit`
+4. Click `New` → Paste the Scripts path from Step 1
+5. Click `OK` on all dialogs
+6. **Restart your terminal** (important!)
+7. Now `nepse` command will work everywhere
+
+**Option 4: Reinstall with --user flag**
+```bash
+pip uninstall nepse-cli
 pip install --user nepse-cli
 # Then add: %APPDATA%\Python\Python313\Scripts to PATH
 ```
