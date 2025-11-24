@@ -4,7 +4,7 @@ setup(
     name="nepse-cli",
     version="1.0.0",
     description="Modern CLI tool for Meroshare IPO automation and NEPSE market data with interactive TUI",
-    long_description=open("README.md").read(),
+    long_description=open("README.md", encoding="utf-8").read(),
     long_description_content_type="text/markdown",
     author="MenaceXnadin",
     url="https://github.com/menaceXnadin/nepse-cli",
