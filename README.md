@@ -1,5 +1,8 @@
 # Nepse CLI - Meroshare IPO Automation & Market Data
 
+[![PyPI version](https://badge.fury.io/py/nepse-cli.svg)](https://badge.fury.io/py/nepse-cli)
+[![Python Version](https://img.shields.io/pypi/pyversions/nepse-cli.svg)](https://pypi.org/project/nepse-cli/)
+
 ![Nepse CLI](nepse-cli-image.png)
 
 A modern, interactive command-line tool to automate IPO applications on Meroshare for multiple family members and view real-time NEPSE market data.
@@ -12,22 +15,21 @@ A modern, interactive command-line tool to automate IPO applications on Meroshar
 
 ## Installation
 
-### 🚀 Easy Start (Windows)
-If you have the source code folder:
-1.  Double-click **`start_nepse.bat`**.
-2.  That's it! It will check for Python, install dependencies, and launch the tool.
+### Option 1: Install from PyPI (Recommended)
+```bash
+pip install nepse-cli
+```
 
-### Option 1: Install from Source (Recommended for Development)
+### Option 2: Install from Source (For Development)
 ```powershell
 cd "Nepse CLI"
 pip install -e .
 ```
 
-### Option 2: Install as Package (Coming Soon)
-Once published to PyPI:
-```bash
-pip install nepse-cli
-```
+### 🚀 Easy Start (Windows)
+If you have the source code folder:
+1.  Double-click **`start_nepse.bat`**.
+2.  That's it! It will check for Python, install dependencies, and launch the tool.
 
 ### Browser Setup
 The CLI will automatically install Playwright browsers on first run if they're not already installed. If you prefer to install manually:
