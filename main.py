@@ -3230,7 +3230,7 @@ def cmd_mktsum():
         # Display Date and Notice
         date_str = sharesansar_data.get('as_of', 'N/A')
         console.print(f"\n[bold cyan]📅 Market Data as of:[/] [yellow]{date_str}[/yellow]")
-        console.print("[dim italic]ℹ️  Note: Market data from ShareHub and ShareSansar APIs[/dim italic]\n")
+        console.print("[dim italic]ℹ️  Note: Market summary will be updated after market close[/dim italic]\n")
         
         # Sector Table
         table = Table(title="Sector Performance", box=box.ROUNDED, expand=True)
