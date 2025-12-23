@@ -1,17 +1,17 @@
-# Nepse CLI - Meroshare IPO Automation & Market Data
+# 📈 Nepse CLI - Meroshare IPO Automation & Market Data
 
 [![PyPI version](https://badge.fury.io/py/nepse-cli.svg?t=1)](https://badge.fury.io/py/nepse-cli)
 [![Python Version](https://img.shields.io/pypi/pyversions/nepse-cli.svg)](https://pypi.org/project/nepse-cli/)
 
-![Nepse CLI](nepse-cli-image.png)
-
 A modern, interactive command-line tool to automate IPO applications on Meroshare for multiple family members and view real-time NEPSE market data.
 
-**✨ Now featuring a beautiful TUI with Rich tables, interactive menus, and fuzzy search!**
-
-```
-[██████████████████░░░░░░░░░░░░] 50% (3/6) Selecting DP (value: 10900)...
-```
+**✨ Features:**
+- 🤖 Automated IPO application for entire family
+- 📊 Real-time market data and indices
+- 💼 Portfolio tracking for multiple members
+- 🖥️ Beautiful TUI with Rich tables and interactive menus
+- 🔍 Fuzzy search and autocompletion
+- 🚀 Headless automation (no browser window needed)
 
 ## Installation
 
@@ -213,11 +213,90 @@ Family member data structure:
 }
 ```
 
-## Security
+## 👨‍👩‍👧‍👦 Family IPO Management
 
-- Passwords are stored locally in JSON format
-- File permissions are set to 600 on Unix systems
-- Never commit `family_members.json` to version control
+### Adding Family Members
+
+Add multiple family members to apply for IPOs on their behalf:
+
+```bash
+nepse add-member
+```
+
+Provide for each member:
+- **Name**: e.g., "Dad", "Mom", "Me"
+- **DP Value**: Your DP number (e.g., 139)
+- **Username**: Meroshare username
+- **Password**: Meroshare password
+- **Transaction PIN**: 4-digit PIN for submissions
+- **Applied Kitta**: Number of shares to apply (e.g., 10, 20)
+- **CRN Number**: Customer Reference Number
+
+### Applying for Multiple Members
+
+```bash
+# Apply for one member (interactive selection)
+nepse apply
+
+# Apply for ALL family members automatically
+nepse apply-all
+
+# Apply with browser visible (for debugging)
+nepse apply --gui
+nepse apply-all --gui
+```
+
+### Managing Members
+
+```bash
+# List all configured members
+nepse list-members
+
+# Update member details
+nepse add-member
+# (Select existing member to update)
+
+# Test login for a member
+nepse test-login
+
+# Get portfolio for a member
+nepse get-portfolio
+```
+
+## 📊 Quick Reference
+
+### Market Data Commands
+```bash
+nepse ipo                    # View open IPOs/FPOs
+nepse nepse                  # View NEPSE indices
+nepse subidx BANKING         # View Banking sector
+nepse subidx HYDROPOWER      # View Hydropower sector
+nepse mktsum                 # Market summary
+nepse topgl                  # Top gainers/losers
+nepse stonk NABIL            # Stock details
+```
+
+### Available Sub-Indices
+`BANKING`, `DEVBANK`, `FINANCE`, `HOTELS AND TOURISM`, `HYDROPOWER`, `INVESTMENT`, `LIFE INSURANCE`, `MANUFACTURING AND PROCESSING`, `MICROFINANCE`, `MUTUAL FUND`, `NONLIFE INSURANCE`, `OTHERS`, `TRADING`
+
+### IPO Automation Commands
+```bash
+nepse apply                  # Apply for one member
+nepse apply-all              # Apply for all members
+nepse add-member             # Add/update member
+nepse list-members           # List all members
+nepse get-portfolio          # Get portfolio
+nepse test-login             # Test login
+nepse dplist                 # View available DPs
+```
+
+## 🔒 Security
+
+- ✅ Credentials stored locally in JSON format
+- ✅ File permissions set to 600 on Unix systems
+- ✅ Data stored in user's Documents folder
+- ⚠️ Never commit `family_members.json` to version control
+- ⚠️ Keep credentials file secure and private
 
 ## Troubleshooting
 

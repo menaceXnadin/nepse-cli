@@ -13,12 +13,24 @@ nepse_api_response.json
 
 # Test files with potential real data
 test_portfolio_*.py
+test_post.py
 diagnose_portfolio_issue.py
+
+# Backup files
+main_old_backup.py
 
 # Reference code (not used in main project)
 nepseutils/
 
-# Screenshots
+# Old documentation files (merged into README.md)
+FAMILY_IPO_README.md
+QUICK_REFERENCE.md
+
+# Screenshots and images
+*.png
+error_screenshot.png
+nepse-cli-image.png
+no_ipos_available.png
 
 # Python
 __pycache__/
