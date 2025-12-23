@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="nepse-cli",
-    version="1.1.0",
+    version="2.0.0",
     description="Modern CLI tool for Meroshare IPO automation and NEPSE market data with interactive TUI",
     long_description=open("README.md", encoding="utf-8").read(),
     long_description_content_type="text/markdown",
@@ -18,6 +18,8 @@ setup(
         "requests>=2.25.0",
         "beautifulsoup4>=4.9.0",
         "cloudscraper>=1.2.0",
+        "tenacity>=9.0.0",
+        "lxml>=4.9.0",
     ],
     entry_points={
         "console_scripts": [
@@ -35,5 +37,6 @@ setup(
         "Programming Language :: Python :: 3.9",
         "Programming Language :: Python :: 3.10",
         "Programming Language :: Python :: 3.11",
+        "Programming Language :: Python :: 3.12",
     ],
 )

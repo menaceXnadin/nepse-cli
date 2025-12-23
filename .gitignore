@@ -2,7 +2,21 @@
 family_members.json
 meroshare_config.json
 ipo_config.json
+auth_data.json
 *.backup
+
+# Personal data files
+portfolio_*.json
+wacc_report_*.json
+payload.json
+nepse_api_response.json
+
+# Test files with potential real data
+test_portfolio_*.py
+diagnose_portfolio_issue.py
+
+# Reference code (not used in main project)
+nepseutils/
 
 # Screenshots
 
@@ -42,3 +56,4 @@ env/
 # OS
 .DS_Store
 Thumbs.db
+news_apitest.py
