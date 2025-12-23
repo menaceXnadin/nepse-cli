@@ -1,6 +1,6 @@
 # 📈 Nepse CLI - Meroshare IPO Automation & Market Data
 
-[![PyPI version](https://badge.fury.io/py/nepse-cli.svg?t=1)](https://badge.fury.io/py/nepse-cli)
+[![PyPI version](https://badge.fury.io/py/nepse-cli.svg)](https://badge.fury.io/py/nepse-cli)
 [![Python Version](https://img.shields.io/pypi/pyversions/nepse-cli.svg)](https://pypi.org/project/nepse-cli/)
 
 A modern, interactive command-line tool to automate IPO applications on Meroshare for multiple family members and view real-time NEPSE market data.
